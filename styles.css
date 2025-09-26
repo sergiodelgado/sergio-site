@@ -1,0 +1,46 @@
+/* Minimal oscuro limpio */
+:root {
+  --bg: #0a0a0a;
+  --fg: #e5e5e5;
+  --muted: #a1a1aa;
+  --card: #111113;
+  --line: #1f1f22;
+  --accent: #d4d4d8;
+  --primary: #fafafa;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--bg); color: var(--fg); }
+.container { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+
+.site-header { border-bottom: 1px solid var(--line); position: sticky; top: 0; background: rgba(10,10,10,0.8); backdrop-filter: blur(8px); }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { color: var(--fg); text-decoration: none; font-weight: 800; }
+.menu { list-style: none; display: flex; gap: 16px; margin: 0; padding: 0; }
+.menu a { color: var(--muted); text-decoration: none; padding: 8px 10px; border-radius: 999px; }
+.menu a.active, .menu a:hover { color: var(--fg); background: #151518; }
+
+.hero { padding: 80px 0 30px; }
+.hero h1 { font-size: clamp(28px, 6vw, 54px); line-height: 1.05; margin: 0; }
+.hero p { color: var(--muted); margin-top: 12px; max-width: 60ch; }
+
+.cta-row { display: flex; gap: 12px; margin-top: 22px; }
+.btn { display: inline-block; padding: 10px 16px; border-radius: 12px; border: 1px solid var(--line); color: var(--fg); text-decoration: none; transition: transform .04s ease; }
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: var(--primary); color: #111; border: none; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 40px 0 80px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+
+.prose h1, .prose h2 { margin-top: 28px; }
+.prose p, .prose li { color: var(--fg); }
+.muted { color: var(--muted); font-size: 0.9rem; }
+
+.form { display: grid; gap: 12px; }
+.form label { display: grid; gap: 6px; font-weight: 600; }
+.form input, .form textarea { background: #0f0f12; color: var(--fg); border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
+.form button { cursor: pointer; }
+.site-footer { border-top: 1px solid var(--line); padding: 24px 0; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.socials a { color: var(--muted); text-decoration: none; margin-left: 10px; }
+.socials a:hover { color: var(--fg); }

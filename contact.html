@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacto — Sergio Delgado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav">
+      <a class="logo" href="index.html">Sergio Delgado</a>
+      <ul class="menu">
+        <li><a href="about.html">Sobre mí</a></li>
+        <li><a href="projects.html">Proyectos</a></li>
+        <li><a class="active" href="contact.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Contacto</h1>
+    <form class="card form" action="https://formspree.io/f/xxxxxxxx" method="POST">
+      <label>Nombre
+        <input type="text" name="name" required>
+      </label>
+      <label>Email
+        <input type="email" name="email" required>
+      </label>
+      <label>Mensaje
+        <textarea name="message" rows="6" required></textarea>
+      </label>
+      <button class="btn btn-primary" type="submit">Enviar</button>
+      <p class="muted">Reemplaza <code>xxxxxxxx</code> por tu ID de Formspree.</p>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>© <span id="year"></span> Sergio Delgado</small>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
