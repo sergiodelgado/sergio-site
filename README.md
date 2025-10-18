@@ -88,14 +88,14 @@ start index.html     # Windows
 
 ## 📊 Roadmap
 
- Versión inicial del sitio
- Formulario conectado a Gmail
- SEO básico y sitemap
- Panel de analíticas de visitas
- Versión multilenguaje
- Conexión a base de datos para contenido dinámico
- Dominio personalizado (sergiodelgado.com)
- Integración con APIs de IA para funcionalidades interactivas
+- Versión inicial del sitio ✅
+- Formulario conectado a Gmail ✅
+- SEO básico y sitemap ✅
+- Panel de analíticas de visitas
+- Versión multilenguaje
+- Conexión a base de datos para contenido dinámico
+- Dominio personalizado (sergiodelgado.com)
+- Integración con APIs de IA para funcionalidades interactivas
 
 ---
 
