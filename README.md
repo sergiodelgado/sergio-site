@@ -46,6 +46,7 @@ Mi objetivo es que este proyecto evolucione junto a mis conocimientos: cada nuev
 
 ## 📦 Estructura del proyecto
 
+```bash
 ├── index.html          # Página principal
 ├── about.html          # Página "Sobre mí"
 ├── projects.html       # Página de proyectos
@@ -55,6 +56,7 @@ Mi objetivo es que este proyecto evolucione junto a mis conocimientos: cada nuev
 ├── robots.txt          # Archivo para rastreadores web
 └── sitemap.xml         # Sitemap para buscadores
 
+```
 ---
 
 ## Cómo trabaja Codex
