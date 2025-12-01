@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Conoce a Sergio Delgado, ingeniero civil industrial que combina gobernanza cultural, automatización y narrativa techno para diseñar sistemas con impacto."/>
+  <meta name="description" content="Conoce a Sergio Delgado, ingeniero civil industrial que combina gobernanza cultural, automatización y narrativa techno para diseñar sistemas con impacto." />
   <title>Sobre mí — Sergio Delgado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-header">
-    <nav class="container nav">
+    <nav class="container nav" aria-label="Navegación principal">
       <a class="logo" href="index.html">Sergio Delgado</a>
       <ul class="menu">
-        <li><a class="active" href="about.html">Sobre mí</a></li>
+        <li><a class="active" href="about.html" aria-current="page">Sobre mí</a></li>
         <li><a href="projects.html">Proyectos</a></li>
         <li><a href="contact.html">Contacto</a></li>
       </ul>
@@ -48,6 +50,11 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <small>© <span id="year"></span> Sergio Delgado</small>
+      <div class="socials">
+        <a href="https://cl.linkedin.com/in/sergiodelgadom" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+        <a href="https://medium.com/@sergiodelgadom" target="_blank" rel="noopener noreferrer" aria-label="Medium">Medium</a>
+        <a href="https://www.instagram.com/monoantartico" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+      </div>
     </div>
   </footer>
   <script src="script.js"></script>
