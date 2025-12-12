@@ -32,6 +32,32 @@ html, body { margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-syst
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 40px 0 80px; }
 .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
 
+/* === Project badges (Tech / Narrative) === */
+.badge {
+  display: inline-block;
+  margin-bottom: 6px;
+  padding: 4px 10px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 999px;
+}
+
+/* Proyectos técnicos: QA / Data / DevOps */
+.badge-tech {
+  background: rgba(80, 200, 255, 0.12);
+  color: #7dd3fc;
+  border: 1px solid rgba(80, 200, 255, 0.35);
+}
+
+/* Proyectos narrativos / creativos */
+.badge-narrative {
+  background: rgba(180, 120, 255, 0.12);
+  color: #d8b4fe;
+  border: 1px solid rgba(180, 120, 255, 0.3);
+}
+
 .prose h1, .prose h2 { margin-top: 28px; }
 .prose p, .prose li { color: var(--fg); }
 .muted { color: var(--muted); font-size: 0.9rem; }
