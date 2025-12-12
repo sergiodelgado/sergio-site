@@ -1,0 +1,24 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "",
+      "url": [
+        "https://sergio-site-drab.vercel.app/",
+        "https://sergio-site-drab.vercel.app/about.html",
+        "https://sergio-site-drab.vercel.app/projects.html",
+        "https://sergio-site-drab.vercel.app/contact.html"
+      ],
+      "numberOfRuns": 1
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["warn", { "minScore": 0.8 }],
+        "categories:accessibility": ["warn", { "minScore": 0.9 }],
+        "categories:seo": ["warn", { "minScore": 0.9 }]
+      }
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    }
+  }
+}

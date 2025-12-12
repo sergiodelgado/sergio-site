@@ -1,0 +1,15 @@
+{
+  "name": "sergio-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "lint:html": "html-validate index.html about.html projects.html contact.html",
+    "check:sitemap": "node scripts/check-sitemap.mjs",
+    "ci:test": "npm run lint:html && npm run check:sitemap",
+    "ci:lighthouse": "lhci autorun"
+  },
+  "devDependencies": {
+    "@lhci/cli": "^0.14.0",
+    "html-validate": "^8.0.0"
+  }
+}

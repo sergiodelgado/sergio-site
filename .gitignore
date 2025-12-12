@@ -1,0 +1,33 @@
+# --- Node ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+
+# --- Sistema operativo ---
+.DS_Store
+Thumbs.db
+
+# --- Editor / IDE ---
+.vscode/
+*.code-workspace
+
+# --- Logs ---
+*.log
+
+# --- Builds (por si en el futuro agregamos minificados) ---
+dist/
+build/
+
+# --- Temp ---
+.tmp/
+.temp/
+.cache/
+
+# --- Lighthouse CI output ---
+.lhci/
+
+# --- Backup de VS Code ---
+*.orig
