@@ -1,38 +1,98 @@
-# Auditoría técnica del sitio
+# Auditoría técnica del sitio (vivo)
 
-## 1. Exploración del repositorio
-- **Carpetas**: solo la raíz del proyecto (sin subdirectorios).
-- **Archivos relevantes**: `index.html`, `about.html`, `projects.html`, `contact.html`, `styles.css`, `script.js`, `robots.txt`, `sitemap.xml`, `README.md`, `AGENTS.md`.
-- **Extensiones encontradas**: `.html`, `.css`, `.js`, `.txt`, `.xml`, `.md`.
-- **Dependencias/recursos externos**: Google Fonts (Inter) en todas las páginas; uso de Formspree (`https://formspree.io/f/mzzjzlyy`) en `contact.html`. No frameworks ni build tools.
-- **Posibles archivos/estilos sin uso**: clase `.muted` declarada en `styles.css` sin referencia en HTML; `script.js` solo actualiza el año y carece de salto de línea final.
+## Alcance
+- Revisión del repositorio `sergio-site` en su estado actual.
+- Se audita la **estructura del proyecto y el código fuente** mantenido en el repositorio.
+- Subdirectorios relevantes: `scripts/`, `.github/`.
+- **Nota**: `node_modules/` existe por dependencias locales, pero **no se audita** por ser contenido generado.
+- Archivos clave auditados:
+  - HTML: `index.html`, `about.html`, `projects.html`, `contact.html`
+  - Estilos y scripts: `styles.css`, `script.js`
+  - SEO: `robots.txt`, `sitemap.xml`
+  - Documentación: `README.md`, `AGENTS.md`, `AUDIT.md`
+  - Tooling/CI: `package.json`, `package-lock.json`, `lighthouserc.json`, `scripts/check-sitemap.mjs`, `.github/workflows/ci.yml`
 
-## 2. Arquitectura actual
-- Stack: sitio estático HTML5 + CSS3 + JavaScript vanilla, sin empaquetador. Hosting esperado en Vercel.
-- Buenas prácticas básicas:
-  - Estructura: archivos por página, CSS y JS compartidos, navegación coherente.
-  - Accesibilidad: uso parcial de `aria-label` en enlaces sociales; falta de `lang` ya configurado (`es`). Formularios usan `label` asociado por contenedor pero sin `for`/`id` explícitos.
-  - SEO: títulos y meta descripciones por página, `robots.txt` y `sitemap.xml` presentes; fechas de `lastmod` futuras (2025-10-18) pueden ser inconsistentes.
-  - Seguridad: enlaces externos con `rel="noopener noreferrer"` excepto redes en `index.html` (placeholder `#`); script inline en `contact.html` evita CSP estricta.
+---
 
-## 3. Mapa de funcionalidades
-- Páginas: `index.html` (hero y tarjetas), `about.html` (bio), `projects.html` (tarjetas de proyectos), `contact.html` (formulario).
-- Formulario de contacto: `contact.html` envía a Formspree mediante `fetch` asincrónico; reemplaza el contenido del formulario con mensaje de éxito o error.
-- Scripts por página: `script.js` en todas para actualizar año del footer; `contact.html` incluye script inline adicional para manejar envío del formulario.
+## Estado actual
 
-## 4. Diagnóstico de calidad
-- HTML: semántica básica correcta (`header`, `main`, `footer`); falta de atributos `alt` en futuros assets, navegación sin resaltar foco, enlaces sociales de `index.html` apuntan a `#`. Falta `for`/`id` en inputs.
-- CSS: hoja única con variables; selector `.muted` no se usa; podría modularse por página; no hay reset de enfoque para accesibilidad; mix de unidades coherente.
-- JS: `script.js` minimal y sin modularidad; `contact.html` tiene JS inline sin manejo de errores detallado ni estados de carga; no hay validación adicional.
-- Performance estimada: sitio ligero (sin imágenes ni bundles). Google Fonts carga externa; falta `preload`/`font-display`. CSS/JS sin minificar pero pequeños; no hay cache busting.
+### Estructura
+- Sitio estático con páginas HTML en la raíz del proyecto.
+- Utilidades y validaciones en `scripts/`.
+- Configuración de CI en `.github/workflows/`.
 
-## 5. Checklist del estado actual
-- **Bien**: estructura simple por página; meta descripciones; sitemap y robots presentes; uso de `rel="noopener noreferrer"` en la mayoría de enlaces externos; formulario con `fetch` y estado de usuario.
-- **Mal o incompleto**: enlaces sociales del home apuntan a `#`; fechas de `lastmod` futuras; script inline que complica CSP; falta `for`/`id` en inputs; `.muted` sin uso; `script.js` sin newline final.
-- **Obsoleto**: sin elementos claramente obsoletos, pero sitemap con fechas futuras es cuestionable.
-- **A reescribir/migrar**: mover JS inline a archivo externo; normalizar enlaces sociales reales; revisar accesibilidad del formulario; considerar modularización de estilos y minificación ligera.
+### Stack y dependencias
+- **Frontend**: HTML5, CSS3, JavaScript vanilla.
+- **Fuentes**: Google Fonts (Inter) cargadas vía `<link>` con `display=swap` (sin `preload`).
+- **Formulario**: Formspree consumido mediante `fetch` desde `script.js`.
+- **Tooling Node** (desarrollo/CI):
+  - `html-validate` para validación de HTML.
+  - `@lhci/cli` para Lighthouse CI.
+  - Script propio de validación de `sitemap.xml`.
 
-## 6. ENTREGAR A CHATGPT 5.1
-- Stack: HTML5 + CSS3 + JS vanilla; sin bundler; fuentes desde Google Fonts; Formspree para contacto.
-- Archivos clave: `index.html`, `about.html`, `projects.html`, `contact.html`, `styles.css`, `script.js`, `robots.txt`, `sitemap.xml`, `README.md`, `AGENTS.md`.
-- Hallazgos: enlaces sociales en `index.html` usan `#`; `contact.html` incluye JS inline para Formspree; inputs sin `for`/`id`; `.muted` no se usa; `lastmod` del sitemap en 2025-10-18 (futuro); `script.js` solo actualiza año y carece de salto de línea final.
+### HTML
+- Todas las páginas definen `lang="es"`, `<title>` y meta descripción.
+- Navegación consistente con estado activo (`aria-current="page"`).
+- Enlaces sociales apuntan a URLs reales (LinkedIn, Medium, Instagram).
+- Formulario usa patrón válido de accesibilidad: `label` envolviendo campos con `id`.
+
+### CSS
+- Hoja única (`styles.css`) con variables CSS y enfoque minimalista.
+- La clase `.muted` está **en uso** (texto introductorio en `contact.html`).
+- No hay modularización por página (aceptable por tamaño actual).
+
+### JavaScript
+- `script.js` encapsula lógica en una IIFE.
+- Funcionalidades:
+  - Actualización dinámica del año en el footer.
+  - Manejo del formulario de contacto (`fetch`, estados de éxito/error).
+- No existe JavaScript inline en los HTML.
+
+### SEO y robots
+- `robots.txt` presente.
+- `sitemap.xml` presente y listado en robots.
+- **Hallazgo**: `<lastmod>` contiene fechas futuras (`2025-12-01`), lo que rompe validación y puede afectar SEO.
+
+### Tooling y CI
+- Existe pipeline de CI configurado en `.github/workflows/ci.yml`.
+- El CI ejecuta:
+  - Validación HTML.
+  - Chequeo de `sitemap.xml` (`scripts/check-sitemap.mjs`).
+  - Lighthouse CI contra el sitio desplegado.
+- El pipeline está activo y operativo en GitHub Actions.
+
+---
+
+## Cambios recientes detectados
+- Introducción de tooling Node y CI (html-validate, Lighthouse CI).
+- Centralización de la lógica del formulario en `script.js` (eliminación de JS inline).
+- Corrección de enlaces sociales (ya no usan `#`).
+- Uso efectivo de `.muted` en el formulario de contacto.
+- Incorporación de auditoría técnica y documentación adicional.
+
+---
+
+## Deuda técnica (priorizada)
+
+1. **SEO**: `sitemap.xml` declara fechas futuras en `<lastmod>`.
+2. **Performance**: fuentes externas sin `preload` (mitigado parcialmente por `display=swap`).
+3. **Optimización**: CSS y JS no minificados ni con cache busting (baja prioridad por tamaño actual).
+
+> Nota: el patrón de accesibilidad del formulario (`label` envolvente + `input`) es válido y no constituye deuda técnica.
+
+---
+
+## Recomendaciones
+
+- Corregir `sitemap.xml` para usar fechas reales y mantenerlo alineado con despliegues.
+- Mantener e integrar el script `check-sitemap.mjs` como gate obligatorio del CI (ya disponible).
+- Evaluar `preload` de la fuente principal si se busca optimizar métricas Lighthouse.
+- Considerar minificación y versionado de assets solo si el sitio crece en complejidad o peso.
+- Mantener este `AUDIT.md` actualizado cuando cambie el stack, el CI o la arquitectura.
+
+---
+
+## Conclusión
+El sitio `sergio-site` presenta un **estado técnico sólido**, con arquitectura simple y coherente, CI funcional y deuda técnica acotada.  
+La principal acción pendiente es la corrección de metadatos SEO (`sitemap.xml`). El resto de mejoras son incrementales y no críticas.
+
