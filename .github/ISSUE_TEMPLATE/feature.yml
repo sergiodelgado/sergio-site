@@ -1,0 +1,30 @@
+name: Feature
+description: Nueva mejora para sergio-site
+title: "[feat] "
+labels: ["feat"]
+body:
+  - type: textarea
+    id: objetivo
+    attributes:
+      label: Objetivo
+      description: ¿Qué se quiere lograr y por qué?
+    validations:
+      required: true
+
+  - type: textarea
+    id: criterio
+    attributes:
+      label: Criterios de aceptación
+      description: Lista verificable (checklist).
+      placeholder: |
+        - [ ] El cambio es visible en la UI
+        - [ ] No rompe navegación existente
+        - [ ] Mantiene simplicidad arquitectónica
+    validations:
+      required: true
+
+  - type: textarea
+    id: alcance
+    attributes:
+      label: Alcance / No-alcance
+      description: Qué incluye y qué explícitamente NO incluye.
