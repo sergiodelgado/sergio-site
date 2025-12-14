@@ -11,6 +11,6 @@
   },
   "devDependencies": {
     "@lhci/cli": "^0.14.0",
-    "html-validate": "^8.0.0"
+    "html-validate": "^10.4.0"
   }
 }
