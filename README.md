@@ -83,6 +83,21 @@ Incluye:
 
 ---
 
+## Runtime y tooling
+
+Este proyecto es un **sitio estático** (HTML/CSS/JS) desplegado en Vercel.
+Node.js se utiliza **solo** para tooling de calidad (lint HTML, validación sitemap, Lighthouse y CI).
+
+### Desarrollo local
+- Servir el sitio:
+  - `npm run dev`
+
+### Calidad (local / CI)
+- `npm run ci:test`
+- `npm run ci:lighthouse`
+
+---
+
 ## 🚀 Deploy
 
 El sitio se valida mediante **GitHub Actions** y se despliega automáticamente en **Vercel** con cada push a `main`.
