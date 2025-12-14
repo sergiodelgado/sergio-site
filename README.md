@@ -1,152 +1,157 @@
-# 🌐 Sergio Site — Portafolio Profesional 2025
+# 🌐 sergio-site — Professional Portfolio (Well-Architected)
 
-Sitio web personal de **Sergio Delgado**, ingeniero civil industrial con foco en transformación digital, automatización, ciencia de datos y gobernanza cultural.  
-Este proyecto funciona como mi portafolio técnico y creativo, integrando ingeniería, narrativa techno y sistemas vinculados a AG RBB.
+Repositorio del sitio web personal de **Sergio Delgado**, ingeniero civil industrial
+con foco en **QA Automation, Data, CI/CD y transformación digital**.
 
----
-
-## 🧭 Descripción general
-
-Este sitio es un **portfolio estático optimizado y mantenible**, orientado a claridad, bajo acoplamiento y facilidad de despliegue.  
-Reúne mi identidad profesional, proyectos estratégicos, investigación creativa y líneas de trabajo actuales como **QA Automation**, **DevOps**, **Data Science**, **transformación con IA** y el universo narrativo **Xexe Quantum**.
-
-El desarrollo y la evolución del proyecto cuentan con apoyo de **ChatGPT 5.1 (Auto / Thinking)** y **Codex** como herramientas de asistencia para:
-
-- refactor de HTML/CSS/JS  
-- revisión de buenas prácticas SEO y accesibilidad  
-- arquitectura simple y escalable  
-- documentación técnica y narrativa  
-- automatización del flujo de desarrollo  
+Este proyecto funciona como un **portafolio técnico profesional**, diseñado y
+mantenido bajo principios de **simplicidad, claridad y calidad sostenida**.
 
 ---
 
-## 🚀 Características principales
+## 🧭 What is this?
 
-- **Páginas base:**  
-  `index.html`, `about.html`, `projects.html`, `contact.html`
-- **Diseño:**  
-  minimalista, oscuro, responsivo, sin frameworks innecesarios
-- **Accesibilidad:**  
-  navegación clara, patrón válido de `label` envolvente, `aria-current`
-- **Formulario funcional:**  
-  conectado a **Formspree**
-- **JS modular:**  
-  `script.js` centraliza lógica del formulario y utilidades
-- **SEO básico:**  
-  meta descriptions, `robots.txt`, `sitemap.xml` (estructura OK)
-- **CI + Deploy automático:**  
-  validaciones y auditorías en GitHub Actions, despliegue automático en Vercel
+`sergio-site` es un **sitio web estático** (HTML/CSS/JS) que presenta:
+
+- Proyectos técnicos reales (QA, Data, Digital Ops)
+- Experiencia en automatización y calidad
+- Un laboratorio narrativo/conceptual (**Xexe Quantum**) como diferenciador
+
+El sitio prioriza **señal profesional clara en menos de 60 segundos** para
+reclutadores y revisores técnicos.
 
 ---
 
-## 🛠️ Tecnologías utilizadas
+## 🧱 Architecture overview
 
-- **HTML5**: estructura semántica
-- **CSS3**: estilos personalizados oscuros (`styles.css`)
-- **JavaScript Vanilla**: lógica del formulario y utilidades
-- **Formspree**: backend de contacto sin servidor propio
-- **GitHub Actions**: validaciones y auditorías (CI)
-- **Vercel**: hosting estático y despliegue automático
-- **ChatGPT / Codex**: soporte para desarrollo, arquitectura y contenido
+- **Stack:** HTML + CSS + JavaScript (sin framework)
+- **Runtime:** sitio estático
+- **Node.js:** solo para tooling de calidad (CI, linting, auditorías)
+- **Hosting:** Vercel (deploy automático desde `main`)
+
+Las decisiones de diseño y trade-offs están documentados en:
+
+👉 `ARCHITECTURE.md`
 
 ---
 
-## 📦 Estructura del proyecto
+## ✅ Quality & Well-Architected baseline
 
-~~~bash
+Este repositorio sigue un baseline **Well-Architected** con foco en:
+
+- Simplicidad antes que sofisticación
+- Automatización mínima pero efectiva
+- Gobernanza visible
+- Mejora continua consciente
+
+Checklist y criterios de mantenimiento:
+
+👉 `docs/well-architected.md`
+
+### Automatización incluida
+
+- Validación HTML
+- Chequeo de sitemap
+- Auditorías Lighthouse
+- CI obligatorio en Pull Requests
+
+---
+
+## 🛠️ Tooling & technologies
+
+- **HTML5** — estructura semántica
+- **CSS3** — estilos personalizados (dark / minimal)
+- **JavaScript Vanilla** — lógica del formulario y carga de parciales
+- **Formspree** — backend de contacto
+- **GitHub Actions** — CI (quality gates)
+- **Vercel** — hosting y deploy automático
+- **ChatGPT / Codex** — asistencia en arquitectura, refactor y documentación
+
+---
+
+## 📁 Project structure
+
+~~~text
 ├── index.html
 ├── about.html
 ├── projects.html
 ├── contact.html
 ├── styles.css
 ├── script.js
-├── robots.txt
-├── sitemap.xml
-├── scripts/                 # utilidades (validación sitemap, etc.)
-├── .github/workflows/       # CI (validaciones + Lighthouse)
+├── partials/              # nav / footer reutilizables
+├── scripts/               # utilidades (sitemap checks, etc.)
+├── docs/                  # checklist Well-Architected
+├── .github/workflows/     # CI (lint + Lighthouse)
+├── ARCHITECTURE.md
+├── AGENTS.md
 ├── package.json
 └── package-lock.json
 ~~~
 
 ---
 
-## ⚙️ Reglas de contribución con Codex y agentes
+## ⚙️ Local usage
 
-El flujo de trabajo asistido por IA se documenta en  
-👉 `AGENTS.md`
-
-Incluye:
-
-- reglas para prompts estructurados  
-- cómo invocar auditorías técnicas  
-- cómo generar refactors seguros  
-
----
-
-## Runtime y tooling
-
-Este proyecto es un **sitio estático** (HTML/CSS/JS) desplegado en Vercel.
-Node.js se utiliza **solo** para tooling de calidad (lint HTML, validación sitemap, Lighthouse y CI).
-
-### Desarrollo local
-- Servir el sitio:
-  - `npm run dev`
-
-### Calidad (local / CI)
-- `npm run ci:test`
-- `npm run ci:lighthouse`
-
----
-
-## 🚀 Deploy
-
-El sitio se valida mediante **GitHub Actions** y se despliega automáticamente en **Vercel** con cada push a `main`.
-
-Versión de producción:
-
-👉 https://sergio-site-drab.vercel.app
-
-### Ejecución local
+Este proyecto **no requiere servidor** para ejecutarse.
 
 ~~~bash
 git clone https://github.com/sergiodelgado/sergio-site.git
 cd sergio-site
+~~~
 
+Abrir directamente:
+
+~~~bash
 start index.html      # Windows
 open index.html       # macOS
 xdg-open index.html   # Linux
 ~~~
 
----
+### Tooling de calidad (opcional)
 
-## 🗺️ Roadmap 2025
-
-- Refactor general HTML/CSS/JS ✔
-- Accesibilidad mínima (labels, aria-current) ✔
-- SEO básico + sitemap (estructura OK, ajuste `lastmod` pendiente)
-- Minificación automática de CSS/JS (opcional)
-- Panel simple de analíticas
-- Versión multilenguaje (ES/EN)
-- Contenido dinámico (blog o micro-apps con APIs)
-- Dominio propio: sergiodelgado.com
-- Integraciones IA ligeras (resumen de proyectos, generador narrativo)
+~~~bash
+npm install
+npm run ci:test
+npm run ci:lighthouse
+~~~
 
 ---
 
-## 🌐 Presencia & Contacto
+## 🤝 Governance & collaboration
 
-Sitio web: https://sergio-site-drab.vercel.app  
-LinkedIn: https://cl.linkedin.com/in/sergiodelgadom  
-Medium: https://medium.com/@sergiodelgadom  
-GitHub: https://github.com/sergiodelgado  
+Aunque es un proyecto personal, el repositorio incluye:
 
-Formulario de contacto:  
-👉 `/contact.html`
+- `CONTRIBUTING.md`
+- `CODE_OF_CONDUCT.md`
+- `SECURITY.md`
+- Templates de Issues y Pull Requests
+
+Esto documenta **cómo trabajo y tomo decisiones**, incluso en contextos individuales.
 
 ---
 
-## 📜 Licencia
+## 🚀 Deployment
 
-Proyecto bajo licencia MIT.  
-Consulta el archivo `LICENSE` para más detalles.
+- Deploy automático en **Vercel**
+- Trigger: push a `main`
+- CI obligatorio antes del deploy
 
+🌐 Producción:  
+👉 https://sergio-site-drab.vercel.app
+
+---
+
+## 🗺️ Roadmap (alto nivel)
+
+- Baseline Well-Architected ✔
+- Arquitectura de contenidos clara ✔
+- Métricas explícitas por proyecto (opcional)
+- Versión multilenguaje (ES / EN)
+- Dominio propio
+- Extensiones IA ligeras (bajo criterio)
+
+---
+
+## 📜 License
+
+MIT License  
+Ver archivo `LICENSE` para más detalles.
