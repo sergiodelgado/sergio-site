@@ -1,14 +1,21 @@
 (function () {
+  // Base path del sitio (p.ej. "/" o "/mi-subpath/"), robusto para Vercel y otros hosts
+  const BASE_PATH = (document.querySelector('meta[name="site-base"]')?.content || "/").replace(/\/?$/, "/");
+
+  // Construye URLs absolutas al origen + base (evita problemas de rutas relativas)
+  const urlFromBase = (path) => new URL(path.replace(/^\//, ""), location.origin + BASE_PATH).toString();
+
   const setYear = () => {
     const yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
   };
 
   const bindContactForm = () => {
-    const form = document.querySelector("form[data-formspree]");
+    const form = document.querySelector('form[data-formspree]');
     if (!form) return;
 
     const status = form.querySelector(".form-status");
+    if (!status) return;
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -59,7 +66,12 @@
     await Promise.all(
       Array.from(nodes).map(async (node) => {
         const name = node.getAttribute("data-include");
-        const res = await fetch(`partials/${name}.html`, { cache: "no-cache" });
+        if (!name) return;
+
+        // partials viven en la raíz del sitio: /partials/nav.html, /partials/footer.html
+        const partialUrl = urlFromBase(`partials/${name}.html`);
+
+        const res = await fetch(partialUrl, { cache: "no-cache" });
         if (!res.ok) {
           node.innerHTML = "";
           return;
@@ -76,6 +88,7 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     includePartials();
+
     // Fallback por si una página no usa partials:
     setYear();
     bindContactForm();
