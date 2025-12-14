@@ -56,7 +56,39 @@ componentes reutilizables mediante `partials/`.
 
 ---
 
-## 4. Separación de capas: técnica vs narrativa
+## 4. Organización por intención (css / js)
+
+### Decisión
+Separar estilos y scripts en carpetas dedicadas (`css/`, `js/`).
+
+### Motivo
+- Facilitar la ubicación rápida de responsabilidades.
+- Reducir carga cognitiva al editar o auditar el proyecto.
+- Mantener URLs estables sin introducir build steps.
+
+### Trade-offs aceptados
+- Requiere actualización explícita de rutas en HTML.
+- No existe bundling ni optimización automática (no necesario).
+
+---
+
+## 5. Reutilización de layout con parciales HTML
+
+### Decisión
+Implementar `nav` y `footer` como parciales HTML cargados vía `fetch`.
+
+### Motivo
+- Eliminar duplicación de markup entre páginas.
+- Mantener consistencia visual sin introducir frameworks.
+- Preservar arquitectura estática y control total del runtime.
+
+### Trade-offs aceptados
+- El contenido se inyecta tras `DOMContentLoaded`.
+- Requiere manejo cuidadoso de rutas relativas.
+
+---
+
+## 6. Separación de capas: técnica vs narrativa
 
 ### Decisión
 Separar explícitamente los **proyectos técnicos**
@@ -73,7 +105,7 @@ del **laboratorio narrativo / conceptual**.
 
 ---
 
-## 5. Calidad y automatización
+## 7. Calidad y automatización
 
 ### Decisión
 Implementar CI liviano con validaciones automáticas.
@@ -89,7 +121,7 @@ Implementar CI liviano con validaciones automáticas.
 
 ---
 
-## 6. Gobernanza y colaboración
+## 8. Gobernanza y colaboración
 
 ### Decisión
 Incluir archivos de gobernanza y templates
@@ -106,7 +138,7 @@ aunque el proyecto sea principalmente individual.
 
 ---
 
-## 7. Principio rector
+## Principio rector
 
 Todas las decisiones anteriores están guiadas por un único principio:
 

@@ -75,12 +75,15 @@ Checklist y criterios de mantenimiento:
 ├── about.html
 ├── projects.html
 ├── contact.html
-├── styles.css
-├── script.js
+├── css/
+│   └── styles.css
+├── js/
+│   └── script.js
 ├── partials/              # nav / footer reutilizables
+├── assets/                # imágenes e íconos
 ├── scripts/               # utilidades (sitemap checks, etc.)
 ├── docs/                  # checklist Well-Architected
-├── .github/workflows/     # CI (lint + Lighthouse)
+├── .github/workflows/     # CI (quality + Lighthouse)
 ├── ARCHITECTURE.md
 ├── AGENTS.md
 ├── package.json
