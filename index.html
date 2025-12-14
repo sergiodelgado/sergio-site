@@ -11,18 +11,9 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <nav class="container nav" aria-label="Navegación principal">
-      <a class="logo" href="index.html" aria-current="page">Sergio Delgado</a>
-      <ul class="menu">
-        <li><a href="about.html">Sobre mí</a></li>
-        <li><a href="projects.html">Proyectos</a></li>
-        <li><a href="contact.html">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div data-include="nav"></div>
 
-  <main class="container">
+  <main id="main" class="container">
     <section class="hero">
       <h1>QA Automation, datos y sistemas que funcionan</h1>
       <p>
@@ -51,16 +42,7 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <small>© <span id="year"></span> Sergio Delgado · Hecho con paciencia y café</small>
-      <div class="socials">
-        <a href="https://cl.linkedin.com/in/sergiodelgadom" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
-        <a href="https://medium.com/@sergiodelgadom" target="_blank" rel="noopener noreferrer" aria-label="Medium">Medium</a>
-        <a href="https://www.instagram.com/monoantartico" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
-      </div>
-    </div>
-  </footer>
+  <div data-include="footer"></div>
   <script src="script.js"></script>
 </body>
 </html>

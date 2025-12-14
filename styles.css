@@ -78,3 +78,21 @@ html, body { margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-syst
 .tags { display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 6px; }
 .tags span { font-size:12px; padding:4px 8px; border:1px solid var(--line); border-radius:999px; color:var(--muted); }
 .actions { margin-top:8px; }
+
+/* ============================= */
+/* Sections — jerarquía de contenido */
+/* ============================= */
+.section {
+  margin: 3rem 0;
+}
+
+.section > h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.section > .muted {
+  max-width: 60ch;
+  margin-bottom: 1.5rem;
+}
