@@ -1,25 +1,28 @@
-## Tipo de cambio
+## Summary
+Describe brevemente qué cambia este PR y por qué es necesario.
+
+## Type of change
+Marca lo que corresponda:
 - [ ] Bug fix
-- [ ] Mejora UI/UX
-- [ ] Contenido / narrativa
-- [ ] Calidad / tooling / CI
-- [ ] Docs
+- [ ] New feature
+- [ ] Refactor / cleanup
+- [ ] Documentation
+- [ ] CI / tooling
 
-## Contexto (por qué)
-Describe el problema u objetivo que motiva este cambio.
+## Why
+¿Qué problema real resuelve este cambio?
+Evita describir solo *qué* hiciste; explica *por qué*.
 
-## Qué se hizo
-Resumen breve y concreto de los cambios.
+## How
+Breve descripción de la solución:
+- decisiones relevantes
+- trade-offs si los hubo
 
-## Criterios de aceptación (verificables)
+## Verification
+Describe cómo se validó el cambio:
 - [ ] `npm run ci:test` pasa
-- [ ] Navegación principal no se rompe
-- [ ] No se degradó la separación técnica / narrativa
-- [ ] No se introducen dependencias innecesarias
+- [ ] Revisión manual en navegador
+- [ ] No introduce breaking changes
 
-## Evidencia
-- Captura / URL local / deploy preview (si aplica)
-
-## Riesgos y rollback
-- Riesgo:
-- Cómo revertir:
+## Notes (optional)
+Riesgos, follow-ups o decisiones pendientes.

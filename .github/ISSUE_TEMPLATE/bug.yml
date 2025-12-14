@@ -1,32 +1,44 @@
-name: Bug
-description: Reporte de problema
-title: "[bug] "
+name: Bug report
+description: Reporta un problema concreto y reproducible
+title: "[Bug]: "
 labels: ["bug"]
+assignees:
+  - sergiodelgado
+
 body:
   - type: textarea
-    id: pasos
+    id: problem
+    attributes:
+      label: ¿Qué está pasando?
+      description: Describe el problema observado.
+      placeholder: Ej. El footer no se renderiza correctamente en mobile.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: ¿Qué debería pasar?
+      description: Describe el comportamiento esperado.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
     attributes:
       label: Pasos para reproducir
-      description: Paso a paso.
+      description: Pasos claros y numerados.
+      placeholder: |
+        1. Ir a projects.html
+        2. Abrir en viewport < 375px
+        3. Scroll hasta el footer
     validations:
       required: true
 
   - type: textarea
-    id: esperado
+    id: context
     attributes:
-      label: Resultado esperado
+      label: Contexto adicional
+      description: Navegador, dispositivo, entorno, screenshots, etc.
     validations:
-      required: true
-
-  - type: textarea
-    id: actual
-    attributes:
-      label: Resultado actual
-    validations:
-      required: true
-
-  - type: input
-    id: entorno
-    attributes:
-      label: Entorno
-      description: Navegador / dispositivo / URL
+      required: false

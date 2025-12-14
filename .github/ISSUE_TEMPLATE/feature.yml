@@ -1,30 +1,44 @@
-name: Feature
-description: Nueva mejora para sergio-site
-title: "[feat] "
-labels: ["feat"]
+name: Feature request
+description: Propuesta de mejora o nueva funcionalidad
+title: "[Feature]: "
+labels: ["enhancement"]
+assignees:
+  - sergiodelgado
+
 body:
   - type: textarea
-    id: objetivo
+    id: problem
     attributes:
-      label: Objetivo
-      description: ¿Qué se quiere lograr y por qué?
+      label: Problema u oportunidad
+      description: ¿Qué problema real se quiere resolver?
+      placeholder: Ej. Dificultad para entender rápidamente el foco profesional del sitio.
     validations:
       required: true
 
   - type: textarea
-    id: criterio
+    id: proposal
+    attributes:
+      label: Propuesta
+      description: Describe la solución propuesta, a alto nivel.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
     attributes:
       label: Criterios de aceptación
-      description: Lista verificable (checklist).
+      description: Condiciones objetivas para considerar la feature terminada.
       placeholder: |
-        - [ ] El cambio es visible en la UI
-        - [ ] No rompe navegación existente
-        - [ ] Mantiene simplicidad arquitectónica
+        - El cambio es visible en producción
+        - No rompe CI
+        - Mantiene el diseño minimal
     validations:
       required: true
 
   - type: textarea
-    id: alcance
+    id: notes
     attributes:
-      label: Alcance / No-alcance
-      description: Qué incluye y qué explícitamente NO incluye.
+      label: Notas adicionales
+      description: Riesgos, alternativas, dependencias.
+    validations:
+      required: false
