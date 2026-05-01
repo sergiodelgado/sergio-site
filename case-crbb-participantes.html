@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mapa interactivo de participantes · Laboratorio de Articulación Creativa — Sergio Delgado</title>
+  <meta name="description" content="Caso interactivo con visualizaciones seguras del Laboratorio de Articulación Creativa: territorio, disciplinas, motivaciones y perfiles del ecosistema cultural.">
+  <link rel="canonical" href="https://sergio-site-drab.vercel.app/case-crbb-participantes.html">
+  <meta property="og:title" content="Mapa interactivo de participantes · Laboratorio de Articulación Creativa">
+  <meta property="og:description" content="Visualización pública de datos anonimizados para explorar territorio, disciplinas, motivaciones y perfiles culturales.">
+  <meta property="og:url" content="https://sergio-site-drab.vercel.app/case-crbb-participantes.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="/favicon.ico">
+  <style>
+    .case-header p {
+      max-width: 72ch;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .kpi-value {
+      display: block;
+      margin-top: 8px;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--fg);
+      line-height: 1.2;
+    }
+
+    .viz-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+    }
+
+    .chart-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .chart-canvas {
+      width: 100%;
+      height: 280px;
+    }
+
+    .panel-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 14px;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .filters input,
+    .filters select {
+      width: 100%;
+      background: #0f0f12;
+      color: var(--fg);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .table-wrap {
+      overflow: auto;
+      max-width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    .panel-grid > .card {
+      min-width: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 960px;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      font-size: 0.9rem;
+    }
+
+    th {
+      color: var(--muted);
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+      background: #121216;
+      z-index: 1;
+    }
+
+    tbody tr {
+      cursor: pointer;
+    }
+
+    tbody tr:hover {
+      background: #17171b;
+    }
+
+    tbody tr.active {
+      background: #1a1a20;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .detail-list strong {
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .safe-note ul {
+      margin-top: 8px;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 900px) {
+      .panel-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .filters {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div data-include="nav">
+    <nav class="container nav" aria-label="Navegación principal">
+      <a class="logo" href="index.html" data-nav="index">Sergio Delgado</a>
+      <ul class="menu">
+        <li><a href="about.html" data-nav="about">Sobre mí</a></li>
+        <li><a href="projects.html" data-nav="projects">Proyectos</a></li>
+        <li><a href="contact.html" data-nav="contact">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="main" class="container">
+    <section class="section case-header">
+      <span class="badge badge-tech">Data Visualization</span>
+      <h1>Mapa interactivo de participantes · Laboratorio de Articulación Creativa</h1>
+      <p class="muted">
+        Este caso visualiza datos anonimizados y seguros del formulario de inscripción para explorar territorio,
+        disciplinas, motivaciones y perfiles del ecosistema cultural. La vista prioriza lectura estratégica y uso
+        público, excluyendo identificadores sensibles.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Resumen del ecosistema</h2>
+      <div class="kpi-grid">
+        <article class="card"><span class="muted">Participantes</span><span class="kpi-value" id="kpi-participantes">-</span></article>
+        <article class="card"><span class="muted">Regiones</span><span class="kpi-value" id="kpi-regiones">-</span></article>
+        <article class="card"><span class="muted">Territorios únicos</span><span class="kpi-value" id="kpi-territorios">-</span></article>
+        <article class="card"><span class="muted">Disciplinas</span><span class="kpi-value" id="kpi-disciplinas">-</span></article>
+        <article class="card"><span class="muted">Motivación principal</span><span class="kpi-value" id="kpi-motivacion">-</span></article>
+        <article class="card"><span class="muted">Perfil dominante</span><span class="kpi-value" id="kpi-perfil">-</span></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Visualizaciones interactivas</h2>
+      <div class="viz-grid">
+        <article class="card chart-card"><h3>Participantes por región</h3><div class="chart-canvas" id="chart-region"></div></article>
+        <article class="card chart-card"><h3>Disciplinas</h3><div class="chart-canvas" id="chart-disciplinas"></div></article>
+        <article class="card chart-card"><h3>Motivaciones</h3><div class="chart-canvas" id="chart-motivaciones"></div></article>
+        <article class="card chart-card"><h3>Interdisciplinariedad</h3><div class="chart-canvas" id="chart-inter"></div></article>
+        <article class="card chart-card"><h3>Top territorios</h3><div class="chart-canvas" id="chart-territorios"></div></article>
+        <article class="card chart-card"><h3>Pares de áreas</h3><div class="chart-canvas" id="chart-pares"></div></article>
+        <article class="card chart-card"><h3>Motivación x región</h3><div class="chart-canvas" id="chart-mot-region"></div></article>
+        <article class="card chart-card"><h3>Motivación x macroperfil</h3><div class="chart-canvas" id="chart-mot-perfil"></div></article>
+      </div>
+    </section>
+
+    <section class="section panel-grid">
+      <article class="card">
+        <h2>Tabla filtrable</h2>
+        <div class="filters">
+          <input type="search" id="search-input" placeholder="Buscar por nombre, organización, ciudad, áreas o motivaciones">
+          <select id="region-filter"><option value="">Todas las regiones</option></select>
+          <select id="perfil-filter"><option value="">Todos los macroperfiles</option></select>
+        </div>
+        <div class="table-wrap">
+          <table aria-label="Participantes del laboratorio">
+            <thead>
+              <tr>
+                <th>Nombre público o artístico</th>
+                <th>Organización</th>
+                <th>Ciudad</th>
+                <th>Región</th>
+                <th>Macroperfil</th>
+                <th>Perfil interdisciplinario</th>
+                <th>Áreas</th>
+                <th>Motivaciones</th>
+                <th>Instagram público</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-body"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Detalle</h2>
+        <p class="muted" id="detail-empty">Selecciona un participante para ver su detalle territorial y de perfil.</p>
+        <ul class="detail-list" id="detail-list" hidden>
+          <li><strong>Nombre público o artístico</strong><span id="d-nombre"></span></li>
+          <li><strong>Territorio</strong><span id="d-territorio"></span></li>
+          <li><strong>Áreas</strong><span id="d-areas"></span></li>
+          <li><strong>Motivaciones</strong><span id="d-motivaciones"></span></li>
+          <li><strong>Perfil</strong><span id="d-perfil"></span></li>
+          <li><strong>Resumen seguro de postulación</strong><span id="d-resumen"></span></li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="section safe-note">
+      <article class="card prose">
+        <h2>Nota metodológica</h2>
+        <h3>Datos observados desde formulario</h3>
+        <ul>
+          <li>Nombre público o artístico, organización, ciudad, región, territorio y redes públicas.</li>
+          <li>Áreas disciplinares, motivaciones declaradas y perfil interdisciplinario.</li>
+        </ul>
+        <h3>Visualización derivada</h3>
+        <ul>
+          <li>Conteos, cruces y agregaciones para lectura territorial y de perfiles.</li>
+          <li>Mapas comparativos de motivaciones por región y macroperfil.</li>
+        </ul>
+        <h3>Exclusión de datos sensibles</h3>
+        <ul>
+          <li>No se publica rut, email, teléfono ni texto completo de postulación.</li>
+          <li>Solo se expone resumen seguro de postulación cuando existe en formato público.</li>
+        </ul>
+        <div class="actions">
+          <a class="btn" href="projects.html">Volver a proyectos</a>
+          <a class="btn" href="case-crbb-pipeline.html">Ver caso pipeline</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <div data-include="footer">
+    <footer class="container footer">
+      <p class="muted">© <span id="year"></span> Sergio Delgado</p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    (function () {
+      const DATA_PATH = "data/modulo_00_participantes_dashboard.json";
+      const charts = [];
+      let rows = [];
+      let filtered = [];
+      let selectedId = null;
+      let sourceData = null;
+
+      const el = (id) => document.getElementById(id);
+
+      const parseList = (value) => {
+        if (Array.isArray(value)) return value.map((item) => String(item).trim()).filter(Boolean);
+        if (typeof value === "string") {
+          return value
+            .split(/[,;|/\\\n]+/g)
+            .map((item) => item.trim())
+            .filter(Boolean);
+        }
+        return [];
+      };
+
+      const asText = (value, fallback) => {
+        if (typeof value === "string" && value.trim()) return value.trim();
+        return fallback || "";
+      };
+
+      const cleanSafeText = (text) => {
+        if (!text) return "Sin resumen seguro disponible.";
+        const withoutEmail = text.replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, "[dato excluido]");
+        const withoutPhone = withoutEmail.replace(/(\+?\d[\d\s().-]{7,}\d)/g, "[dato excluido]");
+        return withoutPhone;
+      };
+
+      const normalizeRow = (item, index) => {
+        const nombre =
+          asText(item.nombre_publico_artistico) ||
+          asText(item.nombre_publico) ||
+          asText(item.nombre_artistico) ||
+          asText(item.participant_id) ||
+          "Participante " + String(index + 1).padStart(2, "0");
+
+        const organizacion = asText(item.organizacion, "Sin organización declarada");
+        const ciudad = asText(item.ciudad, "Sin ciudad");
+        const region = asText(item.region, "Sin región");
+        const pais = asText(item.pais, "");
+        const territorio = asText(
+          item.territorio,
+          [ciudad, region, pais].filter(Boolean).join(", ")
+        );
+        const macroperfil = asText(item.macroperfil, "Sin macroperfil");
+        const perfilInter = asText(item.perfil_interdisciplinario, "Sin perfil interdisciplinario");
+        const areas = parseList(item.areas || item.disciplinas);
+        const motivaciones = parseList(item.motivaciones);
+        const instagram = asText(item.instagram_publico || item.instagram, "");
+        const resumen = cleanSafeText(
+          asText(
+            item.resumen_seguro_postulacion ||
+            item.resumen_postulacion_seguro ||
+            item.resumen_seguro ||
+            item.texto_postulacion_resumen
+          )
+        );
+
+        const parsedId = Number(item.participant_id);
+        return {
+          id: Number.isFinite(parsedId) && parsedId > 0 ? parsedId : index + 1,
+          nombre: nombre,
+          organizacion: organizacion,
+          ciudad: ciudad,
+          region: region,
+          territorio: territorio,
+          macroperfil: macroperfil,
+          perfilInter: perfilInter,
+          areas: areas,
+          motivaciones: motivaciones,
+          instagram: instagram,
+          resumen: resumen
+        };
+      };
+
+      const countBy = (items, getter) => {
+        const map = new Map();
+        items.forEach((item) => {
+          const key = getter(item);
+          if (!key) return;
+          map.set(key, (map.get(key) || 0) + 1);
+        });
+        return map;
+      };
+
+      const countMany = (items, getter) => {
+        const map = new Map();
+        items.forEach((item) => {
+          getter(item).forEach((value) => {
+            if (!value) return;
+            map.set(value, (map.get(value) || 0) + 1);
+          });
+        });
+        return map;
+      };
+
+      const mapToSorted = (map, limit) => {
+        const arr = Array.from(map.entries()).sort((a, b) => b[1] - a[1]);
+        return typeof limit === "number" ? arr.slice(0, limit) : arr;
+      };
+
+      const topLabel = (map) => {
+        const first = mapToSorted(map, 1)[0];
+        return first ? first[0] + " (" + first[1] + ")" : "-";
+      };
+
+      const buildPairs = (items) => {
+        const pairs = new Map();
+        items.forEach((item) => {
+          const uniqueAreas = Array.from(new Set(item.areas));
+          for (let i = 0; i < uniqueAreas.length; i += 1) {
+            for (let j = i + 1; j < uniqueAreas.length; j += 1) {
+              const pair = [uniqueAreas[i], uniqueAreas[j]].sort().join(" + ");
+              pairs.set(pair, (pairs.get(pair) || 0) + 1);
+            }
+          }
+        });
+        return pairs;
+      };
+
+      const normalizeTextToken = (value) =>
+        String(value || "")
+          .replace(/_/g, " ")
+          .trim();
+
+      const toCountPairs = (arr, labelKey) =>
+        Array.isArray(arr)
+          ? arr.map((item) => [normalizeTextToken(item[labelKey]), Number(item.count) || 0]).filter((d) => d[0])
+          : [];
+
+      const renderKpis = () => {
+        const observedCards = sourceData && sourceData.observed_data && sourceData.observed_data.cards;
+        if (observedCards) {
+          el("kpi-participantes").textContent = String(observedCards.total_participantes || rows.length || 0);
+          el("kpi-regiones").textContent = String(observedCards.regiones || 0);
+          el("kpi-territorios").textContent = String(observedCards.territorios_unicos || 0);
+          el("kpi-disciplinas").textContent = String(observedCards.disciplinas || 0);
+          el("kpi-motivacion").textContent = normalizeTextToken(observedCards.motivacion_principal || "-");
+          el("kpi-perfil").textContent = normalizeTextToken(observedCards.perfil_interdisciplinario_dominante || "-");
+          return;
+        }
+
+        const regiones = new Set(rows.map((item) => item.region)).size;
+        const territorios = new Set(rows.map((item) => item.territorio)).size;
+        const disciplinas = new Set(rows.flatMap((item) => item.areas)).size;
+        const motivaciones = countMany(rows, (item) => item.motivaciones);
+        const perfiles = countBy(rows, (item) => item.macroperfil);
+        el("kpi-participantes").textContent = String(rows.length);
+        el("kpi-regiones").textContent = String(regiones);
+        el("kpi-territorios").textContent = String(territorios);
+        el("kpi-disciplinas").textContent = String(disciplinas);
+        el("kpi-motivacion").textContent = topLabel(motivaciones);
+        el("kpi-perfil").textContent = topLabel(perfiles);
+      };
+
+      const createChart = (id, option) => {
+        const node = el(id);
+        if (!node || typeof echarts === "undefined") return;
+        const chart = echarts.init(node, null, { renderer: "canvas" });
+        chart.setOption(option);
+        charts.push(chart);
+      };
+
+      const buildHeatmapMatrix = (items, xField, yFieldGetter) => {
+        const xLabels = Array.from(new Set(items.map((item) => item[xField]))).sort();
+        const yMap = countMany(items, yFieldGetter);
+        const yLabels = mapToSorted(yMap, 8).map((entry) => entry[0]);
+        const data = [];
+        let maxValue = 0;
+
+        yLabels.forEach((label, yi) => {
+          xLabels.forEach((xLabel, xi) => {
+            const value = items.filter((item) => item[xField] === xLabel && yFieldGetter(item).includes(label)).length;
+            if (value > maxValue) maxValue = value;
+            data.push([xi, yi, value]);
+          });
+        });
+
+        return { xLabels: xLabels, yLabels: yLabels, data: data, maxValue: maxValue || 1 };
+      };
+
+      const renderCharts = () => {
+        const observed = sourceData && sourceData.observed_data;
+        const byRegion = observed ? toCountPairs(observed.por_region, "region") : mapToSorted(countBy(rows, (item) => item.region));
+        const byDisciplina = observed ? toCountPairs(observed.por_disciplina, "disciplina").slice(0, 12) : mapToSorted(countMany(rows, (item) => item.areas), 12);
+        const byMotivacion = observed ? toCountPairs(observed.por_motivacion, "motivacion").slice(0, 12) : mapToSorted(countMany(rows, (item) => item.motivaciones), 12);
+        const byTerritorio = observed && Array.isArray(observed.top_territorios)
+          ? observed.top_territorios.slice(0, 10).map((item) => [normalizeTextToken(item.ciudad), Number(item.count) || 0])
+          : mapToSorted(countBy(rows, (item) => item.territorio), 10);
+        const pairAreas = observed && Array.isArray(observed.top_pares_areas)
+          ? observed.top_pares_areas.slice(0, 10).map((item) => [normalizeTextToken(item.pair), Number(item.count) || 0])
+          : mapToSorted(buildPairs(rows), 10);
+
+        const interCounts = observed && Array.isArray(observed.por_interdisciplinariedad)
+          ? observed.por_interdisciplinariedad.map((item) => [normalizeTextToken(item.perfil_interdisciplinario), Number(item.count) || 0])
+          : [
+            ["1 área", rows.filter((item) => item.areas.length <= 1).length],
+            ["2 áreas", rows.filter((item) => item.areas.length === 2).length],
+            ["3+ áreas", rows.filter((item) => item.areas.length >= 3).length]
+          ];
+
+        createChart("chart-region", {
+          grid: { left: 95, right: 20, top: 12, bottom: 30 },
+          xAxis: { type: "value", axisLabel: { color: "#a1a1aa" } },
+          yAxis: { type: "category", data: byRegion.map((d) => d[0]), axisLabel: { color: "#a1a1aa" } },
+          series: [{ type: "bar", data: byRegion.map((d) => d[1]), itemStyle: { color: "#7dd3fc" } }],
+          tooltip: { trigger: "axis", axisPointer: { type: "shadow" } }
+        });
+
+        createChart("chart-disciplinas", {
+          grid: { left: 40, right: 20, top: 20, bottom: 90 },
+          xAxis: { type: "category", data: byDisciplina.map((d) => d[0]), axisLabel: { color: "#a1a1aa", rotate: 35 } },
+          yAxis: { type: "value", axisLabel: { color: "#a1a1aa" } },
+          series: [{ type: "bar", data: byDisciplina.map((d) => d[1]), itemStyle: { color: "#93c5fd" } }],
+          tooltip: { trigger: "axis", axisPointer: { type: "shadow" } }
+        });
+
+        createChart("chart-motivaciones", {
+          grid: { left: 40, right: 20, top: 20, bottom: 100 },
+          xAxis: { type: "category", data: byMotivacion.map((d) => d[0]), axisLabel: { color: "#a1a1aa", rotate: 35 } },
+          yAxis: { type: "value", axisLabel: { color: "#a1a1aa" } },
+          series: [{ type: "bar", data: byMotivacion.map((d) => d[1]), itemStyle: { color: "#c4b5fd" } }],
+          tooltip: { trigger: "axis", axisPointer: { type: "shadow" } }
+        });
+
+        createChart("chart-inter", {
+          tooltip: { trigger: "item" },
+          legend: { bottom: 0, textStyle: { color: "#a1a1aa" } },
+          series: [
+            {
+              type: "pie",
+              radius: ["35%", "65%"],
+              data: interCounts.map((entry) => ({ name: entry[0], value: entry[1] })),
+              label: { color: "#e5e5e5" }
+            }
+          ]
+        });
+
+        createChart("chart-territorios", {
+          grid: { left: 110, right: 20, top: 12, bottom: 25 },
+          xAxis: { type: "value", axisLabel: { color: "#a1a1aa" } },
+          yAxis: { type: "category", data: byTerritorio.map((d) => d[0]), axisLabel: { color: "#a1a1aa" } },
+          series: [{ type: "bar", data: byTerritorio.map((d) => d[1]), itemStyle: { color: "#34d399" } }],
+          tooltip: { trigger: "axis", axisPointer: { type: "shadow" } }
+        });
+
+        createChart("chart-pares", {
+          grid: { left: 110, right: 20, top: 12, bottom: 25 },
+          xAxis: { type: "value", axisLabel: { color: "#a1a1aa" } },
+          yAxis: { type: "category", data: pairAreas.map((d) => d[0]), axisLabel: { color: "#a1a1aa" } },
+          series: [{ type: "bar", data: pairAreas.map((d) => d[1]), itemStyle: { color: "#f59e0b" } }],
+          tooltip: { trigger: "axis", axisPointer: { type: "shadow" } }
+        });
+
+        const matrixRegion = observed && observed.matrices && observed.matrices.motivacion_x_region;
+        const heatByRegion = matrixRegion
+          ? {
+            xLabels: matrixRegion.x_labels || [],
+            yLabels: matrixRegion.y_labels || [],
+            data: matrixRegion.values || [],
+            maxValue: Math.max(1, ...((matrixRegion.values || []).map((v) => Number(v[2]) || 0)))
+          }
+          : buildHeatmapMatrix(rows, "region", (item) => item.motivaciones);
+        createChart("chart-mot-region", {
+          tooltip: { position: "top" },
+          grid: { left: 75, right: 20, top: 20, bottom: 70 },
+          xAxis: { type: "category", data: heatByRegion.xLabels, axisLabel: { color: "#a1a1aa", rotate: 25 } },
+          yAxis: { type: "category", data: heatByRegion.yLabels, axisLabel: { color: "#a1a1aa" } },
+          visualMap: {
+            min: 0,
+            max: heatByRegion.maxValue,
+            orient: "horizontal",
+            left: "center",
+            bottom: 8,
+            inRange: { color: ["#1f2937", "#0ea5e9"] },
+            textStyle: { color: "#a1a1aa" }
+          },
+          series: [{ type: "heatmap", data: heatByRegion.data, label: { show: true, color: "#e5e5e5" } }]
+        });
+
+        const matrixPerfil = observed && observed.matrices && observed.matrices.motivacion_x_macroperfil;
+        const heatByPerfil = matrixPerfil
+          ? {
+            xLabels: matrixPerfil.x_labels || [],
+            yLabels: matrixPerfil.y_labels || [],
+            data: matrixPerfil.values || [],
+            maxValue: Math.max(1, ...((matrixPerfil.values || []).map((v) => Number(v[2]) || 0)))
+          }
+          : buildHeatmapMatrix(rows, "macroperfil", (item) => item.motivaciones);
+        createChart("chart-mot-perfil", {
+          tooltip: { position: "top" },
+          grid: { left: 95, right: 20, top: 20, bottom: 95 },
+          xAxis: { type: "category", data: heatByPerfil.xLabels, axisLabel: { color: "#a1a1aa", rotate: 25 } },
+          yAxis: { type: "category", data: heatByPerfil.yLabels, axisLabel: { color: "#a1a1aa" } },
+          visualMap: {
+            min: 0,
+            max: heatByPerfil.maxValue,
+            orient: "horizontal",
+            left: "center",
+            bottom: 8,
+            inRange: { color: ["#1f2937", "#8b5cf6"] },
+            textStyle: { color: "#a1a1aa" }
+          },
+          series: [{ type: "heatmap", data: heatByPerfil.data, label: { show: true, color: "#e5e5e5" } }]
+        });
+      };
+
+      const renderDetail = (row) => {
+        const empty = el("detail-empty");
+        const list = el("detail-list");
+        if (!row) {
+          empty.hidden = false;
+          list.hidden = true;
+          return;
+        }
+
+        empty.hidden = true;
+        list.hidden = false;
+        el("d-nombre").textContent = row.nombre;
+        el("d-territorio").textContent = row.territorio;
+        el("d-areas").textContent = row.areas.join(", ") || "Sin áreas declaradas";
+        el("d-motivaciones").textContent = row.motivaciones.join(", ") || "Sin motivaciones declaradas";
+        el("d-perfil").textContent = row.perfilInter + " · " + row.macroperfil;
+        el("d-resumen").textContent = row.resumen;
+      };
+
+      const rowHtml = (row) => {
+        const instagram = row.instagram ? '<a class="btn" href="https://instagram.com/' + row.instagram.replace(/^@/, "") + '" target="_blank" rel="noopener noreferrer">' + row.instagram + "</a>" : "-";
+        const activeClass = row.id === selectedId ? "active" : "";
+        return (
+          '<tr data-id="' + row.id + '" class="' + activeClass + '">' +
+          "<td>" + row.nombre + "</td>" +
+          "<td>" + row.organizacion + "</td>" +
+          "<td>" + row.ciudad + "</td>" +
+          "<td>" + row.region + "</td>" +
+          "<td>" + row.macroperfil + "</td>" +
+          "<td>" + row.perfilInter + "</td>" +
+          "<td>" + (row.areas.join(", ") || "-") + "</td>" +
+          "<td>" + (row.motivaciones.join(", ") || "-") + "</td>" +
+          "<td>" + instagram + "</td>" +
+          "</tr>"
+        );
+      };
+
+      const renderTable = () => {
+        const body = el("tabla-body");
+        body.innerHTML = filtered.map((row) => rowHtml(row)).join("");
+        Array.from(body.querySelectorAll("tr")).forEach((tr) => {
+          tr.addEventListener("click", () => {
+            selectedId = Number(tr.getAttribute("data-id"));
+            renderTable();
+            renderDetail(filtered.find((item) => item.id === selectedId) || rows.find((item) => item.id === selectedId));
+          });
+        });
+      };
+
+      const applyFilters = () => {
+        const q = el("search-input").value.trim().toLowerCase();
+        const region = el("region-filter").value;
+        const perfil = el("perfil-filter").value;
+
+        filtered = rows.filter((row) => {
+          if (region && row.region !== region) return false;
+          if (perfil && row.macroperfil !== perfil) return false;
+          if (!q) return true;
+
+          const haystack = [
+            row.nombre,
+            row.organizacion,
+            row.ciudad,
+            row.region,
+            row.territorio,
+            row.macroperfil,
+            row.perfilInter,
+            row.areas.join(" "),
+            row.motivaciones.join(" ")
+          ].join(" ").toLowerCase();
+
+          return haystack.includes(q);
+        });
+
+        if (!filtered.find((item) => item.id === selectedId)) {
+          selectedId = filtered[0] ? filtered[0].id : null;
+        }
+
+        renderTable();
+        renderDetail(filtered.find((item) => item.id === selectedId));
+      };
+
+      const initFilters = () => {
+        const regionSelect = el("region-filter");
+        const perfilSelect = el("perfil-filter");
+        const regions = Array.from(new Set(rows.map((item) => item.region))).sort();
+        const perfiles = Array.from(new Set(rows.map((item) => item.macroperfil))).sort();
+
+        regionSelect.innerHTML += regions.map((value) => '<option value="' + value + '">' + value + "</option>").join("");
+        perfilSelect.innerHTML += perfiles.map((value) => '<option value="' + value + '">' + value + "</option>").join("");
+
+        el("search-input").addEventListener("input", applyFilters);
+        regionSelect.addEventListener("change", applyFilters);
+        perfilSelect.addEventListener("change", applyFilters);
+      };
+
+      const showChartFallback = () => {
+        Array.from(document.querySelectorAll(".chart-canvas")).forEach((node) => {
+          node.textContent = "No fue posible cargar ECharts en este entorno.";
+          node.style.display = "grid";
+          node.style.placeItems = "center";
+          node.style.color = "#a1a1aa";
+          node.style.border = "1px dashed #2d2d35";
+          node.style.borderRadius = "10px";
+          node.style.padding = "12px";
+        });
+      };
+
+      const boot = async () => {
+        try {
+          const response = await fetch(DATA_PATH, { cache: "no-cache" });
+          if (!response.ok) throw new Error("HTTP " + response.status);
+          const data = await response.json();
+          sourceData = data;
+          const baseRows = Array.isArray(data.participantes)
+            ? data.participantes
+            : Array.isArray(data.observed_data && data.observed_data.table_rows)
+              ? data.observed_data.table_rows
+              : [];
+          rows = baseRows.map(normalizeRow);
+
+          filtered = rows.slice();
+          renderKpis();
+          initFilters();
+          applyFilters();
+
+          if (typeof echarts === "undefined") {
+            showChartFallback();
+          } else {
+            renderCharts();
+            window.addEventListener("resize", () => charts.forEach((chart) => chart.resize()));
+          }
+        } catch (error) {
+          console.error("Error cargando datos del caso:", error);
+          el("tabla-body").innerHTML = '<tr><td colspan="9">No fue posible cargar el dataset público seguro.</td></tr>';
+          renderDetail(null);
+          showChartFallback();
+        }
+      };
+
+      boot();
+    })();
+  </script>
+</body>
+</html>

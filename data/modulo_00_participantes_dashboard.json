@@ -1,0 +1,2750 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-05-01T18:55:05",
+  "module_id": "modulo_00",
+  "stage": "stage_00_participantes",
+  "traceability": {
+    "module_id": "modulo_00",
+    "stage": "stage_00_participantes",
+    "source_files": [
+      "outputs/modulo_00_adjuntos_analisis_2026-05-01/participants_analysis_enriched.csv"
+    ],
+    "status": "draft"
+  },
+  "privacy": {
+    "excluded_columns": [
+      "email",
+      "rut",
+      "telefono"
+    ],
+    "safe_public_fields": [
+      "participant_id",
+      "nombre_publico",
+      "nombre_artistico",
+      "organizacion",
+      "ciudad",
+      "region",
+      "pais",
+      "instagram",
+      "areas",
+      "macroperfil",
+      "perfil_interdisciplinario",
+      "motivaciones",
+      "semantic_confidence",
+      "score_formacion",
+      "score_redes",
+      "score_colaboracion",
+      "score_profesionalizacion",
+      "score_circulacion",
+      "score_territorio",
+      "texto_postulacion_resumen"
+    ],
+    "rules": [
+      "No RUT, email or phone in public payload.",
+      "No full postulation text; only short safe summary.",
+      "No direct copy of sensitive free-text segments."
+    ]
+  },
+  "observed_data": {
+    "cards": {
+      "total_participantes": 53,
+      "regiones": 13,
+      "territorios_unicos": 25,
+      "disciplinas": 17,
+      "motivacion_principal": "formacion",
+      "perfil_interdisciplinario_dominante": "hibrido"
+    },
+    "summary": {
+      "participants_total": 53,
+      "regiones_unicas": 13,
+      "ciudades_unicas": 25,
+      "territorios_unicos": 25,
+      "disciplinas_unicas": 17,
+      "motivaciones_unicas": 6,
+      "macroperfiles_unicos": 7,
+      "perfiles_interdisciplinarios_unicos": 4
+    },
+    "por_region": [
+      {
+        "region": "Región del Biobío",
+        "count": 26,
+        "pct": 49.06
+      },
+      {
+        "region": "Región Metropolitana de Santiago",
+        "count": 6,
+        "pct": 11.32
+      },
+      {
+        "region": "Región de La Araucanía",
+        "count": 5,
+        "pct": 9.43
+      },
+      {
+        "region": "Región de Los Ríos",
+        "count": 4,
+        "pct": 7.55
+      },
+      {
+        "region": "Región de Valparaíso",
+        "count": 4,
+        "pct": 7.55
+      },
+      {
+        "region": "Región de Ñuble",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "region": "Región de Arica y Parinacota",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "region": "Región del Maule",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "region": "Región de Coquimbo",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "region": "Región de Magallanes y de la Antártica Chilena",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "region": "Buenos Aires",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "region": "Región de Antofagasta",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "region": "Región de O'Higgins",
+        "count": 1,
+        "pct": 1.89
+      }
+    ],
+    "por_ciudad": [
+      {
+        "ciudad": "Concepción",
+        "count": 18,
+        "pct": 33.96
+      },
+      {
+        "ciudad": "Santiago",
+        "count": 5,
+        "pct": 9.43
+      },
+      {
+        "ciudad": "Temuco",
+        "count": 5,
+        "pct": 9.43
+      },
+      {
+        "ciudad": "Valdivia",
+        "count": 3,
+        "pct": 5.66
+      },
+      {
+        "ciudad": "Talcahuano",
+        "count": 2,
+        "pct": 3.77
+      },
+      {
+        "ciudad": "Coelemu",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "Valparaíso",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "Hualpén",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "Arica",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "Curicó",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "La Serena",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "Punta Arenas",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "Lota",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "Coñaripe",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "Catapilco",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "Buenos Aires",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "Cabrero",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "Antofagasta",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "Valparaiso",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "Viña Del Mar",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "Los Angeles",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "San Pedro de la Paz",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "Tomé",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "Rancagua",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "ciudad": "Talagante",
+        "count": 1,
+        "pct": 1.89
+      }
+    ],
+    "por_disciplina": [
+      {
+        "disciplina": "Gestor Cultural",
+        "count": 19,
+        "pct": 35.85
+      },
+      {
+        "disciplina": "DJ",
+        "count": 18,
+        "pct": 33.96
+      },
+      {
+        "disciplina": "Otros",
+        "count": 17,
+        "pct": 32.08
+      },
+      {
+        "disciplina": "Artista Visual",
+        "count": 13,
+        "pct": 24.53
+      },
+      {
+        "disciplina": "Diseñador Grafico",
+        "count": 10,
+        "pct": 18.87
+      },
+      {
+        "disciplina": "Fotógrafo",
+        "count": 8,
+        "pct": 15.09
+      },
+      {
+        "disciplina": "Cantautor",
+        "count": 7,
+        "pct": 13.21
+      },
+      {
+        "disciplina": "Sonidista",
+        "count": 6,
+        "pct": 11.32
+      },
+      {
+        "disciplina": "Artista Urbano",
+        "count": 5,
+        "pct": 9.43
+      },
+      {
+        "disciplina": "Publicista",
+        "count": 4,
+        "pct": 7.55
+      },
+      {
+        "disciplina": "GXGX o Performer",
+        "count": 3,
+        "pct": 5.66
+      },
+      {
+        "disciplina": "Periodista",
+        "count": 3,
+        "pct": 5.66
+      },
+      {
+        "disciplina": "Visualista (VJ)",
+        "count": 3,
+        "pct": 5.66
+      },
+      {
+        "disciplina": "Salud",
+        "count": 3,
+        "pct": 5.66
+      },
+      {
+        "disciplina": "Seguridad",
+        "count": 2,
+        "pct": 3.77
+      },
+      {
+        "disciplina": "especializado",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "disciplina": "Iluminador",
+        "count": 1,
+        "pct": 1.89
+      }
+    ],
+    "por_motivacion": [
+      {
+        "motivacion": "formacion",
+        "count": 30,
+        "pct": 56.6
+      },
+      {
+        "motivacion": "redes",
+        "count": 17,
+        "pct": 32.08
+      },
+      {
+        "motivacion": "profesionalizacion",
+        "count": 16,
+        "pct": 30.19
+      },
+      {
+        "motivacion": "colaboracion",
+        "count": 14,
+        "pct": 26.42
+      },
+      {
+        "motivacion": "circulacion",
+        "count": 10,
+        "pct": 18.87
+      },
+      {
+        "motivacion": "territorio",
+        "count": 6,
+        "pct": 11.32
+      }
+    ],
+    "por_macroperfil": [
+      {
+        "macroperfil": "mixto",
+        "count": 25,
+        "pct": 47.17
+      },
+      {
+        "macroperfil": "musica_escena",
+        "count": 9,
+        "pct": 16.98
+      },
+      {
+        "macroperfil": "gestion",
+        "count": 7,
+        "pct": 13.21
+      },
+      {
+        "macroperfil": "visual",
+        "count": 7,
+        "pct": 13.21
+      },
+      {
+        "macroperfil": "no_determinado",
+        "count": 3,
+        "pct": 5.66
+      },
+      {
+        "macroperfil": "sin_macroperfil",
+        "count": 1,
+        "pct": 1.89
+      },
+      {
+        "macroperfil": "tecnico",
+        "count": 1,
+        "pct": 1.89
+      }
+    ],
+    "por_interdisciplinariedad": [
+      {
+        "perfil_interdisciplinario": "hibrido",
+        "count": 23,
+        "pct": 43.4
+      },
+      {
+        "perfil_interdisciplinario": "especializado",
+        "count": 18,
+        "pct": 33.96
+      },
+      {
+        "perfil_interdisciplinario": "nodo_creativo",
+        "count": 11,
+        "pct": 20.75
+      },
+      {
+        "perfil_interdisciplinario": "musica_escena",
+        "count": 1,
+        "pct": 1.89
+      }
+    ],
+    "top_territorios": [
+      {
+        "pais": "Chile",
+        "region": "Región del Biobío",
+        "ciudad": "Concepción",
+        "count": 18
+      },
+      {
+        "pais": "Chile",
+        "region": "Región Metropolitana de Santiago",
+        "ciudad": "Santiago",
+        "count": 5
+      },
+      {
+        "pais": "Chile",
+        "region": "Región de La Araucanía",
+        "ciudad": "Temuco",
+        "count": 5
+      },
+      {
+        "pais": "Chile",
+        "region": "Región de Los Ríos",
+        "ciudad": "Valdivia",
+        "count": 3
+      },
+      {
+        "pais": "Chile",
+        "region": "Región del Biobío",
+        "ciudad": "Talcahuano",
+        "count": 2
+      },
+      {
+        "pais": "Chile",
+        "region": "Región de Ñuble",
+        "ciudad": "Coelemu",
+        "count": 1
+      },
+      {
+        "pais": "Chile",
+        "region": "Región de Valparaíso",
+        "ciudad": "Valparaíso",
+        "count": 1
+      },
+      {
+        "pais": "Chile",
+        "region": "Región del Biobío",
+        "ciudad": "Hualpén",
+        "count": 1
+      },
+      {
+        "pais": "Chile",
+        "region": "Región de Arica y Parinacota",
+        "ciudad": "Arica",
+        "count": 1
+      },
+      {
+        "pais": "Chile",
+        "region": "Región del Maule",
+        "ciudad": "Curicó",
+        "count": 1
+      },
+      {
+        "pais": "Chile",
+        "region": "Región de Coquimbo",
+        "ciudad": "La Serena",
+        "count": 1
+      },
+      {
+        "pais": "Chile",
+        "region": "Región de Magallanes y de la Antártica Chilena",
+        "ciudad": "Punta Arenas",
+        "count": 1
+      },
+      {
+        "pais": "Chile",
+        "region": "Región del Biobío",
+        "ciudad": "Lota",
+        "count": 1
+      },
+      {
+        "pais": "Chile",
+        "region": "Región de Los Ríos",
+        "ciudad": "Coñaripe",
+        "count": 1
+      },
+      {
+        "pais": "Chile",
+        "region": "Región de Valparaíso",
+        "ciudad": "Catapilco",
+        "count": 1
+      },
+      {
+        "pais": "Argentina",
+        "region": "Buenos Aires",
+        "ciudad": "Buenos Aires",
+        "count": 1
+      },
+      {
+        "pais": "Chile",
+        "region": "Región del Biobío",
+        "ciudad": "Cabrero",
+        "count": 1
+      },
+      {
+        "pais": "Chile",
+        "region": "Región de Antofagasta",
+        "ciudad": "Antofagasta",
+        "count": 1
+      },
+      {
+        "pais": "Chile",
+        "region": "Región de Valparaíso",
+        "ciudad": "Valparaiso",
+        "count": 1
+      },
+      {
+        "pais": "Chile",
+        "region": "Región de Valparaíso",
+        "ciudad": "Viña Del Mar",
+        "count": 1
+      },
+      {
+        "pais": "Chile",
+        "region": "Región del Biobío",
+        "ciudad": "Los Angeles",
+        "count": 1
+      },
+      {
+        "pais": "Chile",
+        "region": "Región del Biobío",
+        "ciudad": "San Pedro de la Paz",
+        "count": 1
+      },
+      {
+        "pais": "Chile",
+        "region": "Región del Biobío",
+        "ciudad": "Tomé",
+        "count": 1
+      },
+      {
+        "pais": "Chile",
+        "region": "Región de O'Higgins",
+        "ciudad": "Rancagua",
+        "count": 1
+      },
+      {
+        "pais": "Chile",
+        "region": "Región Metropolitana de Santiago",
+        "ciudad": "Talagante",
+        "count": 1
+      }
+    ],
+    "top_pares_areas": [
+      {
+        "pair": "Gestor Cultural + Otros",
+        "count": 7
+      },
+      {
+        "pair": "DJ + Gestor Cultural",
+        "count": 6
+      },
+      {
+        "pair": "Artista Visual + Diseñador Grafico",
+        "count": 6
+      },
+      {
+        "pair": "Artista Visual + Fotógrafo",
+        "count": 5
+      },
+      {
+        "pair": "Artista Visual + Otros",
+        "count": 5
+      },
+      {
+        "pair": "Artista Visual + DJ",
+        "count": 4
+      },
+      {
+        "pair": "Diseñador Grafico + Fotógrafo",
+        "count": 4
+      },
+      {
+        "pair": "DJ + Diseñador Grafico",
+        "count": 4
+      },
+      {
+        "pair": "DJ + Otros",
+        "count": 4
+      },
+      {
+        "pair": "Diseñador Grafico + Otros",
+        "count": 4
+      },
+      {
+        "pair": "Cantautor + Gestor Cultural",
+        "count": 3
+      },
+      {
+        "pair": "Diseñador Grafico + Gestor Cultural",
+        "count": 3
+      },
+      {
+        "pair": "Artista Visual + Publicista",
+        "count": 3
+      },
+      {
+        "pair": "Otros + Sonidista",
+        "count": 3
+      },
+      {
+        "pair": "Artista Visual + Visualista (VJ)",
+        "count": 3
+      },
+      {
+        "pair": "DJ + Fotógrafo",
+        "count": 2
+      },
+      {
+        "pair": "DJ + Sonidista",
+        "count": 2
+      },
+      {
+        "pair": "Cantautor + Diseñador Grafico",
+        "count": 2
+      },
+      {
+        "pair": "Cantautor + Fotógrafo",
+        "count": 2
+      },
+      {
+        "pair": "Fotógrafo + Gestor Cultural",
+        "count": 2
+      },
+      {
+        "pair": "GXGX o Performer + Gestor Cultural",
+        "count": 2
+      },
+      {
+        "pair": "Gestor Cultural + Periodista",
+        "count": 2
+      },
+      {
+        "pair": "Diseñador Grafico + Publicista",
+        "count": 2
+      },
+      {
+        "pair": "Artista Visual + Cantautor",
+        "count": 2
+      },
+      {
+        "pair": "Cantautor + DJ",
+        "count": 2
+      },
+      {
+        "pair": "Fotógrafo + Otros",
+        "count": 2
+      },
+      {
+        "pair": "Gestor Cultural + Sonidista",
+        "count": 2
+      },
+      {
+        "pair": "Otros + Visualista (VJ)",
+        "count": 2
+      },
+      {
+        "pair": "GXGX o Performer + Periodista",
+        "count": 1
+      },
+      {
+        "pair": "Fotógrafo + Publicista",
+        "count": 1
+      },
+      {
+        "pair": "DJ + Publicista",
+        "count": 1
+      },
+      {
+        "pair": "Fotógrafo + Sonidista",
+        "count": 1
+      },
+      {
+        "pair": "Cantautor + Otros",
+        "count": 1
+      },
+      {
+        "pair": "GXGX o Performer + Otros",
+        "count": 1
+      },
+      {
+        "pair": "GXGX o Performer + Sonidista",
+        "count": 1
+      },
+      {
+        "pair": "Artista Visual + Iluminador",
+        "count": 1
+      },
+      {
+        "pair": "DJ + Iluminador",
+        "count": 1
+      },
+      {
+        "pair": "DJ + Visualista (VJ)",
+        "count": 1
+      },
+      {
+        "pair": "Iluminador + Otros",
+        "count": 1
+      },
+      {
+        "pair": "Iluminador + Visualista (VJ)",
+        "count": 1
+      },
+      {
+        "pair": "Diseñador Grafico + Sonidista",
+        "count": 1
+      },
+      {
+        "pair": "Cantautor + Periodista",
+        "count": 1
+      },
+      {
+        "pair": "Artista Urbano + GXGX o Performer",
+        "count": 1
+      },
+      {
+        "pair": "Artista Urbano + DJ",
+        "count": 1
+      },
+      {
+        "pair": "Artista Urbano + Gestor Cultural",
+        "count": 1
+      },
+      {
+        "pair": "Artista Urbano + Periodista",
+        "count": 1
+      },
+      {
+        "pair": "DJ + Periodista",
+        "count": 1
+      },
+      {
+        "pair": "Diseñador Grafico + Visualista (VJ)",
+        "count": 1
+      },
+      {
+        "pair": "DJ + Salud",
+        "count": 1
+      },
+      {
+        "pair": "Artista Urbano + Artista Visual",
+        "count": 1
+      },
+      {
+        "pair": "Artista Urbano + Cantautor",
+        "count": 1
+      },
+      {
+        "pair": "Artista Urbano + Publicista",
+        "count": 1
+      },
+      {
+        "pair": "Artista Urbano + Seguridad",
+        "count": 1
+      },
+      {
+        "pair": "Artista Urbano + Sonidista",
+        "count": 1
+      },
+      {
+        "pair": "Artista Urbano + Visualista (VJ)",
+        "count": 1
+      },
+      {
+        "pair": "Artista Visual + Seguridad",
+        "count": 1
+      },
+      {
+        "pair": "Artista Visual + Sonidista",
+        "count": 1
+      },
+      {
+        "pair": "Cantautor + Publicista",
+        "count": 1
+      },
+      {
+        "pair": "Cantautor + Seguridad",
+        "count": 1
+      },
+      {
+        "pair": "Cantautor + Sonidista",
+        "count": 1
+      },
+      {
+        "pair": "Cantautor + Visualista (VJ)",
+        "count": 1
+      },
+      {
+        "pair": "Publicista + Seguridad",
+        "count": 1
+      },
+      {
+        "pair": "Publicista + Sonidista",
+        "count": 1
+      },
+      {
+        "pair": "Publicista + Visualista (VJ)",
+        "count": 1
+      },
+      {
+        "pair": "Seguridad + Sonidista",
+        "count": 1
+      },
+      {
+        "pair": "Seguridad + Visualista (VJ)",
+        "count": 1
+      },
+      {
+        "pair": "Sonidista + Visualista (VJ)",
+        "count": 1
+      },
+      {
+        "pair": "Artista Visual + Gestor Cultural",
+        "count": 1
+      },
+      {
+        "pair": "Fotógrafo + Salud",
+        "count": 1
+      },
+      {
+        "pair": "Fotógrafo + Seguridad",
+        "count": 1
+      },
+      {
+        "pair": "Gestor Cultural + Salud",
+        "count": 1
+      },
+      {
+        "pair": "Gestor Cultural + Seguridad",
+        "count": 1
+      },
+      {
+        "pair": "Otros + Salud",
+        "count": 1
+      },
+      {
+        "pair": "Otros + Seguridad",
+        "count": 1
+      },
+      {
+        "pair": "Salud + Seguridad",
+        "count": 1
+      }
+    ],
+    "matrices": {
+      "motivacion_x_region": {
+        "x_labels": [
+          "formacion",
+          "redes",
+          "profesionalizacion",
+          "colaboracion",
+          "circulacion",
+          "territorio"
+        ],
+        "y_labels": [
+          "Región del Biobío",
+          "Región Metropolitana de Santiago",
+          "Región de La Araucanía",
+          "Región de Los Ríos",
+          "Región de Valparaíso",
+          "Región de Ñuble",
+          "Región de Arica y Parinacota",
+          "Región del Maule",
+          "Región de Coquimbo",
+          "Región de Magallanes y de la Antártica Chilena",
+          "Buenos Aires",
+          "Región de Antofagasta",
+          "Región de O'Higgins"
+        ],
+        "values": [
+          [
+            0,
+            1,
+            5
+          ],
+          [
+            1,
+            1,
+            3
+          ],
+          [
+            2,
+            1,
+            2
+          ],
+          [
+            1,
+            0,
+            4
+          ],
+          [
+            2,
+            0,
+            7
+          ],
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            4,
+            2,
+            2
+          ],
+          [
+            2,
+            2,
+            3
+          ],
+          [
+            0,
+            3,
+            3
+          ],
+          [
+            3,
+            3,
+            2
+          ],
+          [
+            1,
+            2,
+            2
+          ],
+          [
+            1,
+            5,
+            1
+          ],
+          [
+            1,
+            4,
+            2
+          ],
+          [
+            3,
+            4,
+            1
+          ],
+          [
+            5,
+            4,
+            2
+          ],
+          [
+            0,
+            0,
+            12
+          ],
+          [
+            4,
+            0,
+            4
+          ],
+          [
+            3,
+            0,
+            7
+          ],
+          [
+            3,
+            6,
+            1
+          ],
+          [
+            2,
+            6,
+            1
+          ],
+          [
+            1,
+            7,
+            1
+          ],
+          [
+            4,
+            7,
+            1
+          ],
+          [
+            1,
+            8,
+            1
+          ],
+          [
+            0,
+            9,
+            1
+          ],
+          [
+            1,
+            9,
+            1
+          ],
+          [
+            3,
+            9,
+            1
+          ],
+          [
+            2,
+            9,
+            1
+          ],
+          [
+            4,
+            9,
+            1
+          ],
+          [
+            5,
+            9,
+            1
+          ],
+          [
+            5,
+            0,
+            2
+          ],
+          [
+            3,
+            1,
+            2
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            1,
+            10,
+            1
+          ],
+          [
+            0,
+            11,
+            1
+          ],
+          [
+            5,
+            11,
+            1
+          ],
+          [
+            0,
+            4,
+            2
+          ],
+          [
+            2,
+            4,
+            1
+          ],
+          [
+            4,
+            4,
+            1
+          ],
+          [
+            0,
+            12,
+            1
+          ],
+          [
+            1,
+            12,
+            1
+          ],
+          [
+            4,
+            3,
+            1
+          ]
+        ]
+      },
+      "motivacion_x_macroperfil": {
+        "x_labels": [
+          "formacion",
+          "redes",
+          "profesionalizacion",
+          "colaboracion",
+          "circulacion",
+          "territorio"
+        ],
+        "y_labels": [
+          "mixto",
+          "musica_escena",
+          "gestion",
+          "visual",
+          "no_determinado"
+        ],
+        "values": [
+          [
+            0,
+            0,
+            17
+          ],
+          [
+            1,
+            0,
+            10
+          ],
+          [
+            2,
+            0,
+            6
+          ],
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            2,
+            2,
+            4
+          ],
+          [
+            0,
+            1,
+            5
+          ],
+          [
+            4,
+            1,
+            3
+          ],
+          [
+            3,
+            1,
+            2
+          ],
+          [
+            3,
+            0,
+            7
+          ],
+          [
+            4,
+            0,
+            6
+          ],
+          [
+            5,
+            0,
+            5
+          ],
+          [
+            2,
+            1,
+            2
+          ],
+          [
+            3,
+            3,
+            2
+          ],
+          [
+            3,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            3
+          ],
+          [
+            4,
+            3,
+            1
+          ],
+          [
+            0,
+            3,
+            3
+          ],
+          [
+            2,
+            3,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ],
+          [
+            0,
+            4,
+            2
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            5,
+            3,
+            1
+          ],
+          [
+            2,
+            4,
+            2
+          ]
+        ]
+      }
+    },
+    "table_rows": [
+      {
+        "participant_id": "1",
+        "nombre_publico": "Angel Sánchez",
+        "nombre_artistico": "Bollystep",
+        "organizacion": "",
+        "ciudad": "Santiago",
+        "region": "Región Metropolitana de Santiago",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "Artista Visual",
+          "DJ",
+          "Fotógrafo"
+        ],
+        "motivaciones": [
+          "formacion"
+        ],
+        "instagram": "@bollystep.dj",
+        "semantic_confidence": "baja",
+        "score_formacion": 1.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "2",
+        "nombre_publico": "Alex Poblete",
+        "nombre_artistico": "DJ GATOCONMASUERTE",
+        "organizacion": "COLERIO VIVO",
+        "ciudad": "Santiago",
+        "region": "Región Metropolitana de Santiago",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "DJ",
+          "Sonidista"
+        ],
+        "motivaciones": [
+          "formacion",
+          "redes",
+          "profesionalizacion"
+        ],
+        "instagram": "@coleriovivo",
+        "semantic_confidence": "alta",
+        "score_formacion": 3.0,
+        "score_redes": 4.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 1.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Nos llamo mucho la atención los módulos que se abordaran , llevamos haciendo eventos enfocados en la comunidad lgbtiqanb+ hace..."
+      },
+      {
+        "participant_id": "3",
+        "nombre_publico": "Claudio Cárdenas",
+        "nombre_artistico": "Bloco Rua Primavera",
+        "organizacion": "",
+        "ciudad": "Concepción",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "gestion",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "Gestor Cultural",
+          "Otros"
+        ],
+        "motivaciones": [
+          "redes",
+          "profesionalizacion"
+        ],
+        "instagram": "@ruaprimaveraoficial",
+        "semantic_confidence": "alta",
+        "score_formacion": 0.0,
+        "score_redes": 5.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 4.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Soy Claudio Cárdenas, percusionista y gestor cultural en el Punto de Cultura Comunitaria Bloco Rua Primavera de Concepción. Soy parte..."
+      },
+      {
+        "participant_id": "4",
+        "nombre_publico": "Cristian Schnake",
+        "nombre_artistico": "404 dj n0t f0und",
+        "organizacion": "",
+        "ciudad": "Temuco",
+        "region": "Región de La Araucanía",
+        "pais": "Chile",
+        "macroperfil": "musica_escena",
+        "perfil_interdisciplinario": "especializado",
+        "areas": [
+          "DJ"
+        ],
+        "motivaciones": [
+          "formacion",
+          "circulacion"
+        ],
+        "instagram": "@fozerofo.ntfnd",
+        "semantic_confidence": "media",
+        "score_formacion": 1.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 1.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "5",
+        "nombre_publico": "Ámbar Henríquez",
+        "nombre_artistico": "Disonante",
+        "organizacion": "Monocromaticopsd",
+        "ciudad": "Temuco",
+        "region": "Región de La Araucanía",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "nodo_creativo",
+        "areas": [
+          "Cantautor",
+          "Diseñador Grafico",
+          "Fotógrafo",
+          "Gestor Cultural"
+        ],
+        "motivaciones": [
+          "formacion",
+          "profesionalizacion"
+        ],
+        "instagram": "@disonanteu.u",
+        "semantic_confidence": "alta",
+        "score_formacion": 2.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 1.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "porque es una instancia de aprendizaje acerca de eventos a los que aspiro realizar, además soy música y cualquier instancia..."
+      },
+      {
+        "participant_id": "6",
+        "nombre_publico": "Benjamin Espinosa",
+        "nombre_artistico": "Dj Korazon",
+        "organizacion": "Confluencia Colectiva",
+        "ciudad": "Valdivia",
+        "region": "Región de Los Ríos",
+        "pais": "Chile",
+        "macroperfil": "musica_escena",
+        "perfil_interdisciplinario": "especializado",
+        "areas": [
+          "DJ"
+        ],
+        "motivaciones": [
+          "formacion",
+          "colaboracion"
+        ],
+        "instagram": "@koraz0nn",
+        "semantic_confidence": "media",
+        "score_formacion": 1.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 1.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "7",
+        "nombre_publico": "Elizabeth Castillo",
+        "nombre_artistico": "Dj mai liz synthetica",
+        "organizacion": "synthetica y confluencia colectiva",
+        "ciudad": "Valdivia",
+        "region": "Región de Los Ríos",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "DJ",
+          "Gestor Cultural"
+        ],
+        "motivaciones": [
+          "formacion",
+          "colaboracion"
+        ],
+        "instagram": "@mai.liz_",
+        "semantic_confidence": "media",
+        "score_formacion": 2.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 1.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "8",
+        "nombre_publico": "Cristian Mora",
+        "nombre_artistico": "Dj Russi",
+        "organizacion": "Rave runners",
+        "ciudad": "Concepción",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "sin_macroperfil",
+        "perfil_interdisciplinario": "musica_escena",
+        "areas": [
+          "especializado"
+        ],
+        "motivaciones": [],
+        "instagram": "@_.russi.__",
+        "semantic_confidence": "3",
+        "score_formacion": 0.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "9",
+        "nombre_publico": "Caro Chávez",
+        "nombre_artistico": "Caro Chávez",
+        "organizacion": "",
+        "ciudad": "Temuco",
+        "region": "Región de La Araucanía",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "GXGX o Performer",
+          "Gestor Cultural",
+          "Periodista"
+        ],
+        "motivaciones": [
+          "formacion",
+          "redes",
+          "profesionalizacion"
+        ],
+        "instagram": "@carochavezalday",
+        "semantic_confidence": "alta",
+        "score_formacion": 1.0,
+        "score_redes": 2.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 4.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Siempre es bueno aprender y compartir y compartir experiencias, además de ampliar el círculo artístico cultural. Me dedico hace más..."
+      },
+      {
+        "participant_id": "10",
+        "nombre_publico": "Sebastián Anguita",
+        "nombre_artistico": "Sebastián Anguita (artistas)",
+        "organizacion": "fundación Cultural Brote Sonoro",
+        "ciudad": "Coelemu",
+        "region": "Región de Ñuble",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "Cantautor",
+          "Gestor Cultural"
+        ],
+        "motivaciones": [
+          "redes"
+        ],
+        "instagram": "@sebastiananguita_musica",
+        "semantic_confidence": "media",
+        "score_formacion": 0.0,
+        "score_redes": 1.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Me parece interesante la iniciativa , quiero armar redes ya sea para mi proyecto musical como para mi empresa y..."
+      },
+      {
+        "participant_id": "11",
+        "nombre_publico": "Saray Vasquez",
+        "nombre_artistico": "Saturno Producciones",
+        "organizacion": "",
+        "ciudad": "Temuco",
+        "region": "Región de La Araucanía",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "nodo_creativo",
+        "areas": [
+          "Artista Visual",
+          "Diseñador Grafico",
+          "Fotógrafo",
+          "Publicista"
+        ],
+        "motivaciones": [
+          "formacion",
+          "circulacion"
+        ],
+        "instagram": "@saturno.temuco",
+        "semantic_confidence": "alta",
+        "score_formacion": 4.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 5.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Creo que es imperativo encontrar nuevas herramientas para mostrar el arte y reflejar lo que nuestra cultura le falta profundizar..."
+      },
+      {
+        "participant_id": "12",
+        "nombre_publico": "Felipe Véliz",
+        "nombre_artistico": "Dj Filexmaster",
+        "organizacion": "The New Shit & Cyberdrug",
+        "ciudad": "Valparaíso",
+        "region": "Región de Valparaíso",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "nodo_creativo",
+        "areas": [
+          "Artista Visual",
+          "DJ",
+          "Diseñador Grafico",
+          "Publicista"
+        ],
+        "motivaciones": [
+          "redes",
+          "colaboracion",
+          "territorio"
+        ],
+        "instagram": "@filexmaster",
+        "semantic_confidence": "alta",
+        "score_formacion": 0.0,
+        "score_redes": 2.0,
+        "score_colaboracion": 3.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 1.0,
+        "texto_postulacion_resumen": "Me parece interesante crear nodos entre producciones y gestores culturales y djs, artistas que permitan ir creando una colaboracion integral..."
+      },
+      {
+        "participant_id": "13",
+        "nombre_publico": "Antonela Carolina",
+        "nombre_artistico": "Dj Deviliysh",
+        "organizacion": "",
+        "ciudad": "Concepción",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "musica_escena",
+        "perfil_interdisciplinario": "especializado",
+        "areas": [
+          "DJ"
+        ],
+        "motivaciones": [
+          "formacion",
+          "profesionalizacion"
+        ],
+        "instagram": "@deviliyshh",
+        "semantic_confidence": "media",
+        "score_formacion": 1.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 1.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "14",
+        "nombre_publico": "Nina Zafiro",
+        "nombre_artistico": "Eclips.ada",
+        "organizacion": "",
+        "ciudad": "Hualpén",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "Fotógrafo",
+          "Sonidista"
+        ],
+        "motivaciones": [],
+        "instagram": "@instagram",
+        "semantic_confidence": "baja",
+        "score_formacion": 0.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "15",
+        "nombre_publico": "Hector Fernandez",
+        "nombre_artistico": "Ignaaap",
+        "organizacion": "",
+        "ciudad": "Talcahuano",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "musica_escena",
+        "perfil_interdisciplinario": "especializado",
+        "areas": [
+          "Artista Urbano"
+        ],
+        "motivaciones": [
+          "formacion",
+          "circulacion"
+        ],
+        "instagram": "@ignaaap_",
+        "semantic_confidence": "alta",
+        "score_formacion": 2.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 3.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Me atrae la idea de aprender la cultura musical, hablando como artista emergente, para mi es importante entender esto para..."
+      },
+      {
+        "participant_id": "16",
+        "nombre_publico": "Mabel Pezo",
+        "nombre_artistico": "Under Arte y diseño",
+        "organizacion": "",
+        "ciudad": "Concepción",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "visual",
+        "perfil_interdisciplinario": "especializado",
+        "areas": [
+          "Diseñador Grafico"
+        ],
+        "motivaciones": [
+          "colaboracion"
+        ],
+        "instagram": "@en__remolinos",
+        "semantic_confidence": "media",
+        "score_formacion": 0.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 3.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Porque he estado trabajando siempre en la individualidad. Falta nutrir la colaboracion y destruir la creencia de poder hacer solo..."
+      },
+      {
+        "participant_id": "17",
+        "nombre_publico": "Mauricio Faundez",
+        "nombre_artistico": "República Portátil",
+        "organizacion": "",
+        "ciudad": "Concepción",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "visual",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "Artista Visual",
+          "Otros"
+        ],
+        "motivaciones": [],
+        "instagram": "@republicaportatil",
+        "semantic_confidence": "baja",
+        "score_formacion": 0.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "18",
+        "nombre_publico": "Claudia Moya Ojeda",
+        "nombre_artistico": "Colectivo Carnavalón Arica",
+        "organizacion": "",
+        "ciudad": "Arica",
+        "region": "Región de Arica y Parinacota",
+        "pais": "Chile",
+        "macroperfil": "gestion",
+        "perfil_interdisciplinario": "especializado",
+        "areas": [
+          "Gestor Cultural"
+        ],
+        "motivaciones": [
+          "colaboracion",
+          "profesionalizacion"
+        ],
+        "instagram": "@Colectivo",
+        "semantic_confidence": "alta",
+        "score_formacion": 0.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 1.0,
+        "score_profesionalizacion": 3.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Porque me llamó la atención la característica y el enfoque de los seminarios, que sea participativa y colectiva, que se..."
+      },
+      {
+        "participant_id": "19",
+        "nombre_publico": "Alejandra Fuentes",
+        "nombre_artistico": "Impostora",
+        "organizacion": "",
+        "ciudad": "Santiago",
+        "region": "Región Metropolitana de Santiago",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "nodo_creativo",
+        "areas": [
+          "Artista Visual",
+          "Cantautor",
+          "DJ",
+          "Diseñador Grafico",
+          "Fotógrafo",
+          "Otros"
+        ],
+        "motivaciones": [
+          "redes"
+        ],
+        "instagram": "@impostora.music",
+        "semantic_confidence": "alta",
+        "score_formacion": 0.0,
+        "score_redes": 6.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Me interesa vincularme con una comunidad activa de personas que estén potenciando la cultura, especialmente en relación a la música..."
+      },
+      {
+        "participant_id": "20",
+        "nombre_publico": "Rogelio Cerda",
+        "nombre_artistico": "REVISTA ES - KUPE",
+        "organizacion": "",
+        "ciudad": "Curicó",
+        "region": "Región del Maule",
+        "pais": "Chile",
+        "macroperfil": "visual",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "Artista Visual",
+          "Otros"
+        ],
+        "motivaciones": [
+          "redes",
+          "circulacion"
+        ],
+        "instagram": "@pandamonio65",
+        "semantic_confidence": "media",
+        "score_formacion": 0.0,
+        "score_redes": 1.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 2.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "21",
+        "nombre_publico": "Deusa Sánchez Pinto",
+        "nombre_artistico": "Deusa Sánchez",
+        "organizacion": "",
+        "ciudad": "La Serena",
+        "region": "Región de Coquimbo",
+        "pais": "Chile",
+        "macroperfil": "visual",
+        "perfil_interdisciplinario": "especializado",
+        "areas": [
+          "Artista Visual"
+        ],
+        "motivaciones": [
+          "redes"
+        ],
+        "instagram": "@deusasanchez",
+        "semantic_confidence": "baja",
+        "score_formacion": 0.0,
+        "score_redes": 1.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "22",
+        "nombre_publico": "Nicolás Prieto",
+        "nombre_artistico": "Nicolás Prieto",
+        "organizacion": "",
+        "ciudad": "Punta Arenas",
+        "region": "Región de Magallanes y de la Antártica Chilena",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "DJ",
+          "Gestor Cultural"
+        ],
+        "motivaciones": [
+          "formacion",
+          "redes",
+          "colaboracion",
+          "profesionalizacion",
+          "circulacion",
+          "territorio"
+        ],
+        "instagram": "@nicoprietob",
+        "semantic_confidence": "alta",
+        "score_formacion": 4.0,
+        "score_redes": 13.0,
+        "score_colaboracion": 9.0,
+        "score_profesionalizacion": 7.0,
+        "score_circulacion": 4.0,
+        "score_territorio": 10.0,
+        "texto_postulacion_resumen": "Mi nombre es Nicolás Prieto, soy pianista y compositor musical, y recientemente finalicé un Máster en Composición Electroacústica en Madrid..."
+      },
+      {
+        "participant_id": "23",
+        "nombre_publico": "Benjamin Guerra",
+        "nombre_artistico": "BGA Producciones SpA",
+        "organizacion": "",
+        "ciudad": "Concepción",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "nodo_creativo",
+        "areas": [
+          "GXGX o Performer",
+          "Gestor Cultural",
+          "Otros",
+          "Sonidista"
+        ],
+        "motivaciones": [
+          "profesionalizacion",
+          "circulacion",
+          "territorio"
+        ],
+        "instagram": "@bgaproduccion",
+        "semantic_confidence": "alta",
+        "score_formacion": 0.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 7.0,
+        "score_circulacion": 2.0,
+        "score_territorio": 3.0,
+        "texto_postulacion_resumen": "Prinero que nada felicitar por esta gran iniciativa. Me gustaría participar para crecer como gestor y así portar al desarrollo..."
+      },
+      {
+        "participant_id": "24",
+        "nombre_publico": "Vanessa Castañeda",
+        "nombre_artistico": "Vanessa Castañeda",
+        "organizacion": "",
+        "ciudad": "Santiago",
+        "region": "Región Metropolitana de Santiago",
+        "pais": "Chile",
+        "macroperfil": "visual",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "Artista Visual",
+          "Diseñador Grafico",
+          "Fotógrafo"
+        ],
+        "motivaciones": [
+          "formacion",
+          "redes",
+          "colaboracion",
+          "profesionalizacion"
+        ],
+        "instagram": "@pandemiamutante",
+        "semantic_confidence": "alta",
+        "score_formacion": 1.0,
+        "score_redes": 2.0,
+        "score_colaboracion": 3.0,
+        "score_profesionalizacion": 1.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Porque hace mucho tiempo que estoy buscando ser parte de comunidades artísticas y aprender de otros productores culturales para enriquecer..."
+      },
+      {
+        "participant_id": "25",
+        "nombre_publico": "Luciano Oliva",
+        "nombre_artistico": "Aire de mercurio",
+        "organizacion": "",
+        "ciudad": "Concepción",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "Otros",
+          "Sonidista"
+        ],
+        "motivaciones": [],
+        "instagram": "@aire_de_mercurio",
+        "semantic_confidence": "baja",
+        "score_formacion": 0.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Necesito conocer lo nuevo y actual en las conversaciones sobre música electrónica, mi proyecto es nuevo pero muy intenso y..."
+      },
+      {
+        "participant_id": "26",
+        "nombre_publico": "Pewmayen Figueroa",
+        "nombre_artistico": "Tejido plurisexual",
+        "organizacion": "",
+        "ciudad": "Temuco",
+        "region": "Región de La Araucanía",
+        "pais": "Chile",
+        "macroperfil": "gestion",
+        "perfil_interdisciplinario": "especializado",
+        "areas": [
+          "Gestor Cultural"
+        ],
+        "motivaciones": [
+          "formacion",
+          "redes",
+          "profesionalizacion"
+        ],
+        "instagram": "@tejidoplurisexual",
+        "semantic_confidence": "media",
+        "score_formacion": 1.0,
+        "score_redes": 1.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 4.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "27",
+        "nombre_publico": "Neo Felipos",
+        "nombre_artistico": "NEOGEO",
+        "organizacion": "",
+        "ciudad": "Talcahuano",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "nodo_creativo",
+        "areas": [
+          "Artista Visual",
+          "DJ",
+          "Iluminador",
+          "Otros",
+          "Visualista (VJ)"
+        ],
+        "motivaciones": [
+          "formacion",
+          "redes",
+          "territorio"
+        ],
+        "instagram": "@neogeo222",
+        "semantic_confidence": "alta",
+        "score_formacion": 1.0,
+        "score_redes": 5.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 2.0,
+        "texto_postulacion_resumen": "a lo largo de mi carrera como artista, siempre me a interesado formar comunidad, crear alianzas, para incentivar la cultura..."
+      },
+      {
+        "participant_id": "28",
+        "nombre_publico": "Darlin",
+        "nombre_artistico": "Darlin atelenia",
+        "organizacion": "",
+        "ciudad": "Lota",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "tecnico",
+        "perfil_interdisciplinario": "especializado",
+        "areas": [
+          "Salud"
+        ],
+        "motivaciones": [],
+        "instagram": "@Instagram",
+        "semantic_confidence": "baja",
+        "score_formacion": 0.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Cómo gestora cultural encuentro necesario acercar el arte como herramienta terapéutica en contexto clino grupal ,en salud mental secundaria.dando espacios..."
+      },
+      {
+        "participant_id": "29",
+        "nombre_publico": "Stivenson Montecinos",
+        "nombre_artistico": "Dj Mute",
+        "organizacion": "Technodromo Chile",
+        "ciudad": "Concepción",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "nodo_creativo",
+        "areas": [
+          "DJ",
+          "Diseñador Grafico",
+          "Gestor Cultural",
+          "Otros",
+          "Sonidista"
+        ],
+        "motivaciones": [
+          "colaboracion",
+          "circulacion"
+        ],
+        "instagram": "@mu_te.dj",
+        "semantic_confidence": "alta",
+        "score_formacion": 0.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 1.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 7.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Me interesa participar para conocer los trabajos de otras personas dentro de la escena electrónica contemporánea, desde mi vereda apoyar..."
+      },
+      {
+        "participant_id": "30",
+        "nombre_publico": "Jorge Cocio",
+        "nombre_artistico": "Jorge Cocio",
+        "organizacion": "",
+        "ciudad": "Concepción",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "Cantautor",
+          "Periodista"
+        ],
+        "motivaciones": [
+          "formacion",
+          "colaboracion"
+        ],
+        "instagram": "@cocio.jorge",
+        "semantic_confidence": "media",
+        "score_formacion": 2.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 2.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "31",
+        "nombre_publico": "Emi Castro",
+        "nombre_artistico": "Emi",
+        "organizacion": "",
+        "ciudad": "Concepción",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "DJ",
+          "Diseñador Grafico",
+          "Otros"
+        ],
+        "motivaciones": [
+          "formacion"
+        ],
+        "instagram": "@bohemiamagica",
+        "semantic_confidence": "baja",
+        "score_formacion": 3.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "32",
+        "nombre_publico": "Elset Berumen",
+        "nombre_artistico": "Elset",
+        "organizacion": "",
+        "ciudad": "Coñaripe",
+        "region": "Región de Los Ríos",
+        "pais": "Chile",
+        "macroperfil": "gestion",
+        "perfil_interdisciplinario": "especializado",
+        "areas": [
+          "Gestor Cultural"
+        ],
+        "motivaciones": [
+          "formacion",
+          "profesionalizacion"
+        ],
+        "instagram": "@airearse",
+        "semantic_confidence": "media",
+        "score_formacion": 2.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 3.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "33",
+        "nombre_publico": "Karla Jorquera",
+        "nombre_artistico": "Karlaveljor",
+        "organizacion": "",
+        "ciudad": "Santiago",
+        "region": "Región Metropolitana de Santiago",
+        "pais": "Chile",
+        "macroperfil": "no_determinado",
+        "perfil_interdisciplinario": "especializado",
+        "areas": [
+          "Otros"
+        ],
+        "motivaciones": [
+          "formacion"
+        ],
+        "instagram": "@karlaveljor",
+        "semantic_confidence": "media",
+        "score_formacion": 1.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Me interesa mucho las articulaciones culturales y de patrimonio en los territorios tengo conocimientos en diseño y ejecución de proyecto..."
+      },
+      {
+        "participant_id": "34",
+        "nombre_publico": "Juan Carlos Contreras Rojas",
+        "nombre_artistico": "JCruidosymelodias",
+        "organizacion": "AC/MIXTURACultura viva Catapilco",
+        "ciudad": "Catapilco",
+        "region": "Región de Valparaíso",
+        "pais": "Chile",
+        "macroperfil": "gestion",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "Gestor Cultural",
+          "Otros"
+        ],
+        "motivaciones": [],
+        "instagram": "@JC",
+        "semantic_confidence": "baja",
+        "score_formacion": 0.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "35",
+        "nombre_publico": "Emmanuel Quiroga",
+        "nombre_artistico": "Kiro",
+        "organizacion": "",
+        "ciudad": "Buenos Aires",
+        "region": "Buenos Aires",
+        "pais": "Argentina",
+        "macroperfil": "musica_escena",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "Artista Urbano",
+          "GXGX o Performer"
+        ],
+        "motivaciones": [
+          "redes"
+        ],
+        "instagram": "@Kiro",
+        "semantic_confidence": "media",
+        "score_formacion": 0.0,
+        "score_redes": 1.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Porque quiero generar proyectos desde y para la cultura LGBTIQ+, generando redes que nos estimulen y contengan en estos momentos..."
+      },
+      {
+        "participant_id": "36",
+        "nombre_publico": "Felipe Nuñez",
+        "nombre_artistico": "narcixzo",
+        "organizacion": "",
+        "ciudad": "Cabrero",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "musica_escena",
+        "perfil_interdisciplinario": "especializado",
+        "areas": [
+          "Artista Urbano"
+        ],
+        "motivaciones": [],
+        "instagram": "@narcixzo",
+        "semantic_confidence": "baja",
+        "score_formacion": 0.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "mis motivaciones siempre han sido la musica, y para mi seria grato abrir un espacio a entregar un concepto distinto..."
+      },
+      {
+        "participant_id": "37",
+        "nombre_publico": "Daniela Araya",
+        "nombre_artistico": "En modo Collage",
+        "organizacion": "",
+        "ciudad": "Antofagasta",
+        "region": "Región de Antofagasta",
+        "pais": "Chile",
+        "macroperfil": "visual",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "Artista Visual",
+          "Fotógrafo"
+        ],
+        "motivaciones": [
+          "formacion",
+          "territorio"
+        ],
+        "instagram": "@danielaconraya",
+        "semantic_confidence": "media",
+        "score_formacion": 1.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 1.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "38",
+        "nombre_publico": "Felipe Aros",
+        "nombre_artistico": "Proyecto musical Bosque Errante",
+        "organizacion": "",
+        "ciudad": "Valparaiso",
+        "region": "Región de Valparaíso",
+        "pais": "Chile",
+        "macroperfil": "musica_escena",
+        "perfil_interdisciplinario": "especializado",
+        "areas": [
+          "Cantautor"
+        ],
+        "motivaciones": [
+          "formacion",
+          "profesionalizacion"
+        ],
+        "instagram": "@bosque.errante",
+        "semantic_confidence": "media",
+        "score_formacion": 4.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 1.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "39",
+        "nombre_publico": "Marco Cisternas",
+        "nombre_artistico": "Dm Beats",
+        "organizacion": "",
+        "ciudad": "Viña Del Mar",
+        "region": "Región de Valparaíso",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "nodo_creativo",
+        "areas": [
+          "Artista Urbano",
+          "DJ",
+          "Gestor Cultural",
+          "Periodista"
+        ],
+        "motivaciones": [
+          "formacion",
+          "redes",
+          "circulacion",
+          "territorio"
+        ],
+        "instagram": "@_dmbeats",
+        "semantic_confidence": "alta",
+        "score_formacion": 2.0,
+        "score_redes": 2.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 1.0,
+        "score_territorio": 1.0,
+        "texto_postulacion_resumen": "Para poder generar más alianzas en la cultura y música, aumentar los conocimientos y experiencias de cada artista que está..."
+      },
+      {
+        "participant_id": "40",
+        "nombre_publico": "Nestor Paredes Ulloa",
+        "nombre_artistico": "Sidera Visus",
+        "organizacion": "",
+        "ciudad": "Los Angeles",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "gestion",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "Gestor Cultural",
+          "Otros"
+        ],
+        "motivaciones": [
+          "colaboracion"
+        ],
+        "instagram": "@sidera__visu",
+        "semantic_confidence": "media",
+        "score_formacion": 0.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 1.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "41",
+        "nombre_publico": "Nicolas Aravena",
+        "nombre_artistico": "Mark Sewel",
+        "organizacion": "",
+        "ciudad": "Concepción",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "no_determinado",
+        "perfil_interdisciplinario": "especializado",
+        "areas": [
+          "Otros"
+        ],
+        "motivaciones": [
+          "formacion",
+          "profesionalizacion"
+        ],
+        "instagram": "@nicolasignacio64",
+        "semantic_confidence": "media",
+        "score_formacion": 1.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 4.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "42",
+        "nombre_publico": "Valeska Valenzuela",
+        "nombre_artistico": "Valeska",
+        "organizacion": "Wild Out",
+        "ciudad": "Concepción",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "Cantautor",
+          "DJ",
+          "Gestor Cultural"
+        ],
+        "motivaciones": [
+          "formacion"
+        ],
+        "instagram": "@valeskandra",
+        "semantic_confidence": "media",
+        "score_formacion": 1.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "44",
+        "nombre_publico": "Francisca Cortés",
+        "nombre_artistico": "Nada",
+        "organizacion": "",
+        "ciudad": "San Pedro de la Paz",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "especializado",
+        "areas": [
+          "Publicista"
+        ],
+        "motivaciones": [
+          "formacion"
+        ],
+        "instagram": "@Sin",
+        "semantic_confidence": "media",
+        "score_formacion": 1.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "45",
+        "nombre_publico": "Polette Vergara",
+        "nombre_artistico": "Polette",
+        "organizacion": "No mercy in da beat",
+        "ciudad": "Tomé",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "gestion",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "Gestor Cultural",
+          "Otros"
+        ],
+        "motivaciones": [
+          "formacion",
+          "redes",
+          "colaboracion"
+        ],
+        "instagram": "@plurr.s",
+        "semantic_confidence": "alta",
+        "score_formacion": 1.0,
+        "score_redes": 1.0,
+        "score_colaboracion": 1.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Me gustaría participar en esta iniciativa porque me interesa aprender, escuchar distintas perspectivas y compartir ideas con otras personas. Creo..."
+      },
+      {
+        "participant_id": "46",
+        "nombre_publico": "Max Borgeaud",
+        "nombre_artistico": "Dj Maxcore",
+        "organizacion": "",
+        "ciudad": "Concepción",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "musica_escena",
+        "perfil_interdisciplinario": "especializado",
+        "areas": [
+          "DJ"
+        ],
+        "motivaciones": [],
+        "instagram": "@maxnmss",
+        "semantic_confidence": "baja",
+        "score_formacion": 0.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "47",
+        "nombre_publico": "Leonardo Luengo",
+        "nombre_artistico": "acuarelados",
+        "organizacion": "",
+        "ciudad": "Concepción",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "visual",
+        "perfil_interdisciplinario": "nodo_creativo",
+        "areas": [
+          "Artista Visual",
+          "Diseñador Grafico",
+          "Otros",
+          "Visualista (VJ)"
+        ],
+        "motivaciones": [
+          "formacion",
+          "profesionalizacion"
+        ],
+        "instagram": "@instagram.com",
+        "semantic_confidence": "alta",
+        "score_formacion": 2.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 1.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Me interesa participar en esta iniciativa porque quiero entender mejor cómo funciona el mundo de la producción artística y cultural..."
+      },
+      {
+        "participant_id": "48",
+        "nombre_publico": "Gabriel Romero",
+        "nombre_artistico": "DJ ESNØW",
+        "organizacion": "",
+        "ciudad": "Concepción",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "musica_escena",
+        "perfil_interdisciplinario": "especializado",
+        "areas": [
+          "DJ"
+        ],
+        "motivaciones": [
+          "colaboracion",
+          "circulacion"
+        ],
+        "instagram": "@snow.rca",
+        "semantic_confidence": "media",
+        "score_formacion": 0.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 1.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 1.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "49",
+        "nombre_publico": "Kamila Cárcamo",
+        "nombre_artistico": "Kami",
+        "organizacion": "",
+        "ciudad": "Concepción",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "DJ",
+          "Salud"
+        ],
+        "motivaciones": [
+          "formacion"
+        ],
+        "instagram": "@kamicrc",
+        "semantic_confidence": "media",
+        "score_formacion": 1.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "50",
+        "nombre_publico": "Thomas Valenzuela",
+        "nombre_artistico": "Thomy Bulls",
+        "organizacion": "",
+        "ciudad": "Rancagua",
+        "region": "Región de O'Higgins",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "nodo_creativo",
+        "areas": [
+          "Artista Urbano",
+          "Artista Visual",
+          "Cantautor",
+          "Publicista",
+          "Seguridad",
+          "Sonidista",
+          "Visualista (VJ)"
+        ],
+        "motivaciones": [
+          "formacion",
+          "redes"
+        ],
+        "instagram": "@thomybulls",
+        "semantic_confidence": "alta",
+        "score_formacion": 1.0,
+        "score_redes": 1.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Tengo para dar mi experiencia en el ámbito urbano, podemos aprender todos de esta comunidad y mis metas son seguir..."
+      },
+      {
+        "participant_id": "51",
+        "nombre_publico": "Benjamin Pavez",
+        "nombre_artistico": "Benja",
+        "organizacion": "Synthetica",
+        "ciudad": "Valdivia",
+        "region": "Región de Los Ríos",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "Artista Visual",
+          "Diseñador Grafico",
+          "Gestor Cultural"
+        ],
+        "motivaciones": [
+          "circulacion"
+        ],
+        "instagram": "@syntheticacl",
+        "semantic_confidence": "media",
+        "score_formacion": 0.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 3.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "52",
+        "nombre_publico": "Marcelo Fuentealba",
+        "nombre_artistico": "Marcelo Fuentealba",
+        "organizacion": "",
+        "ciudad": "Concepción",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "no_determinado",
+        "perfil_interdisciplinario": "especializado",
+        "areas": [
+          "Otros"
+        ],
+        "motivaciones": [
+          "profesionalizacion"
+        ],
+        "instagram": "@marest.f",
+        "semantic_confidence": "media",
+        "score_formacion": 0.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 0.0,
+        "score_profesionalizacion": 1.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "no publicado por privacidad"
+      },
+      {
+        "participant_id": "53",
+        "nombre_publico": "David Soto",
+        "nombre_artistico": "Dj Deividd",
+        "organizacion": "Teknokratas",
+        "ciudad": "Talagante",
+        "region": "Región Metropolitana de Santiago",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "hibrido",
+        "areas": [
+          "DJ",
+          "Gestor Cultural"
+        ],
+        "motivaciones": [
+          "formacion",
+          "colaboracion"
+        ],
+        "instagram": "@teknokratascl",
+        "semantic_confidence": "alta",
+        "score_formacion": 1.0,
+        "score_redes": 0.0,
+        "score_colaboracion": 1.0,
+        "score_profesionalizacion": 0.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "ya que al ser el fundador de un colectivo encargado de promover la cultura de la música electrónica creo que..."
+      },
+      {
+        "participant_id": "54",
+        "nombre_publico": "Sergio Delgado Martínez",
+        "nombre_artistico": "sergio",
+        "organizacion": "",
+        "ciudad": "Concepción",
+        "region": "Región del Biobío",
+        "pais": "Chile",
+        "macroperfil": "mixto",
+        "perfil_interdisciplinario": "nodo_creativo",
+        "areas": [
+          "Fotógrafo",
+          "Gestor Cultural",
+          "Otros",
+          "Salud",
+          "Seguridad"
+        ],
+        "motivaciones": [
+          "formacion",
+          "redes",
+          "colaboracion",
+          "profesionalizacion"
+        ],
+        "instagram": "@monoantartico",
+        "semantic_confidence": "alta",
+        "score_formacion": 2.0,
+        "score_redes": 3.0,
+        "score_colaboracion": 2.0,
+        "score_profesionalizacion": 5.0,
+        "score_circulacion": 0.0,
+        "score_territorio": 0.0,
+        "texto_postulacion_resumen": "Me interesa participar porque creo que es necesario conversar con honestidad sobre los desafíos reales de la cultura independiente: sostenibilidad..."
+      }
+    ]
+  },
+  "derived_summary": {
+    "notes": [
+      "This section is deterministic aggregation from observed formulario fields.",
+      "No thematic interpretation or strategic conclusions are included."
+    ]
+  }
+}
