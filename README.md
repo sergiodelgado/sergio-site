@@ -117,6 +117,11 @@ npm run ci:test
 npm run ci:lighthouse
 ~~~
 
+Nota sobre Windows (`spawn EPERM`):
+- En algunos entornos Windows, `npm run ci:lighthouse` puede fallar localmente al lanzar Chrome en modo headless (`spawn EPERM`).
+- El flujo soportado y estable para Lighthouse es CI en GitHub Actions (`ubuntu-latest`), donde se levanta servidor local (`serve . -l 3000`) y se ejecuta LHCI contra `http://localhost:3000`.
+- Si aparece `EPERM` local, úsalo como señal de entorno local y valida Lighthouse en el job de CI.
+
 ---
 
 ## 🤝 Governance & collaboration
