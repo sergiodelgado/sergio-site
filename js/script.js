@@ -68,15 +68,21 @@
         const name = node.getAttribute("data-include");
         if (!name) return;
 
-        // partials viven en la raíz del sitio: /partials/nav.html, /partials/footer.html
+        const fallbackHtml = node.innerHTML;
         const partialUrl = urlFromBase(`partials/${name}.html`);
 
-        const res = await fetch(partialUrl, { cache: "no-cache" });
-        if (!res.ok) {
-          node.innerHTML = "";
-          return;
+        try {
+          const res = await fetch(partialUrl, { cache: "no-cache" });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+          const html = await res.text();
+          if (!html.trim()) throw new Error("partial vacio");
+
+          node.innerHTML = html;
+        } catch (error) {
+          console.warn(`[partials] No se pudo cargar "${name}" desde ${partialUrl}. Se usa fallback local.`, error);
+          node.innerHTML = fallbackHtml;
         }
-        node.innerHTML = await res.text();
       })
     );
 
@@ -89,7 +95,7 @@
   document.addEventListener("DOMContentLoaded", () => {
     includePartials();
 
-    // Fallback por si una página no usa partials:
+    // Fallback por si una pagina no usa partials:
     setYear();
     bindContactForm();
   });

@@ -18,7 +18,16 @@
   <link rel="icon" href="/favicon.ico">
 </head>
 <body>
-  <div data-include="nav"></div>
+  <div data-include="nav">
+    <nav class="container nav" aria-label="Navegación principal">
+      <a class="logo" href="index.html" data-nav="index">Sergio Delgado</a>
+      <ul class="menu">
+        <li><a href="about.html" data-nav="about">Sobre mí</a></li>
+        <li><a href="projects.html" data-nav="projects">Proyectos</a></li>
+        <li><a href="contact.html" data-nav="contact">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
 
   <main id="main" class="container">
     <section class="hero">
@@ -49,7 +58,11 @@
     </section>
   </main>
 
-  <div data-include="footer"></div>
+  <div data-include="footer">
+    <footer class="container footer">
+      <p class="muted">© <span id="year"></span> Sergio Delgado</p>
+    </footer>
+  </div>
   <script src="js/script.js"></script>
 </body>
 </html>
