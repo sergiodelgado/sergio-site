@@ -1,12 +1,12 @@
 {
   "ci": {
     "collect": {
-      "startServerCommand": "",
+      "startServerCommand": "npx --yes serve . -l 3000",
       "url": [
-        "https://sergio-site-drab.vercel.app/",
-        "https://sergio-site-drab.vercel.app/about.html",
-        "https://sergio-site-drab.vercel.app/projects.html",
-        "https://sergio-site-drab.vercel.app/contact.html"
+        "http://localhost:3000/",
+        "http://localhost:3000/about.html",
+        "http://localhost:3000/projects.html",
+        "http://localhost:3000/contact.html"
       ],
       "numberOfRuns": 1
     },
