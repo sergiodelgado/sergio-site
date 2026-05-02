@@ -54,6 +54,13 @@
       height: 280px;
     }
 
+    #chart-region,
+    #chart-pares,
+    #chart-mot-region,
+    #chart-mot-perfil {
+      height: 340px;
+    }
+
     .panel-grid {
       display: grid;
       grid-template-columns: 1.5fr 1fr;
@@ -406,6 +413,12 @@
         return first ? first[0] + " (" + first[1] + ")" : "-";
       };
 
+      const topPairs = (pairs, limit = 12) =>
+        pairs
+          .slice()
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, limit);
+
       const buildPairs = (items) => {
         const pairs = new Map();
         items.forEach((item) => {
@@ -463,6 +476,221 @@
         charts.push(chart);
       };
 
+      const chartTheme = {
+        text: "#e8e8ef",
+        muted: "#a9a9b8",
+        grid: "rgba(255,255,255,0.14)",
+        tooltipBg: "rgba(20,20,26,0.96)",
+        border: "rgba(255,255,255,0.12)",
+        territory: "#35d399",
+        discipline: "#7cbcff",
+        motivation: "#b9a7ff",
+        structure: "#f5a524",
+        blue: "#6f8fe7",
+        yellow: "#ffd166",
+        red: "#ff6b6b"
+      };
+
+      function truncateLabel(value, max = 28) {
+        if (!value) return "";
+        const text = String(value);
+        return text.length > max ? text.slice(0, max - 1) + "…" : text;
+      }
+
+      function wrapLabel(value, max = 16) {
+        if (!value) return "";
+        const text = String(value);
+        const words = text.split(" ");
+        const lines = [];
+        let line = "";
+
+        words.forEach((word) => {
+          const next = line ? line + " " + word : word;
+          if (next.length > max) {
+            if (line) lines.push(line);
+            line = word;
+          } else {
+            line = next;
+          }
+        });
+
+        if (line) lines.push(line);
+        return lines.join("\n");
+      }
+
+      function baseTooltip() {
+        return {
+          trigger: "item",
+          backgroundColor: chartTheme.tooltipBg,
+          borderColor: chartTheme.border,
+          textStyle: { color: chartTheme.text },
+          confine: true
+        };
+      }
+
+      function baseGrid(left = 120, bottom = 40) {
+        return {
+          top: 28,
+          right: 24,
+          bottom,
+          left,
+          containLabel: true
+        };
+      }
+
+      function horizontalBarOption({ title, labels, values, color, left = 150 }) {
+        return {
+          tooltip: {
+            ...baseTooltip(),
+            formatter: (params) =>
+              "<strong>" + params.name + "</strong><br/>" +
+              title + ": <strong>" + params.value + "</strong>"
+          },
+          grid: baseGrid(left, 28),
+          xAxis: {
+            type: "value",
+            axisLabel: { color: chartTheme.muted, fontSize: 12 },
+            splitLine: { lineStyle: { color: chartTheme.grid } }
+          },
+          yAxis: {
+            type: "category",
+            data: labels,
+            inverse: true,
+            axisLabel: {
+              color: chartTheme.muted,
+              fontSize: 12,
+              formatter: (value) => truncateLabel(value, 30)
+            }
+          },
+          series: [{
+            type: "bar",
+            data: values,
+            barWidth: 14,
+            itemStyle: {
+              color,
+              borderRadius: [0, 6, 6, 0]
+            },
+            emphasis: { focus: "series" }
+          }]
+        };
+      }
+
+      function donutOption(labels, values) {
+        return {
+          tooltip: {
+            ...baseTooltip(),
+            formatter: (params) =>
+              "<strong>" + params.name + "</strong><br/>" +
+              "Participantes: <strong>" + params.value + "</strong><br/>" +
+              "Porcentaje: <strong>" + params.percent + "%</strong>"
+          },
+          legend: {
+            bottom: 0,
+            textStyle: { color: chartTheme.muted },
+            itemWidth: 12,
+            itemHeight: 12
+          },
+          series: [{
+            type: "pie",
+            radius: ["45%", "68%"],
+            center: ["50%", "44%"],
+            avoidLabelOverlap: true,
+            label: {
+              color: chartTheme.muted,
+              formatter: (params) => truncateLabel(params.name, 22)
+            },
+            labelLine: {
+              length: 12,
+              length2: 8
+            },
+            data: labels.map((name, i) => ({
+              name,
+              value: values[i]
+            })),
+            color: [
+              chartTheme.blue,
+              "#91d37b",
+              chartTheme.yellow,
+              chartTheme.red,
+              chartTheme.motivation
+            ]
+          }]
+        };
+      }
+
+      function heatmapOption({ xLabels, yLabels, values, maxValue, left = 150 }) {
+        return {
+          tooltip: {
+            position: "top",
+            backgroundColor: chartTheme.tooltipBg,
+            borderColor: chartTheme.border,
+            textStyle: { color: chartTheme.text },
+            confine: true,
+            formatter: (params) => {
+              const x = xLabels[params.value[0]];
+              const y = yLabels[params.value[1]];
+              const v = params.value[2];
+              return "<strong>" + y + "</strong><br/>" + x + ": <strong>" + v + "</strong>";
+            }
+          },
+          grid: {
+            top: 32,
+            right: 20,
+            bottom: 76,
+            left,
+            containLabel: true
+          },
+          xAxis: {
+            type: "category",
+            data: xLabels,
+            axisLabel: {
+              color: chartTheme.muted,
+              fontSize: 12,
+              rotate: 25,
+              formatter: (value) => truncateLabel(wrapLabel(value, 16), 22)
+            },
+            splitArea: { show: true }
+          },
+          yAxis: {
+            type: "category",
+            data: yLabels,
+            axisLabel: {
+              color: chartTheme.muted,
+              fontSize: 12,
+              formatter: (value) => truncateLabel(value, 30)
+            },
+            splitArea: { show: true }
+          },
+          visualMap: {
+            min: 0,
+            max: maxValue || 1,
+            calculable: true,
+            orient: "horizontal",
+            left: "center",
+            bottom: 8,
+            textStyle: { color: chartTheme.muted },
+            inRange: {
+              color: ["#172033", "#24577a", "#18a8e0"]
+            }
+          },
+          series: [{
+            type: "heatmap",
+            data: values,
+            label: {
+              show: true,
+              color: "#ffffff",
+              fontSize: 11
+            },
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowColor: "rgba(0,0,0,0.45)"
+              }
+            }
+          }]
+        };
+      }
+
       const buildHeatmapMatrix = (items, xField, yFieldGetter) => {
         const xLabels = Array.from(new Set(items.map((item) => item[xField]))).sort();
         const yMap = countMany(items, yFieldGetter);
@@ -483,15 +711,15 @@
 
       const renderCharts = () => {
         const observed = sourceData && sourceData.observed_data;
-        const byRegion = observed ? toCountPairs(observed.por_region, "region") : mapToSorted(countBy(rows, (item) => item.region));
-        const byDisciplina = observed ? toCountPairs(observed.por_disciplina, "disciplina").slice(0, 12) : mapToSorted(countMany(rows, (item) => item.areas), 12);
-        const byMotivacion = observed ? toCountPairs(observed.por_motivacion, "motivacion").slice(0, 12) : mapToSorted(countMany(rows, (item) => item.motivaciones), 12);
+        const byRegion = topPairs(observed ? toCountPairs(observed.por_region, "region") : mapToSorted(countBy(rows, (item) => item.region)), 12);
+        const byDisciplina = topPairs(observed ? toCountPairs(observed.por_disciplina, "disciplina") : mapToSorted(countMany(rows, (item) => item.areas)), 12);
+        const byMotivacion = topPairs(observed ? toCountPairs(observed.por_motivacion, "motivacion") : mapToSorted(countMany(rows, (item) => item.motivaciones)), 12);
         const byTerritorio = observed && Array.isArray(observed.top_territorios)
-          ? observed.top_territorios.slice(0, 10).map((item) => [normalizeTextToken(item.ciudad), Number(item.count) || 0])
-          : mapToSorted(countBy(rows, (item) => item.territorio), 10);
+          ? topPairs(observed.top_territorios.map((item) => [normalizeTextToken(item.ciudad), Number(item.count) || 0]), 12)
+          : mapToSorted(countBy(rows, (item) => item.territorio), 12);
         const pairAreas = observed && Array.isArray(observed.top_pares_areas)
-          ? observed.top_pares_areas.slice(0, 10).map((item) => [normalizeTextToken(item.pair), Number(item.count) || 0])
-          : mapToSorted(buildPairs(rows), 10);
+          ? topPairs(observed.top_pares_areas.map((item) => [normalizeTextToken(item.pair), Number(item.count) || 0]), 12)
+          : mapToSorted(buildPairs(rows), 12);
 
         const interCounts = observed && Array.isArray(observed.por_interdisciplinariedad)
           ? observed.por_interdisciplinariedad.map((item) => [normalizeTextToken(item.perfil_interdisciplinario), Number(item.count) || 0])
@@ -501,58 +729,50 @@
             ["3+ áreas", rows.filter((item) => item.areas.length >= 3).length]
           ];
 
-        createChart("chart-region", {
-          grid: { left: 95, right: 20, top: 12, bottom: 30 },
-          xAxis: { type: "value", axisLabel: { color: "#a1a1aa" } },
-          yAxis: { type: "category", data: byRegion.map((d) => d[0]), axisLabel: { color: "#a1a1aa" } },
-          series: [{ type: "bar", data: byRegion.map((d) => d[1]), itemStyle: { color: "#7dd3fc" } }],
-          tooltip: { trigger: "axis", axisPointer: { type: "shadow" } }
-        });
+        createChart("chart-region", horizontalBarOption({
+          title: "Participantes",
+          labels: byRegion.map((d) => d[0]),
+          values: byRegion.map((d) => d[1]),
+          color: chartTheme.territory,
+          left: 172
+        }));
 
-        createChart("chart-disciplinas", {
-          grid: { left: 40, right: 20, top: 20, bottom: 90 },
-          xAxis: { type: "category", data: byDisciplina.map((d) => d[0]), axisLabel: { color: "#a1a1aa", rotate: 35 } },
-          yAxis: { type: "value", axisLabel: { color: "#a1a1aa" } },
-          series: [{ type: "bar", data: byDisciplina.map((d) => d[1]), itemStyle: { color: "#93c5fd" } }],
-          tooltip: { trigger: "axis", axisPointer: { type: "shadow" } }
-        });
+        createChart("chart-disciplinas", horizontalBarOption({
+          title: "Participantes",
+          labels: byDisciplina.map((d) => d[0]),
+          values: byDisciplina.map((d) => d[1]),
+          color: chartTheme.discipline,
+          left: 150
+        }));
 
-        createChart("chart-motivaciones", {
-          grid: { left: 40, right: 20, top: 20, bottom: 100 },
-          xAxis: { type: "category", data: byMotivacion.map((d) => d[0]), axisLabel: { color: "#a1a1aa", rotate: 35 } },
-          yAxis: { type: "value", axisLabel: { color: "#a1a1aa" } },
-          series: [{ type: "bar", data: byMotivacion.map((d) => d[1]), itemStyle: { color: "#c4b5fd" } }],
-          tooltip: { trigger: "axis", axisPointer: { type: "shadow" } }
-        });
+        createChart("chart-motivaciones", horizontalBarOption({
+          title: "Participantes",
+          labels: byMotivacion.map((d) => d[0]),
+          values: byMotivacion.map((d) => d[1]),
+          color: chartTheme.motivation,
+          left: 150
+        }));
 
-        createChart("chart-inter", {
-          tooltip: { trigger: "item" },
-          legend: { bottom: 0, textStyle: { color: "#a1a1aa" } },
-          series: [
-            {
-              type: "pie",
-              radius: ["35%", "65%"],
-              data: interCounts.map((entry) => ({ name: entry[0], value: entry[1] })),
-              label: { color: "#e5e5e5" }
-            }
-          ]
-        });
+        createChart("chart-inter", donutOption(
+          interCounts.map((entry) => entry[0]),
+          interCounts.map((entry) => entry[1])
+        ));
 
-        createChart("chart-territorios", {
-          grid: { left: 110, right: 20, top: 12, bottom: 25 },
-          xAxis: { type: "value", axisLabel: { color: "#a1a1aa" } },
-          yAxis: { type: "category", data: byTerritorio.map((d) => d[0]), axisLabel: { color: "#a1a1aa" } },
-          series: [{ type: "bar", data: byTerritorio.map((d) => d[1]), itemStyle: { color: "#34d399" } }],
-          tooltip: { trigger: "axis", axisPointer: { type: "shadow" } }
-        });
+        createChart("chart-territorios", horizontalBarOption({
+          title: "Participantes",
+          labels: byTerritorio.map((d) => d[0]),
+          values: byTerritorio.map((d) => d[1]),
+          color: chartTheme.territory,
+          left: 150
+        }));
 
-        createChart("chart-pares", {
-          grid: { left: 110, right: 20, top: 12, bottom: 25 },
-          xAxis: { type: "value", axisLabel: { color: "#a1a1aa" } },
-          yAxis: { type: "category", data: pairAreas.map((d) => d[0]), axisLabel: { color: "#a1a1aa" } },
-          series: [{ type: "bar", data: pairAreas.map((d) => d[1]), itemStyle: { color: "#f59e0b" } }],
-          tooltip: { trigger: "axis", axisPointer: { type: "shadow" } }
-        });
+        createChart("chart-pares", horizontalBarOption({
+          title: "Participantes",
+          labels: pairAreas.map((d) => d[0]),
+          values: pairAreas.map((d) => d[1]),
+          color: chartTheme.structure,
+          left: 180
+        }));
 
         const matrixRegion = observed && observed.matrices && observed.matrices.motivacion_x_region;
         const heatByRegion = matrixRegion
@@ -563,22 +783,13 @@
             maxValue: Math.max(1, ...((matrixRegion.values || []).map((v) => Number(v[2]) || 0)))
           }
           : buildHeatmapMatrix(rows, "region", (item) => item.motivaciones);
-        createChart("chart-mot-region", {
-          tooltip: { position: "top" },
-          grid: { left: 75, right: 20, top: 20, bottom: 70 },
-          xAxis: { type: "category", data: heatByRegion.xLabels, axisLabel: { color: "#a1a1aa", rotate: 25 } },
-          yAxis: { type: "category", data: heatByRegion.yLabels, axisLabel: { color: "#a1a1aa" } },
-          visualMap: {
-            min: 0,
-            max: heatByRegion.maxValue,
-            orient: "horizontal",
-            left: "center",
-            bottom: 8,
-            inRange: { color: ["#1f2937", "#0ea5e9"] },
-            textStyle: { color: "#a1a1aa" }
-          },
-          series: [{ type: "heatmap", data: heatByRegion.data, label: { show: true, color: "#e5e5e5" } }]
-        });
+        createChart("chart-mot-region", heatmapOption({
+          xLabels: heatByRegion.xLabels,
+          yLabels: heatByRegion.yLabels,
+          values: heatByRegion.data,
+          maxValue: heatByRegion.maxValue,
+          left: 168
+        }));
 
         const matrixPerfil = observed && observed.matrices && observed.matrices.motivacion_x_macroperfil;
         const heatByPerfil = matrixPerfil
@@ -589,22 +800,13 @@
             maxValue: Math.max(1, ...((matrixPerfil.values || []).map((v) => Number(v[2]) || 0)))
           }
           : buildHeatmapMatrix(rows, "macroperfil", (item) => item.motivaciones);
-        createChart("chart-mot-perfil", {
-          tooltip: { position: "top" },
-          grid: { left: 95, right: 20, top: 20, bottom: 95 },
-          xAxis: { type: "category", data: heatByPerfil.xLabels, axisLabel: { color: "#a1a1aa", rotate: 25 } },
-          yAxis: { type: "category", data: heatByPerfil.yLabels, axisLabel: { color: "#a1a1aa" } },
-          visualMap: {
-            min: 0,
-            max: heatByPerfil.maxValue,
-            orient: "horizontal",
-            left: "center",
-            bottom: 8,
-            inRange: { color: ["#1f2937", "#8b5cf6"] },
-            textStyle: { color: "#a1a1aa" }
-          },
-          series: [{ type: "heatmap", data: heatByPerfil.data, label: { show: true, color: "#e5e5e5" } }]
-        });
+        createChart("chart-mot-perfil", heatmapOption({
+          xLabels: heatByPerfil.xLabels,
+          yLabels: heatByPerfil.yLabels,
+          values: heatByPerfil.data,
+          maxValue: heatByPerfil.maxValue,
+          left: 150
+        }));
       };
 
       const renderDetail = (row) => {
