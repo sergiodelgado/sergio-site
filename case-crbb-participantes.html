@@ -178,6 +178,19 @@
         disciplinas, motivaciones y perfiles del ecosistema cultural. La vista prioriza lectura estratégica y uso
         público, excluyendo identificadores sensibles.
       </p>
+      <section class="card muted">
+        <h3>Uso de datos</h3>
+        <p>
+          Este tablero utiliza información proveniente de un formulario de inscripción
+          para un programa cultural. Los datos han sido procesados para fines analíticos
+          y se presentan en formato agregado o público.
+        </p>
+        <ul>
+          <li>No se incluyen datos sensibles (RUT, correo, teléfono).</li>
+          <li>Los textos han sido resumidos para proteger privacidad.</li>
+          <li>Las redes sociales mostradas corresponden a perfiles públicos.</li>
+        </ul>
+      </section>
     </section>
 
     <section class="section">
@@ -242,8 +255,7 @@
           <li><strong>Territorio</strong><span id="d-territorio"></span></li>
           <li><strong>Áreas</strong><span id="d-areas"></span></li>
           <li><strong>Motivaciones</strong><span id="d-motivaciones"></span></li>
-          <li><strong>Perfil</strong><span id="d-perfil"></span></li>
-          <li><strong>Resumen seguro de postulación</strong><span id="d-resumen"></span></li>
+          <li id="d-instagram-item" hidden><strong>Instagram público</strong><span id="d-instagram"></span></li>
         </ul>
       </article>
     </section>
@@ -610,8 +622,10 @@
         el("d-territorio").textContent = row.territorio;
         el("d-areas").textContent = row.areas.join(", ") || "Sin áreas declaradas";
         el("d-motivaciones").textContent = row.motivaciones.join(", ") || "Sin motivaciones declaradas";
-        el("d-perfil").textContent = row.perfilInter + " · " + row.macroperfil;
-        el("d-resumen").textContent = row.resumen;
+        const instagramItem = el("d-instagram-item");
+        const instagramText = row.instagram.length > 32 ? row.instagram.slice(0, 29) + "..." : row.instagram;
+        instagramItem.hidden = !row.instagram;
+        el("d-instagram").textContent = row.instagram ? instagramText : "";
       };
 
       const rowHtml = (row) => {

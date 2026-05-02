@@ -80,7 +80,6 @@
 
           node.innerHTML = html;
         } catch (error) {
-          console.warn(`[partials] No se pudo cargar "${name}" desde ${partialUrl}. Se usa fallback local.`, error);
           node.innerHTML = fallbackHtml;
         }
       })
