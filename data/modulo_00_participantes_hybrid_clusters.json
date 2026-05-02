@@ -1,0 +1,1027 @@
+{
+  "metadata": {
+    "source": "clustering_hybrid_v4",
+    "total_participants": 53,
+    "selected_k": 2,
+    "silhouette_final": 0.2565,
+    "method_note": "Segmentación exploratoria basada en índices analíticos y digitales. k=2 fue seleccionado por criterio de cluster mínimo >= 3."
+  },
+  "cluster_summary": [
+    {
+      "cluster": 0,
+      "score_formacion": 1.133,
+      "score_redes": 1.433,
+      "score_colaboracion": 0.633,
+      "score_profesionalizacion": 1.133,
+      "score_circulacion": 0.867,
+      "score_territorio": 0.567,
+      "digital_reach_score": 62.893,
+      "engagement_score": 65.539,
+      "activity_score": 63.896,
+      "network_visibility_score": 61.226,
+      "n_participants": 30,
+      "analytic_index": 20.83,
+      "digital_index": 63.39,
+      "hybrid_gap": -42.56
+    },
+    {
+      "cluster": 1,
+      "score_formacion": 0.87,
+      "score_redes": 0.348,
+      "score_colaboracion": 0.478,
+      "score_profesionalizacion": 0.609,
+      "score_circulacion": 0.13,
+      "score_territorio": 0.043,
+      "digital_reach_score": 16.976,
+      "engagement_score": 11.86,
+      "activity_score": 13.011,
+      "network_visibility_score": 13.557,
+      "n_participants": 23,
+      "analytic_index": 10.33,
+      "digital_index": 13.85,
+      "hybrid_gap": -3.52
+    }
+  ],
+  "cluster_description": [
+    {
+      "cluster": 0,
+      "n_participants": 30,
+      "macroperfil_dominante": "mixto",
+      "perfil_interdisciplinario_dominante": "hibrido",
+      "region_dominante": "Región del Biobío",
+      "ciudad_dominante": "Concepción",
+      "areas_count_mean": 2.73,
+      "instagram_match_rate": 100.0
+    },
+    {
+      "cluster": 1,
+      "n_participants": 23,
+      "macroperfil_dominante": "mixto",
+      "perfil_interdisciplinario_dominante": "especializado",
+      "region_dominante": "Región del Biobío",
+      "ciudad_dominante": "Concepción",
+      "areas_count_mean": 1.78,
+      "instagram_match_rate": 56.52
+    }
+  ],
+  "cluster_strategic": [
+    {
+      "cluster": 0,
+      "nombre_cluster": "redes-formacion + engagement",
+      "tipo_cluster": "amplificador digital",
+      "n_participants": 30,
+      "analytic_index_mean": 20.83,
+      "digital_index_mean": 63.39,
+      "hybrid_gap_mean": -42.56,
+      "balance_hibrido": "fortaleza digital sobre densidad analítica",
+      "fortalezas_analiticas": "redes, formacion",
+      "brechas_analiticas": "colaboracion, territorio",
+      "fortalezas_digitales": "engagement, activity",
+      "brechas_digitales": "digital_reach, network_visibility",
+      "macroperfil_dominante": "mixto",
+      "region_dominante": "Región del Biobío",
+      "interpretacion": "capacidad de alcance digital superior a su densidad relacional/analítica",
+      "rol_en_red": "amplificador",
+      "riesgo": "desacople con la red presencial o colaborativa",
+      "accion_recomendada": "integrar a dinámicas de colaboración y mediación de red"
+    },
+    {
+      "cluster": 1,
+      "nombre_cluster": "formacion-profesionalizacion + digital_reach",
+      "tipo_cluster": "periférico con potencial",
+      "n_participants": 23,
+      "analytic_index_mean": 10.33,
+      "digital_index_mean": 13.85,
+      "hybrid_gap_mean": -3.52,
+      "balance_hibrido": "balance híbrido relativamente parejo",
+      "fortalezas_analiticas": "formacion, profesionalizacion",
+      "brechas_analiticas": "circulacion, territorio",
+      "fortalezas_digitales": "digital_reach, network_visibility",
+      "brechas_digitales": "activity, engagement",
+      "macroperfil_dominante": "mixto",
+      "region_dominante": "Región del Biobío",
+      "interpretacion": "señal baja en ambas capas, pero con posibilidad de activación selectiva",
+      "rol_en_red": "reserva latente",
+      "riesgo": "desvinculación temprana",
+      "accion_recomendada": "hacer onboarding segmentado y activar por interés puntual"
+    }
+  ],
+  "k_metrics": [
+    {
+      "k": 2,
+      "inertia": 383.934654,
+      "silhouette": 0.256518,
+      "min_cluster_size": 23,
+      "max_cluster_size": 30,
+      "cluster_sizes": "0:30, 1:23"
+    },
+    {
+      "k": 3,
+      "inertia": 310.520087,
+      "silhouette": 0.26872,
+      "min_cluster_size": 1,
+      "max_cluster_size": 30,
+      "cluster_sizes": "0:30, 1:22, 2:1"
+    },
+    {
+      "k": 4,
+      "inertia": 272.924339,
+      "silhouette": 0.234169,
+      "min_cluster_size": 1,
+      "max_cluster_size": 22,
+      "cluster_sizes": "0:9, 1:22, 2:1, 3:21"
+    },
+    {
+      "k": 5,
+      "inertia": 247.886662,
+      "silhouette": 0.233433,
+      "min_cluster_size": 1,
+      "max_cluster_size": 19,
+      "cluster_sizes": "0:6, 1:18, 2:19, 3:9, 4:1"
+    },
+    {
+      "k": 6,
+      "inertia": 221.017716,
+      "silhouette": 0.235825,
+      "min_cluster_size": 1,
+      "max_cluster_size": 20,
+      "cluster_sizes": "0:6, 1:4, 2:20, 3:18, 4:4, 5:1"
+    }
+  ],
+  "composition": {
+    "by_macroperfil": [
+      {
+        "cluster": 0,
+        "macroperfil": "mixto",
+        "count": 18,
+        "pct_cluster": 60.0
+      },
+      {
+        "cluster": 0,
+        "macroperfil": "musica_escena",
+        "count": 5,
+        "pct_cluster": 16.67
+      },
+      {
+        "cluster": 0,
+        "macroperfil": "gestion",
+        "count": 3,
+        "pct_cluster": 10.0
+      },
+      {
+        "cluster": 0,
+        "macroperfil": "visual",
+        "count": 3,
+        "pct_cluster": 10.0
+      },
+      {
+        "cluster": 0,
+        "macroperfil": "no_determinado",
+        "count": 1,
+        "pct_cluster": 3.33
+      },
+      {
+        "cluster": 1,
+        "macroperfil": "mixto",
+        "count": 7,
+        "pct_cluster": 30.43
+      },
+      {
+        "cluster": 1,
+        "macroperfil": "musica_escena",
+        "count": 5,
+        "pct_cluster": 21.74
+      },
+      {
+        "cluster": 1,
+        "macroperfil": "gestion",
+        "count": 4,
+        "pct_cluster": 17.39
+      },
+      {
+        "cluster": 1,
+        "macroperfil": "visual",
+        "count": 4,
+        "pct_cluster": 17.39
+      },
+      {
+        "cluster": 1,
+        "macroperfil": "no_determinado",
+        "count": 2,
+        "pct_cluster": 8.7
+      },
+      {
+        "cluster": 1,
+        "macroperfil": "tecnico",
+        "count": 1,
+        "pct_cluster": 4.35
+      }
+    ],
+    "by_perfil_interdisciplinario": [
+      {
+        "cluster": 0,
+        "perfil_interdisciplinario": "hibrido",
+        "count": 14,
+        "pct_cluster": 46.67
+      },
+      {
+        "cluster": 0,
+        "perfil_interdisciplinario": "nodo_creativo",
+        "count": 9,
+        "pct_cluster": 30.0
+      },
+      {
+        "cluster": 0,
+        "perfil_interdisciplinario": "especializado",
+        "count": 7,
+        "pct_cluster": 23.33
+      },
+      {
+        "cluster": 1,
+        "perfil_interdisciplinario": "especializado",
+        "count": 12,
+        "pct_cluster": 52.17
+      },
+      {
+        "cluster": 1,
+        "perfil_interdisciplinario": "hibrido",
+        "count": 9,
+        "pct_cluster": 39.13
+      },
+      {
+        "cluster": 1,
+        "perfil_interdisciplinario": "nodo_creativo",
+        "count": 2,
+        "pct_cluster": 8.7
+      }
+    ],
+    "by_region": [
+      {
+        "cluster": 0,
+        "region": "Región del Biobío",
+        "count": 14,
+        "pct_cluster": 46.67
+      },
+      {
+        "cluster": 0,
+        "region": "Región Metropolitana de Santiago",
+        "count": 4,
+        "pct_cluster": 13.33
+      },
+      {
+        "cluster": 0,
+        "region": "Región de La Araucanía",
+        "count": 4,
+        "pct_cluster": 13.33
+      },
+      {
+        "cluster": 0,
+        "region": "Región de Valparaíso",
+        "count": 3,
+        "pct_cluster": 10.0
+      },
+      {
+        "cluster": 0,
+        "region": "Región de Los Ríos",
+        "count": 2,
+        "pct_cluster": 6.67
+      },
+      {
+        "cluster": 0,
+        "region": "Región de Magallanes y de la Antártica Chilena",
+        "count": 1,
+        "pct_cluster": 3.33
+      },
+      {
+        "cluster": 0,
+        "region": "Región de O'Higgins",
+        "count": 1,
+        "pct_cluster": 3.33
+      },
+      {
+        "cluster": 0,
+        "region": "Región del Maule",
+        "count": 1,
+        "pct_cluster": 3.33
+      },
+      {
+        "cluster": 1,
+        "region": "Región del Biobío",
+        "count": 12,
+        "pct_cluster": 52.17
+      },
+      {
+        "cluster": 1,
+        "region": "Región Metropolitana de Santiago",
+        "count": 2,
+        "pct_cluster": 8.7
+      },
+      {
+        "cluster": 1,
+        "region": "Región de Los Ríos",
+        "count": 2,
+        "pct_cluster": 8.7
+      },
+      {
+        "cluster": 1,
+        "region": "Buenos Aires",
+        "count": 1,
+        "pct_cluster": 4.35
+      },
+      {
+        "cluster": 1,
+        "region": "Región de Antofagasta",
+        "count": 1,
+        "pct_cluster": 4.35
+      },
+      {
+        "cluster": 1,
+        "region": "Región de Arica y Parinacota",
+        "count": 1,
+        "pct_cluster": 4.35
+      },
+      {
+        "cluster": 1,
+        "region": "Región de Coquimbo",
+        "count": 1,
+        "pct_cluster": 4.35
+      },
+      {
+        "cluster": 1,
+        "region": "Región de La Araucanía",
+        "count": 1,
+        "pct_cluster": 4.35
+      },
+      {
+        "cluster": 1,
+        "region": "Región de Valparaíso",
+        "count": 1,
+        "pct_cluster": 4.35
+      },
+      {
+        "cluster": 1,
+        "region": "Región de Ñuble",
+        "count": 1,
+        "pct_cluster": 4.35
+      }
+    ],
+    "by_instagram_match": [
+      {
+        "cluster": 0,
+        "instagram_match": "match_found",
+        "count": 30,
+        "pct_cluster": 100.0
+      },
+      {
+        "cluster": 1,
+        "instagram_match": "match_found",
+        "count": 13,
+        "pct_cluster": 56.52
+      },
+      {
+        "cluster": 1,
+        "instagram_match": "match_not_found",
+        "count": 10,
+        "pct_cluster": 43.48
+      }
+    ]
+  },
+  "scatter_public": [
+    {
+      "anon_id": "P001",
+      "cluster": 0,
+      "analytic_index": 4.166666666666666,
+      "digital_index": 68.015,
+      "hybrid_gap": -63.85,
+      "areas_count": 3,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región Metropolitana de Santiago",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P002",
+      "cluster": 0,
+      "analytic_index": 33.33333333333333,
+      "digital_index": 90.9925,
+      "hybrid_gap": -57.66,
+      "areas_count": 2,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región Metropolitana de Santiago",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P003",
+      "cluster": 0,
+      "analytic_index": 37.5,
+      "digital_index": 69.67,
+      "hybrid_gap": -32.17,
+      "areas_count": 2,
+      "macroperfil": "gestion",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P004",
+      "cluster": 0,
+      "analytic_index": 8.333333333333332,
+      "digital_index": 45.769999999999996,
+      "hybrid_gap": -37.44,
+      "areas_count": 1,
+      "macroperfil": "musica_escena",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región de La Araucanía",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P005",
+      "cluster": 0,
+      "analytic_index": 12.5,
+      "digital_index": 84.555,
+      "hybrid_gap": -72.06,
+      "areas_count": 2,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región de Los Ríos",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P006",
+      "cluster": 0,
+      "analytic_index": 29.166666666666668,
+      "digital_index": 56.987500000000004,
+      "hybrid_gap": -27.82,
+      "areas_count": 3,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región de La Araucanía",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P007",
+      "cluster": 0,
+      "analytic_index": 37.5,
+      "digital_index": 40.4425,
+      "hybrid_gap": -2.94,
+      "areas_count": 4,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "nodo_creativo",
+      "region": "Región de La Araucanía",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P008",
+      "cluster": 0,
+      "analytic_index": 25.0,
+      "digital_index": 78.31,
+      "hybrid_gap": -53.31,
+      "areas_count": 4,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "nodo_creativo",
+      "region": "Región de Valparaíso",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P009",
+      "cluster": 0,
+      "analytic_index": 8.333333333333332,
+      "digital_index": 65.8075,
+      "hybrid_gap": -57.47,
+      "areas_count": 1,
+      "macroperfil": "musica_escena",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P010",
+      "cluster": 0,
+      "analytic_index": 0.0,
+      "digital_index": 79.04249999999999,
+      "hybrid_gap": -79.04,
+      "areas_count": 2,
+      "macroperfil": "visual",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P011",
+      "cluster": 0,
+      "analytic_index": 25.0,
+      "digital_index": 50.0,
+      "hybrid_gap": -25.0,
+      "areas_count": 6,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "nodo_creativo",
+      "region": "Región Metropolitana de Santiago",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P012",
+      "cluster": 0,
+      "analytic_index": 12.5,
+      "digital_index": 58.455,
+      "hybrid_gap": -45.96,
+      "areas_count": 2,
+      "macroperfil": "visual",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región del Maule",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P013",
+      "cluster": 0,
+      "analytic_index": 100.0,
+      "digital_index": 45.22,
+      "hybrid_gap": 54.78,
+      "areas_count": 2,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región de Magallanes y de la Antártica Chilena",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P014",
+      "cluster": 0,
+      "analytic_index": 50.0,
+      "digital_index": 63.7875,
+      "hybrid_gap": -13.79,
+      "areas_count": 4,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "nodo_creativo",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P015",
+      "cluster": 0,
+      "analytic_index": 0.0,
+      "digital_index": 66.17750000000001,
+      "hybrid_gap": -66.18,
+      "areas_count": 2,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P016",
+      "cluster": 0,
+      "analytic_index": 25.0,
+      "digital_index": 61.3975,
+      "hybrid_gap": -36.4,
+      "areas_count": 1,
+      "macroperfil": "gestion",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región de La Araucanía",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P017",
+      "cluster": 0,
+      "analytic_index": 33.33333333333333,
+      "digital_index": 67.6475,
+      "hybrid_gap": -34.31,
+      "areas_count": 5,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "nodo_creativo",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P018",
+      "cluster": 0,
+      "analytic_index": 33.33333333333333,
+      "digital_index": 77.2075,
+      "hybrid_gap": -43.87,
+      "areas_count": 5,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "nodo_creativo",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P019",
+      "cluster": 0,
+      "analytic_index": 16.666666666666664,
+      "digital_index": 43.3825,
+      "hybrid_gap": -26.72,
+      "areas_count": 2,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P020",
+      "cluster": 0,
+      "analytic_index": 20.833333333333336,
+      "digital_index": 40.44,
+      "hybrid_gap": -19.61,
+      "areas_count": 1,
+      "macroperfil": "musica_escena",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región de Valparaíso",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P021",
+      "cluster": 0,
+      "analytic_index": 25.0,
+      "digital_index": 76.2875,
+      "hybrid_gap": -51.29,
+      "areas_count": 4,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "nodo_creativo",
+      "region": "Región de Valparaíso",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P022",
+      "cluster": 0,
+      "analytic_index": 20.833333333333336,
+      "digital_index": 61.3975,
+      "hybrid_gap": -40.56,
+      "areas_count": 1,
+      "macroperfil": "no_determinado",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P023",
+      "cluster": 0,
+      "analytic_index": 4.166666666666666,
+      "digital_index": 65.075,
+      "hybrid_gap": -60.91,
+      "areas_count": 3,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P024",
+      "cluster": 0,
+      "analytic_index": 12.5,
+      "digital_index": 54.7775,
+      "hybrid_gap": -42.28,
+      "areas_count": 2,
+      "macroperfil": "gestion",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P025",
+      "cluster": 0,
+      "analytic_index": 0.0,
+      "digital_index": 48.16,
+      "hybrid_gap": -48.16,
+      "areas_count": 1,
+      "macroperfil": "musica_escena",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P026",
+      "cluster": 0,
+      "analytic_index": 12.5,
+      "digital_index": 56.987500000000004,
+      "hybrid_gap": -44.49,
+      "areas_count": 4,
+      "macroperfil": "visual",
+      "perfil_interdisciplinario": "nodo_creativo",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P027",
+      "cluster": 0,
+      "analytic_index": 8.333333333333332,
+      "digital_index": 54.4125,
+      "hybrid_gap": -46.08,
+      "areas_count": 1,
+      "macroperfil": "musica_escena",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P028",
+      "cluster": 0,
+      "analytic_index": 8.333333333333332,
+      "digital_index": 61.03000000000001,
+      "hybrid_gap": -52.7,
+      "areas_count": 7,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "nodo_creativo",
+      "region": "Región de O'Higgins",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P029",
+      "cluster": 0,
+      "analytic_index": 12.5,
+      "digital_index": 87.3175,
+      "hybrid_gap": -74.82,
+      "areas_count": 3,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región de Los Ríos",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P030",
+      "cluster": 0,
+      "analytic_index": 8.333333333333332,
+      "digital_index": 82.905,
+      "hybrid_gap": -74.57,
+      "areas_count": 2,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región Metropolitana de Santiago",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P031",
+      "cluster": 1,
+      "analytic_index": 12.5,
+      "digital_index": 12.3175,
+      "hybrid_gap": 0.18,
+      "areas_count": 4,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "nodo_creativo",
+      "region": "Región de La Araucanía",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P032",
+      "cluster": 1,
+      "analytic_index": 8.333333333333332,
+      "digital_index": 14.34,
+      "hybrid_gap": -6.01,
+      "areas_count": 1,
+      "macroperfil": "musica_escena",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región de Los Ríos",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P033",
+      "cluster": 1,
+      "analytic_index": 12.5,
+      "digital_index": 0.0,
+      "hybrid_gap": 12.5,
+      "areas_count": 1,
+      "macroperfil": "musica_escena",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región del Biobío",
+      "instagram_match_found": 0
+    },
+    {
+      "anon_id": "P034",
+      "cluster": 1,
+      "analytic_index": 4.166666666666666,
+      "digital_index": 12.3175,
+      "hybrid_gap": -8.15,
+      "areas_count": 2,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región de Ñuble",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P035",
+      "cluster": 1,
+      "analytic_index": 0.0,
+      "digital_index": 0.0,
+      "hybrid_gap": 0.0,
+      "areas_count": 2,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región del Biobío",
+      "instagram_match_found": 0
+    },
+    {
+      "anon_id": "P036",
+      "cluster": 1,
+      "analytic_index": 20.833333333333336,
+      "digital_index": 19.485,
+      "hybrid_gap": 1.35,
+      "areas_count": 1,
+      "macroperfil": "musica_escena",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P037",
+      "cluster": 1,
+      "analytic_index": 12.5,
+      "digital_index": 24.6325,
+      "hybrid_gap": -12.13,
+      "areas_count": 1,
+      "macroperfil": "visual",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P038",
+      "cluster": 1,
+      "analytic_index": 16.666666666666664,
+      "digital_index": 0.0,
+      "hybrid_gap": 16.67,
+      "areas_count": 1,
+      "macroperfil": "gestion",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región de Arica y Parinacota",
+      "instagram_match_found": 0
+    },
+    {
+      "anon_id": "P039",
+      "cluster": 1,
+      "analytic_index": 4.166666666666666,
+      "digital_index": 13.6025,
+      "hybrid_gap": -9.44,
+      "areas_count": 1,
+      "macroperfil": "visual",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región de Coquimbo",
+      "instagram_match_found": 0
+    },
+    {
+      "anon_id": "P040",
+      "cluster": 1,
+      "analytic_index": 29.166666666666668,
+      "digital_index": 31.985,
+      "hybrid_gap": -2.82,
+      "areas_count": 3,
+      "macroperfil": "visual",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región Metropolitana de Santiago",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P041",
+      "cluster": 1,
+      "analytic_index": 0.0,
+      "digital_index": 0.0,
+      "hybrid_gap": 0.0,
+      "areas_count": 1,
+      "macroperfil": "tecnico",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región del Biobío",
+      "instagram_match_found": 0
+    },
+    {
+      "anon_id": "P042",
+      "cluster": 1,
+      "analytic_index": 12.5,
+      "digital_index": 12.3175,
+      "hybrid_gap": 0.18,
+      "areas_count": 3,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P043",
+      "cluster": 1,
+      "analytic_index": 20.833333333333336,
+      "digital_index": 33.82,
+      "hybrid_gap": -12.99,
+      "areas_count": 1,
+      "macroperfil": "gestion",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región de Los Ríos",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P044",
+      "cluster": 1,
+      "analytic_index": 4.166666666666666,
+      "digital_index": 19.1175,
+      "hybrid_gap": -14.95,
+      "areas_count": 1,
+      "macroperfil": "no_determinado",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región Metropolitana de Santiago",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P045",
+      "cluster": 1,
+      "analytic_index": 0.0,
+      "digital_index": 0.0,
+      "hybrid_gap": 0.0,
+      "areas_count": 2,
+      "macroperfil": "gestion",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región de Valparaíso",
+      "instagram_match_found": 0
+    },
+    {
+      "anon_id": "P046",
+      "cluster": 1,
+      "analytic_index": 4.166666666666666,
+      "digital_index": 0.0,
+      "hybrid_gap": 4.17,
+      "areas_count": 2,
+      "macroperfil": "musica_escena",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Buenos Aires",
+      "instagram_match_found": 0
+    },
+    {
+      "anon_id": "P047",
+      "cluster": 1,
+      "analytic_index": 0.0,
+      "digital_index": 41.5425,
+      "hybrid_gap": -41.54,
+      "areas_count": 1,
+      "macroperfil": "musica_escena",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P048",
+      "cluster": 1,
+      "analytic_index": 8.333333333333332,
+      "digital_index": 12.3175,
+      "hybrid_gap": -3.98,
+      "areas_count": 2,
+      "macroperfil": "visual",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región de Antofagasta",
+      "instagram_match_found": 0
+    },
+    {
+      "anon_id": "P049",
+      "cluster": 1,
+      "analytic_index": 4.166666666666666,
+      "digital_index": 12.3175,
+      "hybrid_gap": -8.15,
+      "areas_count": 2,
+      "macroperfil": "gestion",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región del Biobío",
+      "instagram_match_found": 0
+    },
+    {
+      "anon_id": "P050",
+      "cluster": 1,
+      "analytic_index": 4.166666666666666,
+      "digital_index": 0.0,
+      "hybrid_gap": 4.17,
+      "areas_count": 1,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región del Biobío",
+      "instagram_match_found": 0
+    },
+    {
+      "anon_id": "P051",
+      "cluster": 1,
+      "analytic_index": 4.166666666666666,
+      "digital_index": 23.8975,
+      "hybrid_gap": -19.73,
+      "areas_count": 2,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "hibrido",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P052",
+      "cluster": 1,
+      "analytic_index": 4.166666666666666,
+      "digital_index": 18.3825,
+      "hybrid_gap": -14.22,
+      "areas_count": 1,
+      "macroperfil": "no_determinado",
+      "perfil_interdisciplinario": "especializado",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    },
+    {
+      "anon_id": "P053",
+      "cluster": 1,
+      "analytic_index": 50.0,
+      "digital_index": 16.177500000000002,
+      "hybrid_gap": 33.82,
+      "areas_count": 5,
+      "macroperfil": "mixto",
+      "perfil_interdisciplinario": "nodo_creativo",
+      "region": "Región del Biobío",
+      "instagram_match_found": 1
+    }
+  ]
+}
