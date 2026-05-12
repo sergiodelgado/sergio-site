@@ -64,6 +64,10 @@
       height: 340px;
     }
 
+    #chart-territorios {
+      height: 520px;
+    }
+
     .compact-table {
       width: 100%;
       min-width: 0;
@@ -319,8 +323,8 @@
           <div class="chart-canvas" id="chart-region"></div>
         </article>
         <article class="card chart-card">
-          <h3>Top territorios</h3>
-          <p class="muted">Los territorios principales muestran el peso local del programa y su alcance fuera del núcleo regional.</p>
+          <h3>Ciudad</h3>
+          <p class="muted">Distribución de participantes por ciudad en toda la muestra disponible.</p>
           <div class="chart-canvas" id="chart-territorios"></div>
         </article>
         <article class="card">
@@ -597,6 +601,15 @@
         return labelMap[raw] || raw.replace(/_/g, " ");
       };
 
+      const cleanRegionLabel = (value) => {
+        const text = String(value || "").trim();
+        if (!text) return "Sin región";
+        return text
+          .replace(/^Región\s+de\s+/i, "")
+          .replace(/^Región\s+del\s+/i, "")
+          .replace(/^Región\s+/i, "");
+      };
+
       const asNumber = (value, fallback = null) => {
         const parsed = Number(value);
         return Number.isFinite(parsed) ? parsed : fallback;
@@ -794,7 +807,7 @@
         };
       }
 
-      function horizontalBarOption({ title, labels, values, color, colors, left = 150 }) {
+      function horizontalBarOption({ title, labels, values, color, colors, left = 150, barWidth = 14, labelMax = 30 }) {
         return {
           tooltip: {
             ...baseTooltip(),
@@ -815,13 +828,13 @@
             axisLabel: {
               color: chartTheme.muted,
               fontSize: 12,
-              formatter: (value) => truncateLabel(value, 30)
+              formatter: (value) => truncateLabel(value, labelMax)
             }
           },
           series: [{
             type: "bar",
             data: values,
-            barWidth: 14,
+            barWidth,
             itemStyle: {
               color: colors ? (params) => colors[params.dataIndex % colors.length] : color,
               borderRadius: [0, 6, 6, 0]
@@ -895,7 +908,7 @@
           const topMotivation = sortedTop(mapToItems(countMany(regionRows, (item) => item.motivacionesRaw)), 1)[0];
           return (
             "<tr>" +
-            "<td>" + escapeHtml(region.label) + "</td>" +
+            "<td>" + escapeHtml(cleanRegionLabel(region.label)) + "</td>" +
             "<td>" + escapeHtml(topMotivation ? normalizeTextToken(topMotivation.label) : "-") + "</td>" +
             "<td>" + escapeHtml(topMotivation ? topMotivation.value : 0) + "</td>" +
             "</tr>"
@@ -925,10 +938,13 @@
         if (typeof echarts === "undefined") return;
 
         resetCharts();
-        const byRegion = topNWithOther(mapToItems(countBy(filtered, (item) => item.region)), 8);
+        const byRegion = topNWithOther(mapToItems(countBy(filtered, (item) => item.region)).map((item) => ({
+          label: cleanRegionLabel(item.label),
+          value: item.value
+        })), 8);
         const byDisciplina = sortedTop(mapToItems(countMany(filtered, (item) => item.areas)), 10);
         const byMotivacion = sortedTop(mapToItems(countMany(filtered, (item) => item.motivaciones)), 10);
-        const byTerritorio = sortedTop(mapToItems(countBy(filtered, (item) => item.territorio)), 10);
+        const byTerritorio = sortedTop(mapToItems(countBy(filtered, (item) => item.ciudad)), 999);
         const interCounts = sortedTop(mapToItems(countBy(filtered, (item) => item.perfilInter)), 10);
 
         createChart("chart-region", horizontalBarOption({
@@ -936,7 +952,9 @@
           labels: byRegion.map((d) => d.label),
           values: byRegion.map((d) => d.value),
           color: chartTheme.territory,
-          left: 172
+          left: 150,
+          barWidth: 12,
+          labelMax: 24
         }));
 
         createChart("chart-territorios", horizontalBarOption({
@@ -944,7 +962,9 @@
           labels: byTerritorio.map((d) => d.label),
           values: byTerritorio.map((d) => d.value),
           color: chartTheme.territory,
-          left: 150
+          left: 110,
+          barWidth: 10,
+          labelMax: 20
         }));
 
         createChart("chart-disciplinas", horizontalBarOption({
