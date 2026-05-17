@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "module": "activacion_redes",
+    "scope": "aggregate_ecosystem_patterns",
+    "privacy": "no_pii_no_person_to_person_graph"
+  },
+  "opportunities": [
+    {
+      "title": "Artistas emergentes + visualistas",
+      "network_type": "colaboración creativa",
+      "priority": "alta",
+      "complexity": "media",
+      "why_it_matters": "La mezcla de escena emergente y capacidades visuales acelera prototipos de obra y mejora visibilidad de circuitos locales.",
+      "risk": "Quedar en colaboraciones tácticas sin continuidad editorial ni calendario de circulación.",
+      "suggested_action": "Levantar una mesa trimestral con desafíos curatoriales compartidos y una cartera breve de pilotos colaborativos.",
+      "tracking_indicator": "Número de pilotos co-creados y porcentaje que llega a muestra pública."
+    },
+    {
+      "title": "Gestores territoriales + espacios culturales",
+      "network_type": "articulación territorial",
+      "priority": "alta",
+      "complexity": "media",
+      "why_it_matters": "Conecta oferta programática con infraestructura de barrio y reduce fricción para implementar actividades distribuidas.",
+      "risk": "Sobrecarga de pocos espacios ancla y baja cobertura de comunas periféricas.",
+      "suggested_action": "Diseñar calendario rotativo de activaciones por territorio con cupos de co-producción.",
+      "tracking_indicator": "Cobertura territorial de activaciones y tasa de ocupación de espacios aliados."
+    },
+    {
+      "title": "Productores + comunicadores digitales",
+      "network_type": "aceleración de circulación",
+      "priority": "alta",
+      "complexity": "baja",
+      "why_it_matters": "Mejora conversión entre producción cultural y difusión, aumentando alcance efectivo de iniciativas colectivas.",
+      "risk": "Dependencia de difusión fragmentada sin narrativa común de ecosistema.",
+      "suggested_action": "Implementar sprint de contenidos por hito programático con pauta mínima y métricas compartidas.",
+      "tracking_indicator": "Alcance agregado por hito y tasa de interacción sobre publicaciones colaborativas."
+    },
+    {
+      "title": "Nodos puente + actores periféricos",
+      "network_type": "cohesión de red",
+      "priority": "media",
+      "complexity": "alta",
+      "why_it_matters": "Reduce aislamiento en bordes de la red y fortalece circulación de conocimiento entre perfiles con menor conectividad.",
+      "risk": "Intermediación excesiva de pocos nodos y fatiga de coordinación.",
+      "suggested_action": "Activar rondas de matchmaking temático con facilitación liviana y objetivos de transferencia explícitos.",
+      "tracking_indicator": "Cantidad de vínculos nuevos sostenidos a 90 días entre nodos puente y periferia."
+    },
+    {
+      "title": "Perfiles con alta motivación colaborativa + baja red actual",
+      "network_type": "inclusión colaborativa",
+      "priority": "alta",
+      "complexity": "media",
+      "why_it_matters": "Existe disposición para colaborar que hoy no se traduce en red efectiva; activar ese gap aumenta densidad colaborativa.",
+      "risk": "Frustración por expectativas altas sin mecanismos de entrada concretos.",
+      "suggested_action": "Crear cohortes cortas de onboarding colaborativo con mentoría entre pares y objetivos de proyecto.",
+      "tracking_indicator": "Participantes con baja red que concretan al menos una colaboración activa en 60 días."
+    },
+    {
+      "title": "Formación + profesionalización",
+      "network_type": "desarrollo de capacidades",
+      "priority": "media",
+      "complexity": "baja",
+      "why_it_matters": "Alinea motivaciones mayoritarias del ecosistema con rutas de aprendizaje aplicadas a sostenibilidad laboral.",
+      "risk": "Capacitaciones desconectadas de necesidades reales de implementación.",
+      "suggested_action": "Diseñar cápsulas prácticas con resolución de casos y acompañamiento de implementación.",
+      "tracking_indicator": "Porcentaje de participantes que aplica herramientas aprendidas en proyectos concretos."
+    },
+    {
+      "title": "Escena electrónica + institucionalidad cultural",
+      "network_type": "puente sectorial",
+      "priority": "media",
+      "complexity": "alta",
+      "why_it_matters": "Acerca prácticas de escena independiente a marcos institucionales, ampliando legitimidad y acceso a recursos.",
+      "risk": "Desalineación de tiempos y criterios entre dinámica de escena e institucionalidad.",
+      "suggested_action": "Pilotear una mesa bimensual de agenda compartida con criterios de co-diseño y evaluación temprana.",
+      "tracking_indicator": "Número de iniciativas co-diseñadas escena-institución que avanzan a ejecución."
+    }
+  ]
+}

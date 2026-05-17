@@ -256,6 +256,52 @@
       height: 360px;
     }
 
+    .activation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .activation-card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px;
+      background: #111116;
+    }
+
+    .activation-card h4 {
+      margin: 0 0 8px;
+      font-size: 0.98rem;
+      line-height: 1.3;
+    }
+
+    .activation-card p {
+      margin: 6px 0;
+      font-size: 0.86rem;
+      color: var(--fg);
+      line-height: 1.45;
+    }
+
+    .activation-card p strong {
+      color: var(--muted);
+    }
+
+    .activation-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .activation-privacy-note {
+      margin-top: 12px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
     @media (max-width: 900px) {
       .panel-grid {
         grid-template-columns: 1fr;
@@ -439,6 +485,38 @@
       </div>
     </section>
 
+    <section class="section" id="activacion-redes">
+      <h2>Activación de redes</h2>
+      <p class="muted section-intro">
+        Capa estratégica orientada a oportunidades colaborativas derivadas de patrones agregados del ecosistema CRBB.
+        No representa enlaces persona-persona ni sugiere contacto individual.
+      </p>
+      <p class="muted" id="activation-fallback" hidden>No fue posible cargar oportunidades de activación desde JSON público. Se usa fallback estratégico.</p>
+      <div class="activation-grid" id="activation-opportunity-cards"></div>
+      <article class="card">
+        <h3>Matriz resumen de activación</h3>
+        <p class="muted">Síntesis operativa para priorizar ejecución, riesgo y seguimiento sin exposición de datos personales.</p>
+        <div class="table-wrap">
+          <table class="compact-table" aria-label="Matriz de oportunidades de activación de redes">
+            <thead>
+              <tr>
+                <th>Oportunidad</th>
+                <th>Prioridad</th>
+                <th>Complejidad</th>
+                <th>Tipo de red</th>
+                <th>Indicador de seguimiento</th>
+              </tr>
+            </thead>
+            <tbody id="activation-matrix-body"></tbody>
+          </table>
+        </div>
+      </article>
+      <p class="activation-privacy-note">
+        Nota de privacidad: este módulo trabaja exclusivamente con señales agregadas. No publica nombres reales, emails,
+        teléfonos, RUT, direcciones, Instagram individual ni grafos entre personas.
+      </p>
+    </section>
+
     <section class="section panel-grid">
       <article class="card">
         <h2>Explorador de participantes</h2>
@@ -526,6 +604,7 @@
     (function () {
       const DATA_PATH = "data/modulo_00_participantes_dashboard.json";
       const HYBRID_DATA_PATH = "data/modulo_00_participantes_hybrid_clusters.json";
+      const ACTIVATION_DATA_PATH = "data/modulo_00_activation_opportunities.json";
       const charts = {
         main: [],
         hybrid: []
@@ -1399,6 +1478,189 @@
         }
       };
 
+      const showActivationFallback = (message) => {
+        const fallback = el("activation-fallback");
+        if (fallback) {
+          fallback.hidden = false;
+          fallback.textContent = message || "No fue posible cargar oportunidades de activación desde JSON público. Se usa fallback estratégico.";
+        }
+      };
+
+      const hideActivationFallback = () => {
+        const fallback = el("activation-fallback");
+        if (fallback) fallback.hidden = true;
+      };
+
+      const getFallbackActivationOpportunities = () => ([
+        {
+          title: "Artistas emergentes + visualistas",
+          network_type: "colaboración creativa",
+          priority: "alta",
+          complexity: "media",
+          why_it_matters: "La mezcla de escena emergente y capacidades visuales acelera prototipos de obra y mejora visibilidad de circuitos locales.",
+          risk: "Quedar en colaboraciones tácticas sin continuidad editorial ni calendario de circulación.",
+          suggested_action: "Levantar una mesa trimestral con desafíos curatoriales compartidos y una cartera breve de pilotos colaborativos.",
+          tracking_indicator: "Número de pilotos co-creados y porcentaje que llega a muestra pública."
+        },
+        {
+          title: "Gestores territoriales + espacios culturales",
+          network_type: "articulación territorial",
+          priority: "alta",
+          complexity: "media",
+          why_it_matters: "Conecta oferta programática con infraestructura de barrio y reduce fricción para implementar actividades distribuidas.",
+          risk: "Sobrecarga de pocos espacios ancla y baja cobertura de comunas periféricas.",
+          suggested_action: "Diseñar calendario rotativo de activaciones por territorio con cupos de co-producción.",
+          tracking_indicator: "Cobertura territorial de activaciones y tasa de ocupación de espacios aliados."
+        },
+        {
+          title: "Productores + comunicadores digitales",
+          network_type: "aceleración de circulación",
+          priority: "alta",
+          complexity: "baja",
+          why_it_matters: "Mejora conversión entre producción cultural y difusión, aumentando alcance efectivo de iniciativas colectivas.",
+          risk: "Dependencia de difusión fragmentada sin narrativa común de ecosistema.",
+          suggested_action: "Implementar sprint de contenidos por hito programático con pauta mínima y métricas compartidas.",
+          tracking_indicator: "Alcance agregado por hito y tasa de interacción sobre publicaciones colaborativas."
+        },
+        {
+          title: "Nodos puente + actores periféricos",
+          network_type: "cohesión de red",
+          priority: "media",
+          complexity: "alta",
+          why_it_matters: "Reduce aislamiento en bordes de la red y fortalece circulación de conocimiento entre perfiles con menor conectividad.",
+          risk: "Intermediación excesiva de pocos nodos y fatiga de coordinación.",
+          suggested_action: "Activar rondas de matchmaking temático con facilitación liviana y objetivos de transferencia explícitos.",
+          tracking_indicator: "Cantidad de vínculos nuevos sostenidos a 90 días entre nodos puente y periferia."
+        },
+        {
+          title: "Perfiles con alta motivación colaborativa + baja red actual",
+          network_type: "inclusión colaborativa",
+          priority: "alta",
+          complexity: "media",
+          why_it_matters: "Existe disposición para colaborar que hoy no se traduce en red efectiva; activar ese gap aumenta densidad colaborativa.",
+          risk: "Frustración por expectativas altas sin mecanismos de entrada concretos.",
+          suggested_action: "Crear cohortes cortas de onboarding colaborativo con mentoría entre pares y objetivos de proyecto.",
+          tracking_indicator: "Participantes con baja red que concretan al menos una colaboración activa en 60 días."
+        },
+        {
+          title: "Formación + profesionalización",
+          network_type: "desarrollo de capacidades",
+          priority: "media",
+          complexity: "baja",
+          why_it_matters: "Alinea motivaciones mayoritarias del ecosistema con rutas de aprendizaje aplicadas a sostenibilidad laboral.",
+          risk: "Capacitaciones desconectadas de necesidades reales de implementación.",
+          suggested_action: "Diseñar cápsulas prácticas con resolución de casos y acompañamiento de implementación.",
+          tracking_indicator: "Porcentaje de participantes que aplica herramientas aprendidas en proyectos concretos."
+        },
+        {
+          title: "Escena electrónica + institucionalidad cultural",
+          network_type: "puente sectorial",
+          priority: "media",
+          complexity: "alta",
+          why_it_matters: "Acerca prácticas de escena independiente a marcos institucionales, ampliando legitimidad y acceso a recursos.",
+          risk: "Desalineación de tiempos y criterios entre dinámica de escena e institucionalidad.",
+          suggested_action: "Pilotear una mesa bimensual de agenda compartida con criterios de co-diseño y evaluación temprana.",
+          tracking_indicator: "Número de iniciativas co-diseñadas escena-institución que avanzan a ejecución."
+        }
+      ]);
+
+      const normalizeActivationOpportunities = (payload) => {
+        const sanitizeActivationText = (value, fallback = "") =>
+          cleanSafeText(asText(value, fallback))
+            .replace(/@[a-z0-9._]{2,30}/gi, "[dato excluido]")
+            .replace(/instagram\.com\/[^\s)]+/gi, "[dato excluido]");
+
+        const rawItems = Array.isArray(payload)
+          ? payload
+          : Array.isArray(payload && payload.opportunities)
+            ? payload.opportunities
+            : Array.isArray(payload && payload.items)
+              ? payload.items
+              : [];
+
+        return rawItems
+          .map((item) => ({
+            title: sanitizeActivationText(item && item.title, ""),
+            network_type: asText(item && item.network_type, "colaboración"),
+            priority: asText(item && item.priority, "media"),
+            complexity: asText(item && item.complexity, "media"),
+            why_it_matters: sanitizeActivationText(item && item.why_it_matters, ""),
+            risk: sanitizeActivationText(item && item.risk, ""),
+            suggested_action: sanitizeActivationText(item && item.suggested_action, ""),
+            tracking_indicator: sanitizeActivationText(item && item.tracking_indicator, "Sin indicador definido")
+          }))
+          .filter((item) => item.title);
+      };
+
+      const renderActivationOpportunities = (items) => {
+        const node = el("activation-opportunity-cards");
+        if (!node) return;
+        if (!Array.isArray(items) || !items.length) {
+          node.innerHTML = '<article class="activation-card"><p class="muted">Sin oportunidades para mostrar.</p></article>';
+          return;
+        }
+
+        node.innerHTML = items.map((item, index) => (
+          '<article class="activation-card">' +
+            "<h4>" + escapeHtml(item.title) + "</h4>" +
+            '<div class="activation-meta">' +
+              "<span>Tipo de red: " + escapeHtml(item.network_type) + "</span>" +
+              "<span>Prioridad: " + escapeHtml(item.priority) + "</span>" +
+              "<span>Complejidad: " + escapeHtml(item.complexity) + "</span>" +
+            "</div>" +
+            "<p><strong>Por qué importa:</strong> " + escapeHtml(item.why_it_matters) + "</p>" +
+            "<p><strong>Riesgo:</strong> " + escapeHtml(item.risk) + "</p>" +
+            "<p><strong>Acción sugerida:</strong> " + escapeHtml(item.suggested_action) + "</p>" +
+            "<p><strong>Indicador:</strong> " + escapeHtml(item.tracking_indicator) + "</p>" +
+            "<p class=\"muted\">Oportunidad #" + escapeHtml(index + 1) + "</p>" +
+          "</article>"
+        )).join("");
+      };
+
+      const renderActivationMatrix = (items) => {
+        const body = el("activation-matrix-body");
+        if (!body) return;
+        if (!Array.isArray(items) || !items.length) {
+          body.innerHTML = '<tr><td colspan="5">Sin oportunidades para mostrar.</td></tr>';
+          return;
+        }
+
+        body.innerHTML = items.map((item) => (
+          "<tr>" +
+            "<td>" + escapeHtml(item.title) + "</td>" +
+            "<td>" + escapeHtml(item.priority) + "</td>" +
+            "<td>" + escapeHtml(item.complexity) + "</td>" +
+            "<td>" + escapeHtml(item.network_type) + "</td>" +
+            "<td>" + escapeHtml(item.tracking_indicator) + "</td>" +
+          "</tr>"
+        )).join("");
+      };
+
+      const loadActivationSection = async () => {
+        try {
+          const response = await fetch(ACTIVATION_DATA_PATH, { cache: "no-cache" });
+          if (!response.ok) throw new Error("HTTP " + response.status);
+          const payload = await response.json();
+          const items = normalizeActivationOpportunities(payload);
+          if (!items.length) {
+            const fallbackItems = getFallbackActivationOpportunities();
+            showActivationFallback("JSON público sin oportunidades válidas. Se usa fallback estratégico.");
+            renderActivationOpportunities(fallbackItems);
+            renderActivationMatrix(fallbackItems);
+            return;
+          }
+          hideActivationFallback();
+          renderActivationOpportunities(items);
+          renderActivationMatrix(items);
+        } catch (error) {
+          console.warn("No fue posible cargar activación de redes:", error);
+          const fallbackItems = getFallbackActivationOpportunities();
+          showActivationFallback("No fue posible cargar oportunidades de activación desde JSON público. Se usa fallback estratégico.");
+          renderActivationOpportunities(fallbackItems);
+          renderActivationMatrix(fallbackItems);
+        }
+      };
+
       const renderDetail = (row) => {
         const empty = el("detail-empty");
         const list = el("detail-list");
@@ -1563,6 +1825,7 @@
           initFilters();
           applyFilters();
           await loadHybridSection();
+          await loadActivationSection();
 
           if (typeof echarts === "undefined") {
             showChartFallback();
