@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npx --yes serve .",
-    "lint:html": "html-validate index.html about.html projects.html contact.html",
+    "lint:html": "html-validate index.html about.html projects.html contact.html case-crbb-pipeline.html case-crbb-participantes.html",
     "check:sitemap": "node scripts/check-sitemap.mjs",
     "ci:test": "npm run lint:html && npm run check:sitemap",
     "ci:lighthouse": "lhci autorun"
