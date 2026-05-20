@@ -6,7 +6,9 @@
         "http://localhost:3000/",
         "http://localhost:3000/about.html",
         "http://localhost:3000/projects.html",
-        "http://localhost:3000/contact.html"
+        "http://localhost:3000/contact.html",
+        "http://localhost:3000/case-crbb-pipeline.html",
+        "http://localhost:3000/case-crbb-participantes.html"
       ],
       "numberOfRuns": 1
     },
