@@ -120,6 +120,18 @@
       margin-bottom: 12px;
     }
 
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     .filters input,
     .filters select {
       width: 100%;
@@ -171,6 +183,11 @@
 
     tbody tr:hover {
       background: #17171b;
+    }
+
+    tbody tr:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: -2px;
     }
 
     tbody tr.active {
@@ -368,18 +385,19 @@
         <article class="card chart-card">
           <h3>Participantes por región</h3>
           <p class="muted">El Biobío concentra la mayor parte de la muestra, con presencia de otras regiones del país.</p>
-          <div class="chart-canvas" id="chart-region"></div>
+          <div class="chart-canvas" id="chart-region" role="img" aria-label="Gráfico de barras con participantes agrupados por región."></div>
         </article>
         <article class="card chart-card">
           <h3>Ciudad</h3>
           <p class="muted">Distribución de participantes por ciudad en toda la muestra disponible.</p>
-          <div class="chart-canvas" id="chart-territorios"></div>
+          <div class="chart-canvas" id="chart-territorios" role="img" aria-label="Gráfico de barras con participantes agrupados por ciudad."></div>
         </article>
         <article class="card">
           <h3>Motivaciones por región</h3>
           <p class="muted">El resumen identifica la motivación dominante por región sin saturar la lectura.</p>
           <div class="table-wrap">
             <table class="compact-table" aria-label="Motivación dominante por región">
+              <caption class="sr-only">Motivación dominante y número de menciones por región.</caption>
               <thead>
                 <tr>
                   <th>Región</th>
@@ -400,12 +418,12 @@
         <article class="card chart-card">
           <h3>Disciplinas principales</h3>
           <p class="muted">La composición combina perfiles artísticos, técnicos y de gestión.</p>
-          <div class="chart-canvas" id="chart-disciplinas"></div>
+          <div class="chart-canvas" id="chart-disciplinas" role="img" aria-label="Gráfico de barras con las disciplinas principales declaradas por participantes."></div>
         </article>
         <article class="card chart-card">
           <h3>Perfil interdisciplinario</h3>
           <p class="muted">Predominan perfiles híbridos, lo que refuerza la necesidad de redes y colaboración.</p>
-          <div class="chart-canvas" id="chart-inter"></div>
+          <div class="chart-canvas" id="chart-inter" role="img" aria-label="Gráfico de barras con la distribución de perfiles interdisciplinarios."></div>
         </article>
         <article class="card">
           <h3>Pares de áreas frecuentes</h3>
@@ -421,12 +439,12 @@
         <article class="card chart-card">
           <h3>Motivaciones principales</h3>
           <p class="muted">La formación aparece como puerta de entrada principal, seguida por redes y profesionalización.</p>
-          <div class="chart-canvas" id="chart-motivaciones"></div>
+          <div class="chart-canvas" id="chart-motivaciones" role="img" aria-label="Gráfico de barras con las motivaciones principales declaradas."></div>
         </article>
         <article class="card chart-card">
           <h3>Motivaciones por tipo de perfil</h3>
           <p class="muted">La barra apilada permite comparar qué busca cada tipo de perfil sin recurrir a un mapa de calor.</p>
-          <div class="chart-canvas" id="chart-mot-perfil"></div>
+          <div class="chart-canvas" id="chart-mot-perfil" role="img" aria-label="Gráfico de barras apiladas que compara motivaciones por tipo de perfil."></div>
         </article>
       </div>
     </section>
@@ -459,12 +477,12 @@
         <article class="card chart-card">
           <h3>Distribución analítico vs digital</h3>
           <p class="muted">Cada punto es anónimo y muestra balance entre índices analíticos y digitales.</p>
-          <div class="chart-canvas" id="chart-hybrid-scatter"></div>
+          <div class="chart-canvas" id="chart-hybrid-scatter" role="img" aria-label="Gráfico de dispersión anónimo que cruza índice analítico e índice digital por cluster."></div>
         </article>
         <article class="card chart-card">
           <h3>Índices por cluster</h3>
           <p class="muted">Comparación agregada de índice analítico, índice digital y brecha híbrida.</p>
-          <div class="chart-canvas" id="chart-hybrid-summary"></div>
+          <div class="chart-canvas" id="chart-hybrid-summary" role="img" aria-label="Gráfico de barras que compara índice analítico, índice digital y brecha híbrida por cluster."></div>
         </article>
       </div>
 
@@ -472,17 +490,17 @@
         <article class="card chart-card">
           <h3>Composición cluster x macroperfil</h3>
           <p class="muted">Distribución de macroperfiles dentro de cada cluster.</p>
-          <div class="chart-canvas" id="chart-hybrid-macroperfil"></div>
+          <div class="chart-canvas" id="chart-hybrid-macroperfil" role="img" aria-label="Gráfico de barras apiladas con composición de macroperfiles por cluster."></div>
         </article>
         <article class="card chart-card">
           <h3>Composición cluster x match Instagram</h3>
           <p class="muted">Cobertura de match público de Instagram por cluster.</p>
-          <div class="chart-canvas" id="chart-hybrid-instagram"></div>
+          <div class="chart-canvas" id="chart-hybrid-instagram" role="img" aria-label="Gráfico de barras apiladas con composición de match público de Instagram por cluster."></div>
         </article>
         <article class="card chart-card">
           <h3>Silhouette por k</h3>
           <p class="muted">Curva de evaluación metodológica para selección de número de clusters.</p>
-          <div class="chart-canvas" id="chart-hybrid-k"></div>
+          <div class="chart-canvas" id="chart-hybrid-k" role="img" aria-label="Gráfico de línea con métricas silhouette para evaluar valores de k."></div>
         </article>
       </div>
     </section>
@@ -500,6 +518,7 @@
         <p class="muted">Síntesis operativa para priorizar ejecución, riesgo y seguimiento sin exposición de datos personales.</p>
         <div class="table-wrap">
           <table class="compact-table" aria-label="Matriz de oportunidades de activación de redes">
+            <caption class="sr-only">Oportunidades de activación de redes con prioridad, complejidad, tipo de red e indicador de seguimiento.</caption>
             <thead>
               <tr>
                 <th>Oportunidad</th>
@@ -523,14 +542,20 @@
       <article class="card">
         <h2>Explorador de participantes</h2>
         <div class="filters">
+          <label class="sr-only" for="search-input">Buscar participantes</label>
           <input type="search" id="search-input" placeholder="Buscar por nombre, territorio, áreas o motivaciones">
+          <label class="sr-only" for="region-filter">Filtrar por región</label>
           <select id="region-filter"><option value="">Todas las regiones</option></select>
+          <label class="sr-only" for="motivacion-filter">Filtrar por motivación principal</label>
           <select id="motivacion-filter"><option value="">Todas las motivaciones</option></select>
+          <label class="sr-only" for="perfil-filter">Filtrar por tipo de perfil</label>
           <select id="perfil-filter"><option value="">Todos los tipos de perfil</option></select>
+          <label class="sr-only" for="area-filter">Filtrar por área principal</label>
           <select id="area-filter"><option value="">Todas las áreas</option></select>
         </div>
         <div class="table-wrap">
           <table aria-label="Participantes del laboratorio">
+            <caption class="sr-only">Listado filtrable de participantes. Cada fila permite abrir el detalle del participante.</caption>
             <thead>
               <tr>
                 <th>Nombre público o artístico</th>
@@ -1690,9 +1715,10 @@
       };
 
       const rowHtml = (row) => {
-        const activeClass = row.id === selectedId ? "active" : "";
+        const isActive = row.id === selectedId;
+        const activeClass = isActive ? "active" : "";
         return (
-          '<tr data-id="' + row.id + '" class="' + activeClass + '">' +
+          '<tr data-id="' + row.id + '" class="' + activeClass + '" tabindex="0" role="button" aria-pressed="' + (isActive ? "true" : "false") + '" aria-label="Ver detalle de ' + escapeHtml(row.nombre) + '">' +
           '<td title="' + escapeHtml(row.nombre) + '">' + escapeHtml(row.nombre) + "</td>" +
           '<td title="' + escapeHtml(row.territorio) + '">' + escapeHtml(row.territorio) + "</td>" +
           '<td title="' + escapeHtml(row.macroperfil) + '">' + escapeHtml(row.macroperfil) + "</td>" +
@@ -1700,6 +1726,16 @@
           '<td title="' + escapeHtml(row.motivacionPrincipal) + '">' + escapeHtml(row.motivacionPrincipal) + "</td>" +
           "</tr>"
         );
+      };
+
+      const selectParticipant = (id, restoreFocus = false) => {
+        selectedId = id;
+        renderTable();
+        renderDetail(filtered.find((item) => item.id === selectedId) || rows.find((item) => item.id === selectedId));
+        if (restoreFocus) {
+          const activeRow = document.querySelector('#tabla-body tr[data-id="' + id + '"]');
+          if (activeRow) activeRow.focus();
+        }
       };
 
       const renderTable = () => {
@@ -1714,10 +1750,11 @@
           : '<tr><td colspan="5">Sin registros para los filtros activos.</td></tr>';
 
         Array.from(body.querySelectorAll("tr[data-id]")).forEach((tr) => {
-          tr.addEventListener("click", () => {
-            selectedId = Number(tr.getAttribute("data-id"));
-            renderTable();
-            renderDetail(filtered.find((item) => item.id === selectedId) || rows.find((item) => item.id === selectedId));
+          tr.addEventListener("click", () => selectParticipant(Number(tr.getAttribute("data-id"))));
+          tr.addEventListener("keydown", (event) => {
+            if (event.key !== "Enter" && event.key !== " " && event.key !== "Spacebar") return;
+            event.preventDefault();
+            selectParticipant(Number(tr.getAttribute("data-id")), true);
           });
         });
 
