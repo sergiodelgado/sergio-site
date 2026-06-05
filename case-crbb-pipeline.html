@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pipeline analítico para ecosistemas culturales — Sergio Delgado</title>
-  <meta name="description" content="Caso de estudio sobre diseño de un pipeline modular para estructurar y analizar información cultural dispersa, generar insights y reportes reutilizables.">
+  <title>Arquitectura de datos para inteligencia territorial — Sergio Delgado</title>
+  <meta name="description" content="Caso de estudio sobre arquitectura de datos, análisis de redes e inteligencia territorial para estructurar fuentes dispersas, asegurar trazabilidad y apoyar decisiones basadas en evidencia.">
   <link rel="canonical" href="https://sergio-site-drab.vercel.app/case-crbb-pipeline.html">
-  <meta property="og:title" content="Pipeline analítico para ecosistemas culturales — Caso de estudio">
-  <meta property="og:description" content="Diseño modular para convertir conversaciones, encuestas y redes culturales en datos estructurados, análisis temático e insights estratégicos.">
+  <meta property="og:title" content="Arquitectura de datos para inteligencia territorial — Caso de estudio">
+  <meta property="og:description" content="Pipeline modular para convertir fuentes territoriales dispersas en datasets trazables, análisis de redes, lectura interdisciplinaria e insumos de decisión.">
   <meta property="og:url" content="https://sergio-site-drab.vercel.app/case-crbb-pipeline.html">
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary">
@@ -32,11 +32,11 @@
   <main id="main" class="container">
     <section class="section">
       <span class="badge badge-tech">Data Analytics</span>
-      <h1>Pipeline analítico para ecosistemas culturales</h1>
+      <h1>Arquitectura de datos para inteligencia territorial</h1>
       <p class="muted">
-        Caso de estudio técnico sobre diseño modular para transformar información dispersa
-        en datos estructurados, análisis temático, mapas de actores, insights estratégicos
-        y reportes reutilizables.
+        Caso de estudio técnico sobre un pipeline modular para transformar fuentes
+        territoriales dispersas en datasets trazables, análisis de redes, lectura
+        interdisciplinaria e insumos para toma de decisiones.
       </p>
     </section>
 
@@ -44,9 +44,11 @@
       <article class="card prose">
         <h2>Resumen</h2>
         <p>
-          Diseño de un pipeline modular para transformar conversaciones, encuestas,
-          registros y redes culturales dispersas en datos estructurados, análisis temático,
-          mapas de actores, insights estratégicos y reportes reutilizables.
+          El caso CRBB se aborda como un proyecto de arquitectura de datos, análisis
+          de redes e inteligencia territorial. El trabajo consistió en ordenar fuentes
+          heterogéneas, normalizar registros de participación, enriquecer atributos
+          descriptivos y producir una capa analítica capaz de mostrar distribución
+          regional, disciplinas, perfiles interdisciplinarios y relaciones entre actores.
         </p>
       </article>
     </section>
@@ -55,75 +57,118 @@
       <article class="card prose">
         <h2>Problema</h2>
         <p>
-          Los ecosistemas culturales independientes suelen producir mucha información valiosa,
-          pero queda dispersa en formularios, chats, transcripciones, redes sociales, reuniones
-          y documentos. Sin estructura, esa información no sirve para decidir, priorizar ni
-          demostrar impacto.
+          La información territorial disponible estaba distribuida en fuentes con
+          formatos, niveles de detalle y criterios de registro distintos. Esa dispersión
+          dificultaba identificar participantes, regiones, disciplinas, perfiles
+          interdisciplinarios y relaciones entre actores. Sin una arquitectura mínima,
+          los datos quedaban poco auditables y con baja utilidad para priorizar acciones,
+          coordinar iniciativas o justificar decisiones.
         </p>
       </article>
     </section>
 
     <section class="section">
       <article class="card prose">
-        <h2>Objetivo</h2>
-        <p>Convertir información dispersa en un sistema de análisis reutilizable para:</p>
+        <h2>Fuentes de datos</h2>
+        <p>
+          El origen de los datos combinó insumos operativos y documentales generados
+          durante el trabajo con participantes y actores del ecosistema territorial.
+          Las fuentes se trataron como entradas separadas para conservar trazabilidad
+          entre dato original, proceso aplicado y salida analítica.
+        </p>
         <ul>
-          <li>identificar actores</li>
-          <li>mapear redes</li>
-          <li>detectar temas y problemas recurrentes</li>
-          <li>producir reportes</li>
-          <li>apoyar decisiones estratégicas</li>
-          <li>mejorar trazabilidad institucional</li>
+          <li>registros de participantes</li>
+          <li>encuestas y formularios</li>
+          <li>transcripciones y notas de trabajo</li>
+          <li>listados de organizaciones y contactos</li>
+          <li>metadatos territoriales y disciplinares</li>
+          <li>referencias públicas disponibles para enriquecimiento</li>
         </ul>
       </article>
     </section>
 
     <section class="section">
       <article class="card prose">
-        <h2>Enfoque</h2>
-        <p>El pipeline separa el trabajo en etapas:</p>
+        <h2>Pipeline</h2>
+        <p>
+          El pipeline se diseñó por módulos para separar captura, limpieza,
+          normalización, enriquecimiento, agregación, análisis y visualización.
+          Esta separación permitió revisar cada etapa sin mezclar edición de datos,
+          interpretación analítica y producción de salidas.
+        </p>
         <ol>
-          <li>limpieza de insumos</li>
-          <li>estructuración de datos</li>
-          <li>extracción de actores</li>
-          <li>análisis temático</li>
-          <li>generación de insights</li>
-          <li>reporting</li>
-          <li>comunicación e infografías</li>
+          <li>inventario de fuentes y definición de identificadores</li>
+          <li>limpieza de campos, duplicados y valores inconsistentes</li>
+          <li>normalización de nombres, regiones, disciplinas y categorías</li>
+          <li>enriquecimiento con atributos territoriales y relacionales</li>
+          <li>agregación por participante, región, disciplina y perfil</li>
+          <li>análisis de redes, temas y patrones de participación</li>
+          <li>visualización y reporting para uso operativo</li>
         </ol>
       </article>
     </section>
 
     <section class="section">
       <article class="card prose">
-        <h2>Arquitectura</h2>
-        <h3>Entradas</h3>
+        <h2>Procesamiento</h2>
+        <p>
+          El procesamiento priorizó consistencia y auditabilidad. Cada transformación
+          mantuvo criterios explícitos para reducir ambigüedad y facilitar revisión:
+          qué dato entró, qué regla se aplicó y qué salida produjo.
+        </p>
         <ul>
-          <li>transcripciones</li>
-          <li>chats</li>
-          <li>encuestas</li>
-          <li>registros de participantes</li>
-          <li>contactos RRSS</li>
-          <li>datos de Instagram cuando están disponibles</li>
+          <li>normalización de entidades para consolidar participantes y organizaciones</li>
+          <li>estandarización de regiones, disciplinas, roles y categorías de análisis</li>
+          <li>enriquecimiento con atributos territoriales, temáticos e interdisciplinarios</li>
+          <li>agregación de métricas por región, disciplina, participante y perfil</li>
+          <li>validación cruzada entre registros estructurados y fuentes documentales</li>
         </ul>
-        <h3>Procesamiento</h3>
+      </article>
+    </section>
+
+    <section class="section">
+      <article class="card prose">
+        <h2>Resultados</h2>
+        <p>
+          Las salidas permitieron observar patrones que no eran visibles en los
+          insumos originales. El dataset consolidado funcionó como base para lectura
+          territorial, análisis de redes y seguimiento de criterios de participación.
+        </p>
         <ul>
-          <li>Python</li>
-          <li>pandas</li>
-          <li>análisis semántico asistido por IA</li>
-          <li>clasificación temática</li>
-          <li>redes de actores</li>
-          <li>generación de tablas normalizadas</li>
+          <li>participantes estructurados con atributos comparables</li>
+          <li>distribución regional para detectar concentración y cobertura territorial</li>
+          <li>disciplinas normalizadas para análisis sectorial e interdisciplinario</li>
+          <li>perfiles interdisciplinarios asociados a trayectorias, roles y prácticas</li>
+          <li>redes de actores útiles para identificar nodos, vínculos y posibles brechas</li>
         </ul>
-        <h3>Salidas</h3>
+        <h3>Indicadores obtenidos</h3>
         <ul>
-          <li>participantes estructurados</li>
-          <li>actores del ecosistema</li>
-          <li>temas dominantes</li>
-          <li>insights estratégicos</li>
-          <li>reportes ejecutivos</li>
-          <li>insumos para comunicación</li>
+          <li>53 participantes estructurados</li>
+          <li>13 regiones representadas</li>
+          <li>25 territorios analizados</li>
+          <li>17 disciplinas identificadas</li>
+          <li>motivación dominante: formación</li>
+          <li>perfil interdisciplinario dominante: híbrido</li>
         </ul>
+      </article>
+    </section>
+
+    <section class="section">
+      <article class="card prose">
+        <h2>Arquitectura del pipeline</h2>
+        <p>
+          El flujo lógico se organizó como una cadena reproducible entre fuentes,
+          procesamiento, dataset, análisis y visualización. La arquitectura evita
+          tratar los reportes como documentos aislados: cada salida deriva de una
+          capa de datos verificable.
+        </p>
+        <ol>
+          <li><strong>Fuentes:</strong> registros, encuestas, notas, transcripciones, listados y metadatos territoriales.</li>
+          <li><strong>Procesamiento:</strong> limpieza, normalización, deduplicación, enriquecimiento y agregación.</li>
+          <li><strong>Dataset:</strong> tablas estructuradas con identificadores, atributos y criterios de trazabilidad.</li>
+          <li><strong>Análisis:</strong> lectura regional, análisis disciplinar, perfiles interdisciplinarios y redes de actores.</li>
+          <li><strong>Visualización:</strong> reportes, tablas, mapas de relación e insumos para decisiones.</li>
+        </ol>
       </article>
     </section>
 
@@ -131,40 +176,14 @@
       <article class="card prose">
         <h2>Decisiones técnicas</h2>
         <ul>
-          <li>separar limpieza, análisis e interpretación</li>
-          <li>no sobrescribir datos raw</li>
-          <li>usar nombres de archivos trazables</li>
-          <li>trabajar por módulos</li>
-          <li>usar Git para versionar cambios</li>
-          <li>usar prompts como componentes operativos del pipeline</li>
+          <li>separar limpieza, estructuración, análisis, visualización y documentación</li>
+          <li>mantener los datos originales fuera de los procesos de sobrescritura</li>
+          <li>usar nombres de archivos y salidas trazables por módulo</li>
+          <li>trabajar con tablas normalizadas antes de producir reportes</li>
+          <li>versionar criterios, cambios y validaciones con Git</li>
+          <li>publicar salidas agregadas y evitar exponer datos personales en el frontend</li>
+          <li>usar IA como apoyo semántico sobre datos ordenados y reglas explícitas</li>
         </ul>
-      </article>
-    </section>
-
-    <section class="section">
-      <article class="card prose">
-        <h2>Resultado</h2>
-        <p>
-          El sistema permite pasar de información dispersa a una base operativa para tomar
-          decisiones, comunicar impacto y coordinar mejor iniciativas culturales o territoriales.
-        </p>
-      </article>
-    </section>
-
-    <section class="section">
-      <article class="card prose">
-        <h2>Stack</h2>
-        <div class="tags">
-          <span>Python</span>
-          <span>pandas</span>
-          <span>Markdown</span>
-          <span>CSV</span>
-          <span>Git / GitHub</span>
-          <span>IA generativa</span>
-          <span>análisis semántico</span>
-          <span>redes</span>
-          <span>reporting</span>
-        </div>
       </article>
     </section>
 
@@ -172,11 +191,47 @@
       <article class="card prose">
         <h2>Aprendizajes</h2>
         <ul>
-          <li>La mayor dificultad no está en analizar, sino en estructurar bien la información.</li>
-          <li>Un pipeline útil necesita límites claros entre limpieza, análisis e interpretación.</li>
-          <li>La trazabilidad importa más que la sofisticación.</li>
-          <li>La IA aporta valor cuando trabaja sobre datos ordenados y criterios claros.</li>
+          <li>La calidad del análisis depende primero de la arquitectura de datos.</li>
+          <li>La trazabilidad permite discutir decisiones sin depender de memoria institucional.</li>
+          <li>La normalización reduce ruido y mejora comparabilidad entre regiones y disciplinas.</li>
+          <li>La agregación debe conservar la posibilidad de volver al registro de origen.</li>
+          <li>La visualización es más útil cuando responde a preguntas de gestión y gobernanza.</li>
         </ul>
+      </article>
+    </section>
+
+    <section class="section">
+      <article class="card prose">
+        <h2>Lecciones aprendidas</h2>
+        <p>
+          En sistemas complejos, el valor no está solo en describir actores o actividades,
+          sino en construir evidencia operable. Un pipeline territorial debe permitir
+          observar relaciones, detectar vacíos, comparar criterios y sostener decisiones
+          de gobernanza con datos revisables.
+        </p>
+        <ul>
+          <li>Los ecosistemas territoriales requieren modelos de datos flexibles, pero no ambiguos.</li>
+          <li>La gobernanza basada en evidencia necesita criterios explícitos y datos auditables.</li>
+          <li>El análisis de redes ayuda a pasar de listados de actores a lectura sistémica.</li>
+          <li>La inteligencia territorial mejora cuando combina contexto cualitativo con estructura cuantitativa.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="section">
+      <article class="card prose">
+        <h2>Stack utilizado</h2>
+        <div class="tags">
+          <span>Python</span>
+          <span>pandas</span>
+          <span>JSON</span>
+          <span>Git</span>
+          <span>GitHub</span>
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript vanilla</span>
+          <span>ECharts</span>
+        </div>
       </article>
     </section>
 
