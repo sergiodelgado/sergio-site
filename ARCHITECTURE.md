@@ -54,6 +54,11 @@ componentes reutilizables mediante `partials/`.
 - No hay sistema de templates avanzado.
 - Carga de parciales se resuelve en el navegador.
 
+### Alcance actual
+- Páginas base: `index.html`, `about.html`, `projects.html`, `contact.html`.
+- Casos CRBB: `case-crbb-pipeline.html` y `case-crbb-participantes.html`.
+- Mapa operativo completo: `docs/site-technical-map.md`.
+
 ---
 
 ## 4. Organización por intención (css / js)
@@ -65,17 +70,25 @@ Separar estilos y scripts en carpetas dedicadas (`css/`, `js/`).
 - Facilitar la ubicación rápida de responsabilidades.
 - Reducir carga cognitiva al editar o auditar el proyecto.
 - Mantener URLs estables sin introducir build steps.
+- Mantener separado el sitio base del dashboard CRBB.
 
 ### Trade-offs aceptados
 - Requiere actualización explícita de rutas en HTML.
 - No existe bundling ni optimización automática (no necesario).
+
+### Alcance actual
+- `css/styles.css`: estilos globales del sitio.
+- `css/crbb-dashboard.css`: estilos específicos de `case-crbb-participantes.html`.
+- `js/script.js`: comportamiento global, parciales, navegación, footer y Formspree.
+- `js/crbb-dashboard.js`: carga de data pública CRBB, filtros, tabla, KPIs y gráficos.
 
 ---
 
 ## 5. Reutilización de layout con parciales HTML
 
 ### Decisión
-Implementar `nav` y `footer` como parciales HTML cargados vía `fetch`.
+Implementar `nav` y `footer` como parciales HTML cargados vía `fetch` desde
+`partials/nav.html` y `partials/footer.html`.
 
 ### Motivo
 - Eliminar duplicación de markup entre páginas.
@@ -88,27 +101,52 @@ Implementar `nav` y `footer` como parciales HTML cargados vía `fetch`.
 
 ---
 
-## 6. Separación de capas: técnica vs narrativa
+## 6. Data pública CRBB
 
 ### Decisión
-Separar explícitamente los **proyectos técnicos**
-del **laboratorio narrativo / conceptual**.
+Consumir JSON públicos en `data/` para el dashboard CRBB, sin depender de
+fuentes sensibles en runtime.
 
 ### Motivo
-- Priorizar señal profesional para reclutadores técnicos.
-- Mantener la narrativa como diferenciador, no como ruido.
-- Permitir lectura clara en menos de 60 segundos.
+- Mantener el sitio como estático revisable.
+- Separar publicación pública de insumos privados o restringidos.
+- Permitir visualización territorial sin exponer PII ni texto sensible completo.
 
 ### Trade-offs aceptados
-- Duplicación mínima de estructura visual.
-- La narrativa no es el eje principal del sitio.
+- Los payloads deben regenerarse y revisarse fuera del runtime.
+- La seguridad de publicación depende del proceso previo, no solo del frontend.
+
+### Alcance actual
+- `data/modulo_00_participantes_dashboard.json`
+- `data/modulo_00_participantes_hybrid_clusters.json`
+- `data/modulo_00_activation_opportunities.json`
+
+Detalle operativo: `docs/crbb-public-data.md`.
 
 ---
 
-## 7. Calidad y automatización
+## 7. Dependencias externas
 
 ### Decisión
-Implementar CI liviano con validaciones automáticas.
+Usar dependencias externas solo donde reducen complejidad operativa.
+
+### Motivo
+- ECharts vía CDN evita incorporar un build step para el dashboard.
+- Formspree resuelve contacto sin backend propio.
+- Vercel resuelve hosting, deploys y previews para sitio estático.
+
+### Trade-offs aceptados
+- `case-crbb-participantes.html` depende de disponibilidad de CDN para gráficos.
+- El formulario depende del endpoint externo de Formspree.
+- El estado final de deploy se valida en Vercel Preview.
+
+---
+
+## 8. Calidad y automatización
+
+### Decisión
+Implementar CI liviano con validaciones automáticas y Lighthouse como señal
+non-blocking.
 
 ### Motivo
 - Detectar errores temprano (HTML, links, sitemap).
@@ -118,10 +156,18 @@ Implementar CI liviano con validaciones automáticas.
 ### Trade-offs aceptados
 - Checks limitados a lo esencial.
 - No se persigue cobertura total ni métricas artificiales.
+- Lighthouse puede advertir regresiones sin bloquear mientras el workflow use
+  `continue-on-error: true`.
+
+### Alcance actual
+- `npm run ci:test`: validación HTML y chequeo de sitemap.
+- `.github/workflows/ci.yml`: job `quality` bloqueante y job `lighthouse`
+  non-blocking.
+- Guía de validación: `docs/qa-deploy.md`.
 
 ---
 
-## 8. Gobernanza y colaboración
+## 9. Gobernanza y colaboración
 
 ### Decisión
 Incluir archivos de gobernanza y templates
