@@ -26,6 +26,18 @@ No deben publicarse:
 - datos que permitan reidentificacion innecesaria.
 El frontend incluye limpieza defensiva para email, telefono y RUT en textos de
 resumen, pero la regla principal debe aplicarse antes de publicar los JSON.
+## Validacion anti-PII
+Comando disponible:
+```bash
+npm run check:privacy
+```
+El chequeo revisa solo archivos JSON directos en `data/*.json`. No entra a
+subdirectorios ni a `data/raw`.
+El script falla si detecta patrones evidentes de email, RUT chileno, telefono
+chileno, claves prohibidas de identificacion o textos excesivamente largos en
+campos no narrativos.
+Este gate es una mitigacion minima: no reemplaza la revision humana de fuentes,
+procedencia ni criterios de publicacion cuando se regeneran payloads.
 ## Consumo frontend
 El consumidor principal es `js/crbb-dashboard.js`, cargado desde
 `case-crbb-participantes.html`.
@@ -136,6 +148,8 @@ No se ejecuta en CI.
 ```bash
 npm run ci:test
 ```
+`npm run ci:test` incluye validacion HTML, sitemap y chequeo anti-PII de
+`data/*.json`.
 7. Revisar:
 ```bash
 git diff --stat

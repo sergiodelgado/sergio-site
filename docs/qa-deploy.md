@@ -15,7 +15,7 @@ git diff --stat
 ## Que ejecuta `npm run ci:test`
 Definicion actual en `package.json`:
 ```bash
-npm run lint:html && npm run check:sitemap
+npm run lint:html && npm run check:sitemap && npm run check:privacy
 ```
 `npm run lint:html` valida:
 - `index.html`
@@ -32,6 +32,12 @@ Ese script valida que `sitemap.xml`:
 - exista;
 - contenga etiquetas `<lastmod>`;
 - no tenga fechas futuras o invalidas.
+`npm run check:privacy` ejecuta:
+```bash
+node scripts/check-public-data-privacy.mjs
+```
+Ese script revisa solo `data/*.json` y falla ante PII evidente o claves
+prohibidas de identificacion en los payloads publicos.
 ## Revision Git
 Usar:
 ```bash
