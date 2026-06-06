@@ -1,11 +1,16 @@
 # sergio-site
 
-Repositorio del sitio web personal de **Sergio Delgado**.
+Sitio personal y portafolio técnico de Sergio Delgado.
 
-El sitio funciona como portafolio técnico y laboratorio de sistemas complejos,
-con casos de estudio, visualizaciones y memoria pública de proyectos. Presenta
-experiencia en datos, automatización, QA técnico, CI/CD, arquitectura de
-información e inteligencia territorial aplicada.
+Integra ingeniería aplicada, infraestructura hidráulica, ciencia de datos,
+automatización, IA aplicada, QA técnico y visualización de sistemas complejos.
+
+## Casos principales
+
+- CRBB Pipeline: arquitectura de datos e inteligencia territorial.
+- CRBB Participantes: dashboard público con datos anonimizados.
+- QA Automation AG RBB: validación técnica y CI/CD.
+- Churn Prediction: ciencia de datos aplicada.
 
 ## Propósito
 
