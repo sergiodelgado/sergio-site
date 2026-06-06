@@ -32,31 +32,56 @@
   </div>
 
   <main id="main" class="container">
-    <h1>Contacto</h1>
-    <p class="muted">
-      Si necesitas abordar datos dispersos, procesos no trazables, reportabilidad manual,
-      gobernanza débil o transformación digital en agua, infraestructura, cultura y territorio,
-      puedes contactarme para conversar sobre problemas donde se cruzan ingeniería, datos,
-      procesos e IA aplicada.
-    </p>
-    <p class="muted">
-      Trabajo en diseño de observatorios, dashboards ejecutivos, automatización de flujos
-      de trabajo y uso aplicado de IA para gestión, análisis y documentación.
-    </p>
+    <section class="section">
+      <div class="section-header">
+        <span class="eyebrow">Contacto</span>
+        <h1>Resolver un problema técnico</h1>
+        <p>
+          Cuéntame el proceso, fuente de datos o decisión que necesitas ordenar.
+          Respondo mejor cuando el problema tiene contexto operativo y un entregable claro.
+        </p>
+      </div>
 
-    <form class="card form" id="contact-form" action="https://formspree.io/f/mzzjzlyy" method="POST" data-formspree>
-      <label>Nombre
-        <input id="name" type="text" name="name" required>
-      </label>
-      <label>Email
-        <input id="email" type="email" name="email" required>
-      </label>
-      <label>Mensaje
-        <textarea id="message" name="message" rows="6" required></textarea>
-      </label>
-      <button class="btn btn-primary" type="submit">Enviar</button>
-      <div class="form-status" role="status" aria-live="polite"></div>
-    </form>
+      <div class="contact-layout">
+        <div class="bento">
+          <article class="card span-12">
+            <h2>Problemas típicos</h2>
+            <ul>
+              <li>Datos dispersos entre planillas, formularios, registros y conversaciones.</li>
+              <li>Procesos no trazables o dependientes de coordinación manual.</li>
+              <li>Reportabilidad manual que consume tiempo y no escala.</li>
+              <li>Baja gobernanza de datos, roles, reglas o criterios de privacidad.</li>
+              <li>Necesidad de dashboards, automatización o IA aplicada.</li>
+            </ul>
+          </article>
+          <article class="card span-12">
+            <h2>Entregables posibles</h2>
+            <div class="tags">
+              <span>Diagnóstico técnico</span>
+              <span>Arquitectura de datos</span>
+              <span>Dashboard ejecutivo</span>
+              <span>Automatización de flujo</span>
+              <span>Validación QA</span>
+              <span>Documentación operativa</span>
+            </div>
+          </article>
+        </div>
+
+        <form class="card form" id="contact-form" action="https://formspree.io/f/mzzjzlyy" method="POST" data-formspree>
+          <label>Nombre
+            <input id="name" type="text" name="name" required>
+          </label>
+          <label>Email
+            <input id="email" type="email" name="email" required>
+          </label>
+          <label>Mensaje
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </label>
+          <button class="btn btn-primary" type="submit">Enviar consulta</button>
+          <div class="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
   </main>
 
   <div data-include="footer">
