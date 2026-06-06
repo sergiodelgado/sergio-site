@@ -3,10 +3,25 @@
   --bg: #0a0a0a;
   --fg: #e5e5e5;
   --muted: #a1a1aa;
-  --card: #111113;
+  --surface: #111113;
+  --surface-2: #151518;
+  --surface-3: #0f0f12;
+  --card: var(--surface);
   --line: #1f1f22;
+  --border: var(--line);
   --accent: #d4d4d8;
   --primary: #fafafa;
+  --max-content: 980px;
+  --space-xs: 6px;
+  --space-sm: 10px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 8px;
+  --shadow-soft: 0 18px 60px rgba(0, 0, 0, 0.22);
 }
 
 * {
@@ -23,7 +38,7 @@ body {
 }
 
 .container {
-  max-width: 980px;
+  max-width: var(--max-content);
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -107,7 +122,7 @@ textarea:focus-visible {
 .menu a.active,
 .menu a:hover {
   color: var(--fg);
-  background: #151518;
+  background: var(--surface-2);
 }
 
 /* ============================= */
@@ -115,12 +130,14 @@ textarea:focus-visible {
 /* ============================= */
 
 .hero {
-  padding: 80px 0 30px;
+  padding: 80px 0 32px;
 }
 
 .hero h1 {
+  max-width: 13ch;
   font-size: clamp(28px, 6vw, 54px);
   line-height: 1.05;
+  letter-spacing: 0;
   margin: 0;
 }
 
@@ -128,6 +145,8 @@ textarea:focus-visible {
   color: var(--muted);
   margin-top: 12px;
   max-width: 60ch;
+  font-size: 1.05rem;
+  line-height: 1.65;
 }
 
 /* ============================= */
@@ -136,6 +155,7 @@ textarea:focus-visible {
 
 .cta-row {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   margin-top: 22px;
 }
@@ -143,8 +163,8 @@ textarea:focus-visible {
 .btn {
   display: inline-block;
   padding: 10px 16px;
-  border-radius: 12px;
-  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
   color: var(--fg);
   text-decoration: none;
   transition: transform 0.04s ease;
@@ -167,15 +187,27 @@ textarea:focus-visible {
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
+  gap: var(--space-md);
   margin: 40px 0 80px;
 }
 
 .card {
+  min-width: 0;
   background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
   padding: 18px;
+  box-shadow: var(--shadow-soft);
+  overflow-wrap: break-word;
+}
+
+.card h2,
+.card h3 {
+  margin-top: 0;
+}
+
+.card p {
+  line-height: 1.65;
 }
 
 /* ============================= */
@@ -214,6 +246,34 @@ textarea:focus-visible {
   margin-top: 28px;
 }
 
+h1,
+h2,
+h3 {
+  letter-spacing: 0;
+}
+
+h1 {
+  max-width: 780px;
+  margin: 0 0 var(--space-md);
+  font-size: clamp(2rem, 5vw, 3.7rem);
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  line-height: 1.15;
+}
+
+h3 {
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+p,
+li {
+  line-height: 1.65;
+}
+
 .prose p,
 .prose li {
   color: var(--fg);
@@ -234,12 +294,15 @@ textarea:focus-visible {
 .tags span {
   font-size: 12px;
   padding: 4px 8px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   border-radius: 999px;
   color: var(--muted);
 }
 
 .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
   margin-top: 8px;
 }
 
@@ -248,7 +311,7 @@ textarea:focus-visible {
 /* ============================= */
 
 .section {
-  margin: 3rem 0;
+  margin: var(--space-2xl) 0;
 }
 
 .section > h2 {
@@ -260,6 +323,134 @@ textarea:focus-visible {
 .section > .muted {
   max-width: 60ch;
   margin-bottom: 1.5rem;
+}
+
+.section-header {
+  max-width: 720px;
+  margin-bottom: var(--space-lg);
+}
+
+.section-header h1,
+.section-header h2 {
+  margin-top: 0;
+}
+
+.section-header p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: var(--space-sm);
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--space-md);
+  margin: var(--space-lg) 0;
+}
+
+.span-4 {
+  grid-column: span 4;
+}
+
+.span-6 {
+  grid-column: span 6;
+}
+
+.span-8 {
+  grid-column: span 8;
+}
+
+.span-12 {
+  grid-column: span 12;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md);
+  margin: var(--space-xl) 0 0;
+}
+
+.metric-card {
+  min-width: 0;
+  min-height: 116px;
+  padding: var(--space-md);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface-3);
+  overflow-wrap: break-word;
+}
+
+.metric-card strong {
+  display: block;
+  margin-bottom: var(--space-xs);
+  color: var(--primary);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  line-height: 1;
+}
+
+.metric-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.timeline {
+  display: grid;
+  gap: var(--space-md);
+  margin: var(--space-lg) 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.timeline-item {
+  position: relative;
+  padding: var(--space-md) var(--space-md) var(--space-md) var(--space-lg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 12px;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.timeline-item h3 {
+  margin: 0 0 var(--space-xs);
+}
+
+.timeline-item p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  gap: var(--space-lg);
+  align-items: start;
+  margin: var(--space-lg) 0 var(--space-2xl);
+}
+
+.contact-layout > .bento {
+  margin: 0;
 }
 
 /* ============================= */
@@ -279,10 +470,10 @@ textarea:focus-visible {
 
 .form input,
 .form textarea {
-  background: #0f0f12;
+  background: var(--surface-3);
   color: var(--fg);
-  border: 1px solid var(--line);
-  border-radius: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
   padding: 10px;
 }
 
@@ -338,6 +529,42 @@ textarea:focus-visible {
   .btn {
     width: 100%;
     text-align: center;
+  }
+
+  .hero {
+    padding-top: 48px;
+  }
+
+  .metric-grid,
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .bento {
+    grid-template-columns: 1fr;
+  }
+
+  .span-4,
+  .span-6,
+  .span-8,
+  .span-12 {
+    grid-column: span 1;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+  .span-4,
+  .span-6,
+  .span-8 {
+    grid-column: span 6;
+  }
+
+  .span-12 {
+    grid-column: span 12;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
   }
 }
 
