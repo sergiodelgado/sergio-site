@@ -103,6 +103,13 @@ npm run ci:test
 
 - validación HTML con `html-validate`;
 - chequeo de `sitemap.xml` mediante `scripts/check-sitemap.mjs`.
+- chequeo anti-PII de JSON públicos mediante `scripts/check-public-data-privacy.mjs`.
+
+Chequeo de privacidad independiente:
+
+```bash
+npm run check:privacy
+```
 
 Auditoría Lighthouse opcional:
 

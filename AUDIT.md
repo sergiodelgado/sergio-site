@@ -50,8 +50,9 @@ npm run ci:test
 
 Resultado: pasa correctamente.
 
-El comando ejecuta validación HTML y chequeo de sitemap. En el estado actual, no
-hay deuda vigente asociada a fechas futuras en `<lastmod>`.
+El comando ejecuta validación HTML, chequeo de sitemap y validación anti-PII de
+JSON públicos. En el estado actual, no hay deuda vigente asociada a fechas
+futuras en `<lastmod>`.
 
 ## Estado actual
 
@@ -95,11 +96,12 @@ hay deuda vigente asociada a fechas futuras en `<lastmod>`.
 
 Los JSON en `data/` se usan para visualización pública y agregada. El diseño
 actual evita exponer RUT, email, teléfono y texto completo sensible. Esta regla
-debe mantenerse si se regeneran payloads.
+queda mitigada parcialmente por `npm run check:privacy`, pero debe mantenerse
+con revisión humana si se regeneran payloads.
 
 ### Tooling y CI
 
-- `npm run ci:test` valida HTML y sitemap.
+- `npm run ci:test` valida HTML, sitemap y privacidad mínima de JSON públicos.
 - `npm run ci:lighthouse` ejecuta Lighthouse CI.
 - En `.github/workflows/ci.yml`, Lighthouse está configurado como non-blocking
   mediante `continue-on-error: true`.
@@ -117,7 +119,7 @@ debe mantenerse si se regeneran payloads.
 | Prioridad | Área | Riesgo |
 | --- | --- | --- |
 | P1 | Documentación | La arquitectura del dashboard CRBB y la data pública aún no están documentadas en detalle. |
-| P1 | Privacidad | La regeneración de JSON públicos requiere mantener reglas explícitas de exclusión de PII. |
+| P2 | Privacidad | La exclusión de PII queda mitigada parcialmente por `npm run check:privacy`, pero la regeneración de JSON públicos aún requiere revisión humana. |
 | P2 | Frontend | `case-crbb-participantes.html` depende de ECharts desde CDN externo. |
 | P2 | Operación | Formspree y Vercel son dependencias externas operativas para contacto, hosting y previews. |
 | P2 | QA | Lighthouse es informativo/non-blocking; puede advertir regresiones sin bloquear PR. |
@@ -128,7 +130,8 @@ debe mantenerse si se regeneran payloads.
 - Documentar en Fase 2 el mapa técnico del sitio, especialmente el dashboard CRBB.
 - Crear o ampliar documentación sobre data pública: origen derivado, privacidad,
   payloads permitidos y criterios de regeneración.
-- Mantener `npm run ci:test` como gate local mínimo antes de PR.
+- Mantener `npm run ci:test` como gate local mínimo antes de PR, incluyendo el
+  chequeo anti-PII de `data/*.json`.
 - Tratar Lighthouse como señal de revisión mientras siga configurado como
   non-blocking.
 - No introducir build step ni framework mientras el sitio siga siendo estático y
