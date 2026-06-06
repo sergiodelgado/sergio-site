@@ -1,165 +1,136 @@
-# 🌐 sergio-site — Professional Portfolio (Well-Architected)
+# sergio-site
 
-Repositorio del sitio web personal de **Sergio Delgado**, ingeniero civil industrial
-con foco en **QA Automation, Data, CI/CD y transformación digital**.
+Repositorio del sitio web personal de **Sergio Delgado**.
 
-Este proyecto funciona como un **portafolio técnico profesional**, diseñado y
-mantenido bajo principios de **simplicidad, claridad y calidad sostenida**.
+El sitio funciona como portafolio técnico y laboratorio de sistemas complejos,
+con casos de estudio, visualizaciones y memoria pública de proyectos. Presenta
+experiencia en datos, automatización, QA técnico, CI/CD, arquitectura de
+información e inteligencia territorial aplicada.
 
----
+## Propósito
 
-## 🧭 What is this?
+`sergio-site` es un sitio estático orientado a:
 
-`sergio-site` es un **sitio web estático** (HTML/CSS/JS) que presenta:
+- mostrar proyectos técnicos reales y casos de estudio;
+- publicar lecturas agregadas de ecosistemas culturales sin exponer datos sensibles;
+- sostener una presencia profesional sobria, trazable y fácil de revisar;
+- documentar decisiones técnicas mínimas sin introducir frameworks innecesarios.
 
-- Proyectos técnicos reales (QA, Data, Digital Ops)
-- Experiencia en automatización y calidad
-- Un laboratorio narrativo/conceptual (**Xexe Quantum**) como diferenciador
+## Stack actual
 
-El sitio prioriza **señal profesional clara en menos de 60 segundos** para
-reclutadores y revisores técnicos.
+- **HTML5** para estructura de páginas.
+- **CSS3** en `css/styles.css` y `css/crbb-dashboard.css`.
+- **JavaScript vanilla** en `js/script.js` y `js/crbb-dashboard.js`.
+- **Parciales HTML** en `partials/nav.html` y `partials/footer.html`.
+- **JSON público** en `data/` para visualizaciones CRBB.
+- **Node.js** solo para tooling de calidad y CI.
+- **Vercel** para hosting y previews.
 
----
+No hay framework frontend ni build step obligatorio para renderizar el sitio.
 
-## 🧱 Architecture overview
+## Páginas principales
 
-- **Stack:** HTML + CSS + JavaScript (sin framework)
-- **Runtime:** sitio estático
-- **Node.js:** solo para tooling de calidad (CI, linting, auditorías)
-- **Hosting:** Vercel (deploy automático desde `main`)
+| Página | Propósito |
+| --- | --- |
+| `index.html` | Home y señal profesional principal |
+| `about.html` | Perfil, foco actual y ámbitos de colaboración |
+| `projects.html` | Índice de proyectos técnicos y laboratorio conceptual |
+| `contact.html` | Formulario de contacto vía Formspree |
+| `case-crbb-pipeline.html` | Caso técnico de arquitectura de datos territorial |
+| `case-crbb-participantes.html` | Dashboard interactivo CRBB con visualizaciones públicas |
 
-Las decisiones de diseño y trade-offs están documentados en:
+## Data pública CRBB
 
-👉 `ARCHITECTURE.md`
+La página `case-crbb-participantes.html` consume payloads públicos en `data/`:
 
----
+- `data/modulo_00_participantes_dashboard.json`
+- `data/modulo_00_participantes_hybrid_clusters.json`
+- `data/modulo_00_activation_opportunities.json`
 
-## ✅ Quality & Well-Architected baseline
+Estos archivos están pensados para visualización pública segura. No deben
+contener RUT, email, teléfono, direcciones ni textos completos sensibles.
 
-Este repositorio sigue un baseline **Well-Architected** con foco en:
+## Estructura del repo
 
-- Simplicidad antes que sofisticación
-- Automatización mínima pero efectiva
-- Gobernanza visible
-- Mejora continua consciente
-
-Checklist y criterios de mantenimiento:
-
-👉 `docs/well-architected.md`
-
-### Automatización incluida
-
-- Validación HTML
-- Chequeo de sitemap
-- Auditorías Lighthouse
-- CI obligatorio en Pull Requests
-
----
-
-## 🛠️ Tooling & technologies
-
-- **HTML5** — estructura semántica
-- **CSS3** — estilos personalizados (dark / minimal)
-- **JavaScript Vanilla** — lógica del formulario y carga de parciales
-- **Formspree** — backend de contacto
-- **GitHub Actions** — CI (quality gates)
-- **Vercel** — hosting y deploy automático
-- **ChatGPT / Codex** — asistencia en arquitectura, refactor y documentación
-
----
-
-## 📁 Project structure
-
-~~~text
+```text
+.
+├── .github/                  # CI, Dependabot y templates
+├── css/
+│   ├── styles.css
+│   └── crbb-dashboard.css
+├── data/                     # JSON públicos usados por el dashboard CRBB
+├── docs/
+│   └── well-architected.md
+├── js/
+│   ├── script.js
+│   └── crbb-dashboard.js
+├── partials/
+│   ├── nav.html
+│   └── footer.html
+├── scripts/
+│   ├── check-sitemap.mjs
+│   └── build_hybrid_clusters_public_payload.py
 ├── index.html
 ├── about.html
 ├── projects.html
 ├── contact.html
-├── css/
-│   └── styles.css
-├── js/
-│   └── script.js
-├── partials/              # nav / footer reutilizables
-├── assets/                # imágenes e íconos
-├── scripts/               # utilidades (sitemap checks, etc.)
-├── docs/                  # checklist Well-Architected
-├── .github/workflows/     # CI (quality + Lighthouse)
-├── ARCHITECTURE.md
-├── AGENTS.md
+├── case-crbb-pipeline.html
+├── case-crbb-participantes.html
+├── robots.txt
+├── sitemap.xml
 ├── package.json
-└── package-lock.json
-~~~
+└── vercel.json
+```
 
----
+## Uso local
 
-## ⚙️ Local usage
+El sitio puede abrirse directamente desde HTML para revisión visual básica:
 
-Este proyecto **no requiere servidor** para ejecutarse.
-
-~~~bash
-git clone https://github.com/sergiodelgado/sergio-site.git
-cd sergio-site
-~~~
-
-Abrir directamente:
-
-~~~bash
+```bash
 start index.html      # Windows
 open index.html       # macOS
 xdg-open index.html   # Linux
-~~~
+```
 
-### Tooling de calidad (opcional)
+Para ejecutar validaciones se requieren dependencias Node ya instaladas o una
+instalación aprobada previamente:
 
-~~~bash
-npm install
+```bash
 npm run ci:test
+```
+
+`npm run ci:test` ejecuta:
+
+- validación HTML con `html-validate`;
+- chequeo de `sitemap.xml` mediante `scripts/check-sitemap.mjs`.
+
+Auditoría Lighthouse opcional:
+
+```bash
 npm run ci:lighthouse
-~~~
+```
 
-Nota sobre Windows (`spawn EPERM`):
-- En algunos entornos Windows, `npm run ci:lighthouse` puede fallar localmente al lanzar Chrome en modo headless (`spawn EPERM`).
-- El flujo soportado y estable para Lighthouse es CI en GitHub Actions (`ubuntu-latest`), donde se levanta servidor local (`serve . -l 3000`) y se ejecuta LHCI contra `http://localhost:3000`.
-- Si aparece `EPERM` local, úsalo como señal de entorno local y valida Lighthouse en el job de CI.
+En CI, Lighthouse se ejecuta como revisión no bloqueante. No debe tratarse como
+gate obligatorio mientras el workflow mantenga `continue-on-error: true`.
 
----
+## Flujo básico de trabajo
 
-## 🤝 Governance & collaboration
+- Trabajar en ramas `codex/<slug>` o ramas descriptivas equivalentes.
+- No pushear directo a `main`.
+- Hacer cambios pequeños y trazables.
+- Ejecutar `npm run ci:test` antes de abrir o actualizar un PR.
+- Verificar Vercel Preview verde antes de marcar una tarea como lista.
+- No instalar dependencias sin aprobación.
+- No modificar data pública, CI, deploy o contenido visible del sitio salvo tarea explícita.
 
-Aunque es un proyecto personal, el repositorio incluye:
+## Documentación relacionada
 
-- `CONTRIBUTING.md`
-- `CODE_OF_CONDUCT.md`
-- `SECURITY.md`
-- Templates de Issues y Pull Requests
+- `ARCHITECTURE.md`: decisiones de arquitectura.
+- `AUDIT.md`: auditoría técnica viva.
+- `CONTRIBUTING.md`: flujo de contribución.
+- `docs/well-architected.md`: checklist operativo.
+- `SECURITY.md`: política de seguridad.
 
-Esto documenta **cómo trabajo y tomo decisiones**, incluso en contextos individuales.
+## Licencia
 
----
-
-## 🚀 Deployment
-
-- Deploy automático en **Vercel**
-- Trigger: push a `main`
-- CI obligatorio antes del deploy
-
-🌐 Producción:  
-👉 https://sergio-site-drab.vercel.app
-
----
-
-## 🗺️ Roadmap (alto nivel)
-
-- Baseline Well-Architected ✔
-- Arquitectura de contenidos clara ✔
-- Métricas explícitas por proyecto (opcional)
-- Versión multilenguaje (ES / EN)
-- Dominio propio
-- Extensiones IA ligeras (bajo criterio)
-
----
-
-## 📜 License
-
-MIT License  
-Ver archivo `LICENSE` para más detalles.
+MIT License. Ver `LICENSE`.

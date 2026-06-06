@@ -6,6 +6,14 @@ Este archivo sigue un formato simple: fecha, tipo de cambio y descripción breve
 
 ---
 
+## 2026-06-05 · Actualización documental
+- Fase 1: actualización de `README.md`, `AUDIT.md` y `CONTRIBUTING.md`.
+- Fase 2: creación de documentación técnica en `docs/`.
+- Fase 3: alineación de `ARCHITECTURE.md`, `SECURITY.md`, `CHANGELOG.md` y `docs/well-architected.md`.
+- Sin cambios funcionales del sitio.
+
+---
+
 ## 2025-11-30 · Actualización mayor
 - Refactor completo de todas las páginas HTML.
 - Unificación de estilos en `styles.css`.
@@ -24,4 +32,3 @@ Este archivo sigue un formato simple: fecha, tipo de cambio y descripción breve
 - Páginas iniciales: index, about, projects, contact.
 - Formulario conectado a Formspree.
 - Primera versión de `styles.css` y `script.js`.
-

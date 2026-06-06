@@ -1,71 +1,160 @@
 # CONTRIBUTING
 
-Guía simple para mantener coherencia y calidad en el desarrollo del sitio **sergio-site**.
+Guía operativa para mantener coherencia y calidad en `sergio-site`.
 
----
+## Principios
 
-## 🧭 Principios
-- Mantener el sitio **ligero, estático y minimalista**.
-- Evitar frameworks innecesarios.
-- Cuidar accesibilidad (labels, roles, aria-current).
-- Documentar cada cambio en `CHANGELOG.md`.
-- Usar commits claros y consistentes.
+- Mantener el sitio estático, ligero y sin framework.
+- Preferir cambios pequeños, revisables y trazables.
+- No modificar contenido visible del sitio salvo que la tarea lo pida.
+- No tocar `data/*.json` sin justificación explícita.
+- No instalar dependencias sin aprobación.
+- No modificar CI, sitemap o configuración de Vercel salvo tarea explícita.
+- Cuidar accesibilidad, SEO básico y privacidad de data pública.
 
----
+## Estructura actual
 
-## 📁 Estructura esperada
-Todo vive en la raíz del proyecto:
+```text
+.
+├── .github/                  # CI, Dependabot y templates
+├── css/
+│   ├── styles.css
+│   └── crbb-dashboard.css
+├── data/                     # JSON públicos CRBB
+├── docs/
+├── js/
+│   ├── script.js
+│   └── crbb-dashboard.js
+├── partials/
+│   ├── nav.html
+│   └── footer.html
+├── scripts/
+├── index.html
+├── about.html
+├── projects.html
+├── contact.html
+├── case-crbb-pipeline.html
+├── case-crbb-participantes.html
+├── robots.txt
+├── sitemap.xml
+├── package.json
+└── vercel.json
+```
 
-index.html
-about.html
-projects.html
-contact.html
-styles.css
-script.js
-robots.txt
-sitemap.xml
-CHANGELOG.md
-CONTRIBUTING.md
-README.md
+No existe carpeta `assets/` en el estado actual.
 
----
+## Flujo de trabajo
 
-## 🔧 Flujo de trabajo recomendado
+### 1. Revisar estado
 
-### 1. Crear nueva rama (opcional)
-git checkout -b feature/nombre-cambio
+```bash
+git status --short --branch
+```
 
-### 2. Realizar cambios  
-- Mantener semántica HTML limpia  
-- Usar CSS existente (no crear nuevos archivos a menos que sea necesario)  
-- No agregar librerías externas sin justificación  
+### 2. Crear rama de trabajo
 
-### 3. Actualizar `CHANGELOG.md`  
-Agregar entrada con fecha y descripción breve.
+No trabajar directo sobre `main`.
 
-### 4. Commit
-git add .
-git commit -m "Descripción breve del cambio"
-git push
+```bash
+git checkout -b codex/<slug>
+```
 
+Usar un `<slug>` corto y descriptivo, por ejemplo:
 
-### 5. Revisar en Vercel  
-Cada push despliega automáticamente.
+```bash
+git checkout -b codex/docs-fase-1
+```
 
----
+### 3. Aplicar cambios acotados
 
-## 🧹 Estilo de código
+- Tocar solo los archivos definidos por la tarea.
+- Respetar la indentación existente.
+- No reformatear archivos completos sin necesidad.
+- Separar cambios de documentación, análisis, visualización, data y configuración.
+- Mantener trazabilidad entre input, proceso y output cuando haya data involucrada.
 
-- HTML: sangrado de 2 espacios, sin inline JS.  
-- CSS: usar variables y patrones existentes.  
-- JS: modular y mínimo.  
-- Nada de archivos gigantes sin secciones claras.
+### 4. Validar
 
----
+Antes de abrir o actualizar un PR:
 
-## 📬 Dudas
-Todo lo que altere accesibilidad, SEO o estructura del sitio debe revisarse con cuidado.
+```bash
+npm run ci:test
+```
 
-Si el cambio es mayor (navegación nueva, rediseño global), actualizar también el README.
+Este comando valida HTML y `sitemap.xml`.
 
----
+Lighthouse puede ejecutarse como revisión adicional:
+
+```bash
+npm run ci:lighthouse
+```
+
+En CI, Lighthouse es non-blocking. Sus resultados sirven como señal de revisión,
+no como bloqueo obligatorio mientras el workflow mantenga esa configuración.
+
+### 5. Pull Request
+
+Cada PR debe incluir:
+
+- título semántico;
+- checklist de aceptación;
+- lista de archivos modificados;
+- resumen del diff;
+- resultado de `npm run ci:test`;
+- estado de Vercel Preview.
+
+No marcar una tarea como lista hasta revisar que Vercel Preview esté verde.
+
+## Reglas por tipo de archivo
+
+### HTML
+
+- Mantener HTML semántico.
+- Usar indentación de 2 espacios.
+- No introducir JavaScript inline.
+- No cambiar contenido visible sin tarea explícita.
+
+### CSS
+
+- Usar patrones existentes.
+- `css/styles.css` es global.
+- `css/crbb-dashboard.css` es específico del dashboard CRBB.
+- No crear nuevos archivos CSS sin justificarlo.
+
+### JavaScript
+
+- Mantener JavaScript vanilla.
+- `js/script.js` contiene comportamiento global.
+- `js/crbb-dashboard.js` contiene lógica del dashboard CRBB.
+- No agregar librerías sin aprobación.
+
+### Data pública
+
+- No editar `data/*.json` sin justificación explícita.
+- No publicar RUT, email, teléfono, direcciones ni texto sensible completo.
+- Si se regenera data pública, documentar fuente derivada, proceso y validación.
+
+### Documentación
+
+- Mantener documentación útil, sobria y mantenible.
+- Actualizar README o auditoría cuando cambien estructura, comandos o arquitectura.
+- Evitar duplicar detalle técnico en varios documentos.
+
+## Comandos útiles
+
+```bash
+git status --short --branch
+npm run ci:test
+git diff --stat
+git diff -- README.md AUDIT.md CONTRIBUTING.md
+```
+
+## Criterio de cierre
+
+Una tarea documental queda lista cuando:
+
+- solo toca los archivos permitidos;
+- `npm run ci:test` pasa;
+- el diff es revisable;
+- no cambia contenido visible del sitio;
+- Vercel Preview está verde cuando existe PR.
